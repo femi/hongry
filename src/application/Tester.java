@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.opencsv.*;
-
-
 public class Tester {
 	
 	
@@ -36,7 +34,7 @@ public class Tester {
 
 		// TESTING FOR ADDING ITEMS TO AN ORDER
 		
-		ArrayList<ArrayList> list = new ArrayList<ArrayList>();
+		ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
 		ArrayList<String> item1 = new ArrayList<String>();
 		ArrayList<String> item2 = new ArrayList<String>();
 		ArrayList<String> item3 = new ArrayList<String>();
@@ -53,37 +51,37 @@ public class Tester {
 		System.out.println(list.toString());
 
 		Order femi = new Order(10);
-		femi.addMultipleItems(list);
+		femi.addMultipleOrderItems(list);
 		//System.out.println(femi.map.get("Salmon"));
 		
-		System.out.println(femi.map);
+		System.out.println(femi.orderContents);
 		//femi.removeItems("pooooo");
-		System.out.println(femi.map);
+		System.out.println(femi.orderContents);
 		
 		
 		ArrayList<Order> test = new ArrayList<Order>();
 		
 		// TESTING FOR MODIFYING ITEMS ON AN ORDER
 		
-		ArrayList<ArrayList> listt = new ArrayList<ArrayList>();
+		ArrayList<ArrayList<String>> listt = new ArrayList<ArrayList<String>>();
 		ArrayList<String> item1t = new ArrayList<String>();
 		ArrayList<String> item2t = new ArrayList<String>();
 		ArrayList<String> item3t = new ArrayList<String>();
 		item1t.add("Salmon");
 		item1t.add("1");
 		item2t.add("Chicken");
-		item2t.add("1");
+		item2t.add("5");
 		item3t.add("Salmon");
 		item3t.add("1");
 		listt.add(item1t);
 		listt.add(item2t);
 		listt.add(item3t);
 		
-		femi.modifyOrder(listt);
-		System.out.println(femi.map.get("Salmon"));
+		femi.modifyMultipleOrders(listt);
+		//System.out.println(femi.allOrders.get("Salmon"));
 		femi.displayOrder();
 		
-		ArrayList orders = femi.allOrders;
+		//ArrayList orders = femi.allOrders;
 		Order dom = femi;
 		test.add(dom);
 		System.out.println(test.get(0).getOrderID());
@@ -98,6 +96,20 @@ public class Tester {
 		
 		
 		
+		// TESTING FOR ADDING ITEMS
+		
+		Items items = new Items();
+		items.addItem("Salmon", 700);
+		items.addItem("Chicken", 500);
+		items.addItem("Milk", 200);
+		items.addItem("Gammon", 300);
+		items.addItem("Steak", 1000);
+		
+		System.out.println(items.getItemPrice("Steak") * 5);
+		
+	
+		
+		System.out.println(femi.getOrderTotal());
 
 		
 //		HashMap<String, Integer> map = new HashMap<String, Integer>();
