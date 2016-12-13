@@ -81,8 +81,8 @@ public class Testing {
 		
 		//---------------remove order------------------
 
-		Order orderC = platform.getOrder(table.orderID);
-		table.orderID = 0;
+		//Order orderC = platform.getOrder(table.orderID);
+		//table.orderID = 0;
 		
 		//---------------------------------------------
 		

@@ -7,7 +7,7 @@ public class Employee {
 	//-------------------------------VARIBLES------------------------------------
 	
 	private String employeeType;
-	private int employeeCount = 0;
+	private static int employeeCount = 0;
 	private String firstName;
 	private String lastName;
 	private int employeeNumber;
@@ -18,9 +18,9 @@ public class Employee {
 
 	public Employee(String employeeType) {
 		this.employeeType = employeeType;
-		this.employeeCount += 1;
+		
 		System.out.println("EMPLOYEE CREATED" + " | TYPE: " + this.employeeType.toUpperCase());
-		employeeNumber = employeeCount + 1;
+		employeeNumber = ++this.employeeCount;
 	}
 	
 	//--------------------------------METHODS-------------------------------------
@@ -125,6 +125,10 @@ public class Employee {
 			System.out.println("Please use the changePassword method, your password has already been set.");
 		}
 		
+	}
+	
+	public String getPassword() {
+		return this.password;
 	}
 	
 	//-----------------------------------------------------------------------------
