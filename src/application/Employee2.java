@@ -21,7 +21,7 @@ public class Employee2 {
 			this.firstName = firstname;
 			this.lastName = lastname;
 			this.password = password;
-			this.username = username;
+			this.username = username.toLowerCase();
 			employeeNumber = ++this.employeeCount;
 			System.out.println("EMPLOYEE CREATED" + " | TYPE: " + this.employeeType.toUpperCase() + " | " + employeeNumber );
 			
@@ -63,6 +63,10 @@ public class Employee2 {
 			}
 		}
 		
+		public String getEmployeeUsername() {
+			return this.username;
+		}
+		
 		//-----------------------------------------------------------------------------
 		
 //		// validates whether the employee's password is correct or not
@@ -100,6 +104,11 @@ public class Employee2 {
 		}
 		
 		//-----------------------------------------------------------------------------
+		
+		// allows the user to get password
+		public String getPassword() {
+			return this.password;
+		}
 		
 //		public void changePassword(String password) {
 //			

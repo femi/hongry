@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Platform {
 	
-	public static HashMap<Integer, Order> orders = new HashMap<Integer, Order>();
-	public static HashMap<Integer, Employee2> employees = new HashMap<Integer, Employee2>();
-	public static HashMap<Integer, Table> tables = new HashMap<Integer, Table>();
-
+	private static HashMap<Integer, Order> orders = new HashMap<Integer, Order>();
+	private static HashMap<String, Employee2> employees = new HashMap<String, Employee2>();
+	private static HashMap<Integer, Table> tables = new HashMap<Integer, Table>();
+	private static String loggedIn;
 	
 	//-------------------------ORDERS-----------------------------
 	
@@ -24,19 +24,19 @@ public class Platform {
 	//-------------------------EMPLOYEES-----------------------------	
 
 	// get specific employee
-	public static Employee2 getEmployee(int employee_id) {
-		return employees.get(employee_id);
+	public static Employee2 getEmployee(String username) {
+		return employees.get(username);
 	}
 	
 	// get all employee
-	public static HashMap<Integer, Employee2> getAllEmployee() {
+	public static HashMap<String, Employee2> getAllEmployee() {
 		return employees;
 	}
 	
 	
 	// add employee object to store
-	public static void putEmployee(Employee2 employee, int employee_id) {
-		employees.put(employee_id, employee);
+	public static void putEmployee(Employee2 employee, String username) {
+		employees.put(employee.getEmployeeUsername(), employee);
 	}
 	
 	//-------------------------TABLES-----------------------------
@@ -52,6 +52,12 @@ public class Platform {
 	}
 	
 	//--------------------------------------------------------------
-	
 
+	public static void loggedInUser(String type) {
+		loggedIn = type;
+	}
+	
+	public static String whosLoggedIn() {
+		return loggedIn;
+	}
 }

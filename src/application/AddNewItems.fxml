@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <TextField fx:id="txtItem" layoutX="146.0" layoutY="205.0" prefHeight="35.0" prefWidth="184.0" promptText="e.g. salmon">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="txtPrice" layoutX="340.0" layoutY="205.0" prefHeight="35.0" prefWidth="89.0" promptText="£10">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
+         </font></TextField>
+      <Text layoutX="146.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add new item" underline="true">
+         <font>
+            <Font name="Inconsolata" size="22.0" />
+         </font>
+      </Text>
+      <Button layoutX="147.0" layoutY="252.0" mnemonicParsing="false" onAction="#addNewItem" text="confirm">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="560.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/egg-40292_960_720.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblStatus" layoutX="148.0" layoutY="298.0" prefHeight="19.0" prefWidth="295.0" text="Label" textFill="#908c8c" visible="false">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

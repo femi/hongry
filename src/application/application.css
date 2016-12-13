@@ -3,7 +3,6 @@
     -fx-background: white;
 }
 
-
 .button {
 	-fx-color: #21CE99;
 	-fx-text-fill: white;
@@ -11,6 +10,5 @@
 }
 
 .button:hover {
-	-fx-color: #991133;
+	-fx-color: #D3D3D3;
 }
-

@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.65">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Label layoutX="91.0" layoutY="113.0" text="mainWindow">
+      <Button fx:id="btnMenu" layoutX="31.0" layoutY="33.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="Menu">
          <font>
-            <Font size="18.0" />
+            <Font name="Inconsolata" size="16.0" />
          </font>
-      </Label>
+      </Button>
+      <Button fx:id="btnOrders" layoutX="31.0" layoutY="75.0" mnemonicParsing="false" onAction="#goToOrder" prefHeight="32.0" prefWidth="142.0" text="Orders">
+         <font>
+            <Font name="Inconsolata" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEmployees" layoutX="31.0" layoutY="117.0" mnemonicParsing="false" onAction="#goToEmployees" prefHeight="32.0" prefWidth="142.0" text="Employees">
+         <font>
+            <Font name="Inconsolata" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
