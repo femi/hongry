@@ -13,43 +13,26 @@ import javafx.stage.Stage;
 public class MainController {
 	
 	@FXML
-	private Label lblStatus;
+	private Label lblStatus, itemStatus, lblNewEmployeeStatus;
+	
 	@FXML
-	private TextField txtUsername;
+	private TextField txtUsername, txtPassword, txtItem, txtPrice;
+	
 	@FXML
-	private TextField txtPassword;
-	@FXML
-	private TextField txtItem;
-	@FXML
-	private TextField txtPrice;
-	@FXML
-	private Label itemStatus;
-	@FXML
-	private TextField txtFirstname;
-	@FXML
-	private TextField txtLastname;
-	@FXML
-	private TextField txtNewPassword;
-	@FXML
-	private TextField txtNewUsername;
-	@FXML
-	private TextField txtType;
-	@FXML
-	private Label lblNewEmployeeStatus;
+	private TextField txtFirstname, txtLastname, txtNewPassword, txtNewUsername, txtType;
 
+	private static Scene home; // This is the homepage
 	
 	public void Login(ActionEvent event) throws Exception {
 		
-		//----------------------------------------------------------------------------
-//		Employee2 e2 = new Employee2("Staff", "Gazza", "Berry", "Gazz", "password");
-//		Platform.putEmployee(e2, e2.getEmployeeUsername());
-//		System.out.println(Platform.getAllEmployee());
-		//----------------------------------------------------------------------------
-		
+		// get the user's username and password from the TextField
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
 		
+		
+		// Try to get the employee using the username they entered 
 		Employee2 employee = Platform.getEmployee(username);
+		
 		String user = employee.getUsername();
 		String pass = employee.getPassword();
 		String type = employee.getEmployeetype();
@@ -57,13 +40,13 @@ public class MainController {
 		if (username.equals(user) && password.equals(pass) && type.equals("Manager")) {
 			
 			lblStatus.setText("Login Success");
-			Stage primaryStage = new Stage();
+			Stage primaryStage = Main.getStage(); // set stage to main stage 
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Main.fxml"));
 			Scene scene = new Scene(root, 900, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			home = scene;
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		
 		}
 		
 		else {
@@ -72,26 +55,36 @@ public class MainController {
 		}
 	}
 
+	
+//----------------------------------------------------------------------------------------------------------
+	
+	// getter for main home scene
+	public static Scene getHomeScene() {
+		return home;
+	}
+	
+	// sets the scene to the homepage 
+	public static void goHome() {
+		Main.getStage().setScene(MainController.home);
+	}
+
 //----------------------------------------------------------------------------------------------------------
 	
 	
 	public void newOrder(ActionEvent event) throws Exception {
 		
-		//requestedItems.add("");
-		//Order order = new Order(1);
-		
-		Stage primaryStage = new Stage();
+		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/AddNewItems.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+	
 	}
 	
 	public void goToEmployees(ActionEvent event) throws Exception {
 		
-		Stage primaryStage = new Stage();
+		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewEmployee.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -102,15 +95,23 @@ public class MainController {
 	
 	public void goToOrder(ActionEvent event) throws Exception {
 		
-		
-		Stage primaryStage = new Stage();
+		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/Order.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		//System.out.println(Items.list);
+	}
+	
+	public void goToOrderManager(ActionEvent event) throws Exception {
+		
+		Stage primaryStage = Main.getStage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageOrder.fxml"));
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
 		
 	}
 	
@@ -124,7 +125,7 @@ public class MainController {
 		String message = item + " has been added to your menu";
 		lblStatus.setText(message);
 		lblStatus.setVisible(true);
-		
+	
 	}
 
 //----------------------------------------------------------------------------------------------------------
@@ -140,7 +141,6 @@ public class MainController {
 		Platform.putEmployee(employee, employee.getEmployeeUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);
-		
+
 	}
-	
 }

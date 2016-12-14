@@ -15,14 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class PageController implements Initializable {
 	
 	@FXML
-	private ComboBox<String> cbItems;
-	
-	@FXML
-	private ComboBox<String> cbTables;
+	private ComboBox<String> cbItems, cbTables;
 	
 	@FXML
 	private TextArea txtTextArea;
@@ -61,8 +59,12 @@ public class PageController implements Initializable {
 		cbTables.setItems(hasOrders(Platform.getAllTables()));
 	}
 	
+	public void Home(ActionEvent event) {
+		Stage primaryStage = Main.getStage();
+		primaryStage.setScene(MainController.getHomeScene());
+	}
+	
 	public void makeOrder(ActionEvent event) {
-		
 		
 		// get the selected table number
 		String tableNumber = cbTables.getSelectionModel().getSelectedItem(); 
@@ -79,6 +81,7 @@ public class PageController implements Initializable {
 		orderList.removeAll(orderList);
 		txtTextArea.clear();
 		table = 0;
+		MainController.goHome(); // go to homepage
 	}
 	
 	public void changeCombo(ActionEvent event) {
@@ -86,7 +89,6 @@ public class PageController implements Initializable {
 	}
 	
 	public void addItem(ActionEvent event) {
-		
 		
 		//System.out.println(hasOrders(Platform.getAllTables()));
 		String text = cbItems.getSelectionModel().getSelectedItem();

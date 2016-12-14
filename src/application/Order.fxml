@@ -28,5 +28,10 @@
          </font>
       </Text>
       <ComboBox fx:id="cbTables" disable="true" layoutX="89.0" layoutY="271.0" onAction="#changeCombo" prefHeight="27.0" prefWidth="152.0" promptText="Table" />
+      <Button fx:id="btnHome" layoutX="89.0" layoutY="41.0" mnemonicParsing="false" onAction="#Home" text="home">
+         <font>
+            <Font name="Inconsolata" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
