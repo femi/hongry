@@ -1,12 +1,15 @@
 package application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Table {
 	
 	//-------------------------------VARIBLES------------------------------------
 	
 	private static int tableCount = 0;
 	public int tableNumber;
-	public int orderID;
+	public int orderID = 0;
 	
 	//--------------------------------METHODS------------------------------------
 
@@ -19,5 +22,6 @@ public class Table {
 	
 	public void setOrderID(int orderID) {
 		this.orderID = orderID;
-	}	
+	}
+	
 }

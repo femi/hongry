@@ -16,12 +16,11 @@ public class Order {
 	
 	//------------------------------CONSTRUCTOR----------------------------------
 
-	
 	public Order(int tableNumber) {
 		this.orderID = orderCount + 1; // Ensures the order starts at 1 instead of 0
 		this.orderIncrement(); // Increments by 1 each time an order is created
 		this.tableNumber = tableNumber;
-		this.getTime(); // get the time of order
+		this.setTime(); // get the time of order
 		System.out.println("ORDER " + orderID + " CREATED");
 	}
 	
@@ -52,7 +51,7 @@ public class Order {
 	
 	//-----------------------------------------------------------------------------
 	
-	private void getTime() {
+	private void setTime() {
 	
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -94,9 +93,16 @@ public class Order {
 
 	// Displays all of the items in the order with
 	public void displayOrder() {
+		System.out.println("---------------------------");
 		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
-			System.out.println(entry.getKey() + " | " + "x " +  entry.getValue());
+			System.out.println(entry.getKey() + " | " + "x " +  entry.getValue() + " | £" + Items.getItemPrice(entry.getKey()) );
 		}
+		System.out.println("---------------------------");
+		System.out.println("ORDER TIME: " + this.timeOfOrder);
+		System.out.println("COMMENTS: " + this.comments);
+		System.out.println("---------------------------");
+		System.out.println("ORDER TOTAL: £" + this.getOrderTotal());
+		System.out.println("---------------------------");
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -155,72 +161,8 @@ public class Order {
 	
 	//-----------------------------------------------------------------------------
 
-	// Delete and order that has been completed
 	public void deleteExistingOrder() {
-		
+		// Delete and order that has been completed
 	}
-	
-	//-----------------------------------------------------------------------------
-	
-//	// add multiple items to an order 
-//	public void addMultipleOrderItems(ArrayList<ArrayList> itemPairs) {
-//
-//		// Takes in an ArrayList that contains an ArrayList of the
-//		// item and the quantity to add to the order
-//
-//		for (ArrayList<String> pair : itemPairs) {
-//
-//			String foodItem = pair.get(0);
-//			int quantityToAdd = Integer.parseInt(pair.get(1));
-//
-//			if (this.allOrders.containsKey(foodItem) == true) {
-//				int currentQuantity = this.allOrders.get(foodItem);
-//				this.allOrders.put(foodItem, currentQuantity + quantityToAdd);
-//			}
-//
-//			else { this.allOrders.put(foodItem, quantityToAdd); }
-//		}	
-//	}
-	
-//	// modify the contents of an order
-//	public void modifyOrder(ArrayList<ArrayList> itemPairs) {
-//
-//		for (ArrayList<String> pair : itemPairs) {
-//
-//			String foodItem = pair.get(0);
-//			int quantityToReplace = Integer.parseInt(pair.get(1));
-//
-//			if (this.allOrders.containsKey(foodItem) == true) {
-//				this.allOrders.put(foodItem, quantityToReplace);
-//			}
-//
-//			else { this.allOrders.put(foodItem, quantityToReplace); }
-//		}
-//	}
-	
-	// returns the item price of a given item
-//	public int getPrice(String item) {
-//
-//		int itemPrice = 0;
-//
-//		for (String key : prices.keySet()) {
-//			if (key.equals(item)) {
-//				itemPrice = prices.get(key);
-//				break;
-//			}
-//
-//			else {
-//				System.out.println("There is an error, the function could not retrieve a price");
-//			}
-//		}
-//
-//		return itemPrice;
-//	}
-
-	//	public void updateOrder() {
-	//		Order.allOrders.add(this);
-	//	}
-
-
 	
 }

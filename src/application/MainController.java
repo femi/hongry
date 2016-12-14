@@ -1,9 +1,5 @@
 package application;
 
-
-
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,8 +36,6 @@ public class MainController {
 	private TextField txtType;
 	@FXML
 	private Label lblNewEmployeeStatus;
-	
-	
 
 	
 	public void Login(ActionEvent event) throws Exception {
@@ -69,12 +63,13 @@ public class MainController {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+		
 		}
 		
 		else {
 			lblStatus.setText("Login Failed");
 			lblStatus.setVisible(true);
-		}	
+		}
 	}
 
 //----------------------------------------------------------------------------------------------------------
@@ -117,9 +112,7 @@ public class MainController {
 		
 		//System.out.println(Items.list);
 		
-		
 	}
-	
 	
 //----------------------------------------------------------------------------------------------------------
 
@@ -144,13 +137,10 @@ public class MainController {
 		String password = txtNewPassword.getText();
 		String type = txtType.getText();
 		Employee2 employee = new Employee2(type, firstname, lastname, username, password);
+		Platform.putEmployee(employee, employee.getEmployeeUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);
 		
 	}
-
-
-//----------------------------------------------------------------------------------------------------------
-
 	
 }

@@ -43,7 +43,7 @@ public class Employee {
 
 	// gets the employee's full name 
 	public String getEmployeeName() {
-		System.out.println(this.firstName + " " + this.lastName);
+		//System.out.println(this.firstName + " " + this.lastName);
 		return this.firstName + " " + this.lastName;
 	}
 	

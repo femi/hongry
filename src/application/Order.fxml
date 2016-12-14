@@ -10,27 +10,23 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PageController">
    <children>
-      <ComboBox fx:id="cbItems" layoutX="89.0" layoutY="237.0" prefHeight="27.0" prefWidth="152.0" />
-      <TextField fx:id="txtQuantity" layoutX="257.0" layoutY="237.0" prefHeight="27.0" prefWidth="81.0" />
-      <Text layoutX="89.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item">
-         <font>
-            <Font name="Inconsolata" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="258.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity">
-         <font>
-            <Font name="Inconsolata" size="18.0" />
-         </font>
-      </Text>
+      <ComboBox fx:id="cbItems" layoutX="89.0" layoutY="237.0" prefHeight="27.0" prefWidth="152.0" promptText="Item" />
+      <TextField fx:id="txtQuantity" layoutX="257.0" layoutY="237.0" prefHeight="27.0" prefWidth="81.0" promptText="Quantity" />
       <Button fx:id="btnAdd" layoutX="349.0" layoutY="237.0" mnemonicParsing="false" onAction="#addItem" text="add">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font></Button>
       <TextArea fx:id="txtTextArea" editable="false" layoutX="559.0" layoutY="68.0" prefHeight="366.0" prefWidth="280.0" />
-      <Button fx:id="btnOrder" layoutX="89.0" layoutY="280.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="27.0" prefWidth="91.0" text="order">
+      <Button fx:id="btnOrder" disable="true" layoutX="89.0" layoutY="390.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="27.0" prefWidth="91.0" text="order">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font>
       </Button>
+      <Text layoutX="89.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Order">
+         <font>
+            <Font name="Inconsolata" size="36.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cbTables" disable="true" layoutX="89.0" layoutY="271.0" onAction="#changeCombo" prefHeight="27.0" prefWidth="152.0" promptText="Table" />
    </children>
 </AnchorPane>
