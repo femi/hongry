@@ -1,7 +1,9 @@
 .root {
     -fx-base: white;
     -fx-background: white;
+    -fx-font-family: 'Inconsolata';
 }
+
 
 .button {
 	-fx-color: #21CE99;

@@ -26,6 +26,11 @@ public class Platform {
 		return orders.get(order_id);
 	}
 	
+	// get all orders
+	public static HashMap<Integer, Order> getAllOrders() {
+		return orders;
+	}
+	
 	//-------------------------EMPLOYEES-----------------------------	
 
 	// get specific employee

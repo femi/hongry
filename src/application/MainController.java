@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,7 +29,6 @@ public class MainController {
 		// get the user's username and password from the TextField
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
-		
 		
 		// Try to get the employee using the username they entered 
 		Employee2 employee = Platform.getEmployee(username);
@@ -55,7 +55,6 @@ public class MainController {
 		}
 	}
 
-	
 //----------------------------------------------------------------------------------------------------------
 	
 	// getter for main home scene
@@ -112,7 +111,7 @@ public class MainController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+
 	}
 	
 //----------------------------------------------------------------------------------------------------------

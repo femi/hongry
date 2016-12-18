@@ -54,9 +54,9 @@ public class Tester {
 		femi.addMultipleOrderItems(list);
 		//System.out.println(femi.map.get("Salmon"));
 		
-		System.out.println(femi.orderContents);
-		//femi.removeItems("pooooo");
-		System.out.println(femi.orderContents);
+//		System.out.println(femi.orderContents);
+//		//femi.removeItems("pooooo");
+//		System.out.println(femi.orderContents);
 		
 		
 		ArrayList<Order> test = new ArrayList<Order>();

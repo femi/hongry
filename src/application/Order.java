@@ -7,24 +7,34 @@ public class Order {
 	
 	//-------------------------------VARIBLES------------------------------------
 	
-	private static int orderCount = 0;
-	private int orderID = 0;
-	public int tableNumber;
-	public HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
-	public String comments;
-	public String timeOfOrder;
+	private static int orderCount;
+	private int orderID;
+	private int tableNumber;
+	private HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
+	private String comments;
+	private String timeOfOrder;
+	private int orderTotal;
 	
 	//------------------------------CONSTRUCTOR----------------------------------
 
 	public Order(int tableNumber) {
+		
 		this.orderID = orderCount + 1; // Ensures the order starts at 1 instead of 0
 		this.orderIncrement(); // Increments by 1 each time an order is created
 		this.tableNumber = tableNumber;
 		this.setTime(); // get the time of order
 		System.out.println("ORDER " + orderID + " CREATED");
-	}
+		}
 	
 	//--------------------------------METHODS-------------------------------------
+	
+	public int getTableNumber() {
+		return tableNumber;
+	}
+	
+	public String getTimeOfOrder() {
+		return timeOfOrder;
+	}
 	
 	// add one item to an order 
 	public void addOrderItem(String item, int quantity) {
@@ -142,8 +152,11 @@ public class Order {
 		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
 			total += entry.getValue() * Items.getItemPrice(entry.getKey());
 		}
-		return total;
+		this.orderTotal = total;
+		return orderTotal;
 	}
+	
+
 	
 	//-----------------------------------------------------------------------------
 

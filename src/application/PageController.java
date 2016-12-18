@@ -56,6 +56,7 @@ public class PageController implements Initializable {
 		// add all items (foods) to the combo list
 		cbItems.setItems(olist);
 		// add current available tables to combo list
+		System.out.println(Platform.getAllTables());
 		cbTables.setItems(hasOrders(Platform.getAllTables()));
 	}
 	
@@ -75,7 +76,7 @@ public class PageController implements Initializable {
 		Platform.putOrder(order, order.getOrderID()); // add order to platform
 		order.displayOrder(); // displays order receipt in console 
 		
-		Platform.getTable(table).orderID = order.getOrderID(); // update order in platform
+		Platform.getTable(table).orderID = order.getOrderID(); // update table with order number in platform
 		
 		//cleanup, clear order list file and text area 
 		orderList.removeAll(orderList);

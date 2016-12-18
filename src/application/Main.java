@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Random;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -11,7 +13,6 @@ public class Main extends Application {
 	// This is a static main screen 
 	private static Stage stage;
 
-	
 	@Override
 	public void start(Stage primaryStage) {
 		
@@ -53,23 +54,31 @@ public class Main extends Application {
 
 		// NEW ITEMS 
 
-		Items.addItem("Salmon", 20);
-		Items.addItem("Chicken", 15);
-		Items.addItem("Steak", 35);
-		Items.addItem("Chips", 4);
+		Items.addItem("Salmon with Popped Cabbage", 20);
+		Items.addItem("Chicken a la Creme", 15);
+		Items.addItem("King Prawn Salad", 11);
+		Items.addItem("Slow Roasted Beef Brisket", 11);
 		Items.addItem("Water", 3);
 		Items.addItem("Wine", 7);
+		
 
 		// NEW TABLES 
-
-		Table table1 = new Table();
-		Platform.putTable(table1.tableNumber, table1);
-
-		Table table2 = new Table();
-		Platform.putTable(table2.tableNumber, table2);
-
-		Table table3 = new Table();
-		Platform.putTable(table3.tableNumber, table3);
 		
+		for (int i = 0; i < 10; i++) {
+			Table table = new Table();
+			Platform.putTable(table.tableNumber, table);
+		}
+		
+		// NEW ORDERS 
+		
+		Random rand = new Random();
+		
+		for (int i = 0; i < 5; i++) {
+			Order newOrder = new Order(i+1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), rand.nextInt(10));
+			Platform.putOrder(newOrder, newOrder.getOrderID());
+			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform
+		}
+				
 	}
 }
