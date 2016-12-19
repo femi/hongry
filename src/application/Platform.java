@@ -75,7 +75,10 @@ public class Platform {
 	public static String whosLoggedIn() {
 		return loggedIn;
 	}
+	public static void removeOrder(Integer orderID) {
+		orders.remove(orderID);
+		System.out.println("ORDER " + orderID + " REMOVED FROM STORE");
+	}
 	
-
 	
 }

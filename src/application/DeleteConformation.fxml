@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManageOrderController">
+   <children>
+      <Button layoutX="74.0" layoutY="117.0" mnemonicParsing="false" onAction="#deleteOrder" prefHeight="27.0" prefWidth="69.0" text="Delete ">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="150.0" layoutY="117.0" mnemonicParsing="false" onAction="#closeConformationBox" prefHeight="27.0" prefWidth="69.0" text="Cancel">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Text layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete this order? This action is irreversible. " textAlignment="CENTER" wrappingWidth="240.21875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+   </children>
+</AnchorPane>

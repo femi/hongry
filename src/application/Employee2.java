@@ -13,6 +13,7 @@ public class Employee2 {
 		private int employeeNumber;
 		private String password;
 		private String username;
+		private String log;
 		
 		//------------------------------CONSTRUCTOR----------------------------------
 
@@ -68,6 +69,19 @@ public class Employee2 {
 		}
 		
 		//-----------------------------------------------------------------------------
+		
+		public String getLog() {
+			return this.log;
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public void addToLog(String logMessage) {
+			this.log += logMessage + "\n";
+		}
+		
+		//-----------------------------------------------------------------------------
+
 		
 //		// validates whether the employee's password is correct or not
 //		private boolean vaildatePassword(String password) {

@@ -64,7 +64,7 @@ public class Main extends Application {
 
 		// NEW TABLES 
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			Table table = new Table();
 			Platform.putTable(table.tableNumber, table);
 		}
@@ -73,12 +73,11 @@ public class Main extends Application {
 		
 		Random rand = new Random();
 		
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 50; i++) {
 			Order newOrder = new Order(i+1);
 			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), rand.nextInt(10));
 			Platform.putOrder(newOrder, newOrder.getOrderID());
 			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform
 		}
-				
 	}
 }

@@ -95,7 +95,7 @@ public class MainController {
 	public void goToOrder(ActionEvent event) throws Exception {
 		
 		Stage primaryStage = Main.getStage();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Order.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Order2.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);

@@ -21,4 +21,8 @@ public class Table {
 		this.orderID = orderID;
 	}
 	
+	public int getOrderID() {
+		return orderID;
+	}
+	
 }

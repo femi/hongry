@@ -32,6 +32,10 @@ public class Order {
 		return tableNumber;
 	}
 	
+	public void setTableNumber(int tableNumber) {
+		this.tableNumber = tableNumber;
+	}
+	
 	public String getTimeOfOrder() {
 		return timeOfOrder;
 	}
@@ -55,6 +59,15 @@ public class Order {
 		for (ArrayList<String> pair : order) {
 			String foodItem = pair.get(0);
 			int quantityToAdd = Integer.parseInt(pair.get(1));
+			this.addOrderItem(foodItem, quantityToAdd);
+		}
+	}
+	
+	public void addMultipleOrderItems2(HashMap<String, Integer> order) {
+		
+		for (Map.Entry<String, Integer> pair : order.entrySet()) {
+			String foodItem = pair.getKey();
+			int quantityToAdd = pair.getValue();
 			this.addOrderItem(foodItem, quantityToAdd);
 		}
 	}

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,7 +10,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManageOrderController">
    <children>
-      <TableView fx:id="tvOrderTable" layoutX="460.0" layoutY="39.0" prefHeight="399.0" prefWidth="403.0">
+      <TableView fx:id="tvOrderTable" layoutX="460.0" layoutY="39.0" prefHeight="360.0" prefWidth="403.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Order" />
           <TableColumn fx:id="tn" prefWidth="87.0" text="Table" />
@@ -21,5 +23,11 @@
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
+      <ButtonBar layoutX="191.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0" />
+      <Button layoutX="594.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteOrder" text="Delete" />
+      <Button layoutX="665.0" layoutY="415.0" mnemonicParsing="false" text="Close" />
+      <Button layoutX="803.0" layoutY="415.0" mnemonicParsing="false" text="Export" />
+      <Button layoutX="732.0" layoutY="415.0" mnemonicParsing="false" text="Import" />
+      <Button fx:id="btnHome" layoutX="43.0" layoutY="415.0" mnemonicParsing="false" onAction="#Home" text="Home" />
    </children>
 </AnchorPane>
