@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 public class MainController {
 	
+	//public static Scene manageEmployeesScene;
+	
 	@FXML
 	private Label lblStatus, itemStatus, lblNewEmployeeStatus;
 	
@@ -35,7 +37,7 @@ public class MainController {
 		
 		String user = employee.getUsername();
 		String pass = employee.getPassword();
-		String type = employee.getEmployeetype();
+		String type = employee.getEmployeeType();
 
 		if (username.equals(user) && password.equals(pass) && type.equals("Manager")) {
 			
@@ -81,16 +83,16 @@ public class MainController {
 	
 	}
 	
-	public void goToEmployees(ActionEvent event) throws Exception {
-		
-		Stage primaryStage = Main.getStage();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/NewEmployee.fxml"));
-		Scene scene = new Scene(root, 900, 500);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		
-	}
+//	public void goToEmployees(ActionEvent event) throws Exception {
+//		
+//		Stage primaryStage = Main.getStage();
+//		Parent root = FXMLLoader.load(getClass().getResource("/application/NewEmployee.fxml"));
+//		Scene scene = new Scene(root, 900, 500);
+//		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+//		primaryStage.setScene(scene);
+//		primaryStage.show();
+//		
+//	}
 	
 	public void goToOrder(ActionEvent event) throws Exception {
 		
@@ -114,6 +116,17 @@ public class MainController {
 
 	}
 	
+	public void goToEmployeeManager(ActionEvent event) throws Exception {
+		
+		Stage primaryStage = Main.getStage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageEmployees.fxml"));
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+	}
+	
 //----------------------------------------------------------------------------------------------------------
 
 	public void addNewItem(ActionEvent event) throws Exception {
@@ -129,17 +142,17 @@ public class MainController {
 
 //----------------------------------------------------------------------------------------------------------
 	
-	public void addEmployees(ActionEvent event) throws Exception {
-		
-		String firstname = txtFirstname.getText();
-		String lastname = txtLastname.getText();
-		String username = txtUsername.getText();
-		String password = txtNewPassword.getText();
-		String type = txtType.getText();
-		Employee2 employee = new Employee2(type, firstname, lastname, username, password);
-		Platform.putEmployee(employee, employee.getEmployeeUsername());
-		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
-		lblNewEmployeeStatus.setVisible(true);
-
-	}
+//	public void addEmployees(ActionEvent event) throws Exception {
+//		
+//		String firstname = txtFirstname.getText();
+//		String lastname = txtLastname.getText();
+//		String username = txtUsername.getText();
+//		String password = txtNewPassword.getText();
+//		String type = txtType.getText();
+//		Employee2 employee = new Employee2(type, firstname, lastname, username, password);
+//		Platform.putEmployee(employee, employee.getEmployeeUsername());
+//		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
+//		lblNewEmployeeStatus.setVisible(true);
+//
+//	}
 }

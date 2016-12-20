@@ -46,11 +46,15 @@ public class Main extends Application {
 		
 		// NEW EMPLOYEE
 
+		Employee2 test = new Employee2("Manager", "Derek", "Jones", "", "");
 		Employee2 manager = new Employee2("Manager", "Derek", "Jones", "Derek", "password");
 		Employee2 staff = new Employee2("Staff", "Barry", "Flynn", "Barry", "password");
+		
 		Platform.putEmployee(manager, manager.getEmployeeUsername());
 		Platform.putEmployee(staff, staff.getEmployeeUsername());
-		System.out.println(Platform.getAllEmployee());
+		Platform.putEmployee(test, test.getEmployeeUsername());
+		
+		// §System.out.println(Platform.getAllEmployee());
 
 		// NEW ITEMS 
 
@@ -61,7 +65,7 @@ public class Main extends Application {
 		Items.addItem("Water", 3);
 		Items.addItem("Wine", 7);
 		
-
+		
 		// NEW TABLES 
 		
 		for (int i = 0; i < 100; i++) {

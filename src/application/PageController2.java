@@ -23,42 +23,21 @@ import javafx.stage.Stage;
 
 public class PageController2 implements Initializable {
 	
-	@FXML 
-	private Label total;
+	@FXML private Label total;
+	@FXML private ComboBox<String> cbItems, cbTables;
+	@FXML private TextField txtQuantity;
+	@FXML private Button btnOrder;
+	@FXML private TableView<ItemBuffer> orderTable;
+	@FXML private TableColumn<ItemBuffer, String> quantityColumn;
+	@FXML private TableColumn<ItemBuffer, String> itemColumn;
+	@FXML private TableColumn<ItemBuffer, Integer> priceColumn;
 	
+	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList();
+	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
+	public int table;
 	public int subTotal = 0;
 	
-	@FXML
-	private ComboBox<String> cbItems, cbTables;
-	
-	@FXML
-	private TextField txtQuantity;
-	
-	@FXML
-	private Button btnOrder;
-	
-	public int table;
-	
-	@FXML
-	private TableView<ItemBuffer> orderTable;
-	
-	@FXML
-	private TableColumn<ItemBuffer, String> quantityColumn;
-	
-	@FXML
-	private TableColumn<ItemBuffer, String> itemColumn;
-	
-	@FXML
-	private TableColumn<ItemBuffer, Integer> priceColumn;
-	
 
-	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList();
-	
-
-	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
-	
-	
-	
 	// Contains a list of current items and quantity to be added to a users order [[Salmon, 2], [Steak, 1]]
 	public ArrayList<ArrayList<String>> orderList = new ArrayList<ArrayList<String>>();
 	
@@ -78,22 +57,22 @@ public class PageController2 implements Initializable {
 	}
 	
 	
-	
-	
 
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// create a TableView of the items that are currently in a persons order 
 		orderTable.setItems(itemList);
+		
+		// assign the variables to the columns in the TableView
 		quantityColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
 		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
 		
 		// add all items (foods) to the combo list
 		cbItems.setItems(olist);
-		// add current available tables to combo list
-		//System.out.println(Platform.getAllTables());
+		
+		// Show all of the tables that are currently available
 		cbTables.setItems(hasOrders(Platform.getAllTables()));
 			
 	}
@@ -109,19 +88,29 @@ public class PageController2 implements Initializable {
 		String tableNumber = cbTables.getSelectionModel().getSelectedItem(); 
 		table = Integer.parseInt(tableNumber);
 		
-		Order order = new Order(table); // new order
+		// create a new order
+		Order order = new Order(table); 
+		
 		//order.addMultipleOrderItems(orderList); // add all items to order
 		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version
-		Platform.putOrder(order, order.getOrderID()); // add order to platform
-		order.displayOrder(); // displays order receipt in console 
 		
-		Platform.getTable(table).orderID = order.getOrderID(); // update table with order number in platform
+		// add the order to platform
+		Platform.putOrder(order, order.getOrderID()); 
 		
-		//cleanup, clear order list file and text area 
+		// display order receipt in console 
+		order.displayOrder(); 
+		
+		// update table with order number in platform
+		Platform.getTable(table).orderID = order.getOrderID(); 
+		
+		// CLEANUP: clear order list file
 		orderList.removeAll(orderList);
-	//	txtTextArea.clear();
+		
+		// set the current table to 0
 		table = 0;
-		MainController.goHome(); // go to homepage
+		
+		// go to homepage
+		MainController.goHome(); 
 	}
 	
 	public void changeCombo(ActionEvent event) {
@@ -130,10 +119,10 @@ public class PageController2 implements Initializable {
 	
 	public void addItem(ActionEvent event) {
 		
-		
+		// get the selected item from the drop down menu 
 		String text = cbItems.getSelectionModel().getSelectedItem();
 		String quantity = txtQuantity.getText();
-		int quantity2 = Integer.parseInt(txtQuantity.getText());
+		int quantity2 = Integer.parseInt(txtQuantity.getText()); //hashmap version
 				
 		// Add the selected item to a list that will be added to the order
 		ArrayList<String> order = new ArrayList<String>();
@@ -141,8 +130,7 @@ public class PageController2 implements Initializable {
 		order.add(quantity);
 		orderList.add(order); // add item and quantity pair to orderList
 		
-		
-		// Using hashmap instead
+		// USE HASHMAP INSTEAD
 		
 		////---------
 		if (orderList2.containsKey(text)) {
@@ -155,21 +143,22 @@ public class PageController2 implements Initializable {
 		//-------------
 		
 		// Allow user to see what has been added to their order
-//		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), orderList2.get(text).toString());
+		//ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), orderList2.get(text).toString());
 		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity);
 		
+		
+		// add the the price of the item to the current total
 		subTotal += Items.getItemPrice(text) * Integer.parseInt(quantity);
 		
+		// update the total label
 		total.setText("" + subTotal + ".00");
-		//total.setVisible(true);
-		
+	
+		// add the selected item to the TableView
 		orderTable.getItems().add(item);
 		
 		// if the order is empty do not allow the user to add a table 
 		if (!orderTable.getItems().isEmpty()) {
 			cbTables.setDisable(false);
 		}	
-		
-	}
-	
+	}	
 }

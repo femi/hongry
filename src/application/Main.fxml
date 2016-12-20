@@ -17,12 +17,12 @@
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnEmployees" layoutX="31.0" layoutY="172.0" mnemonicParsing="false" onAction="#goToEmployees" prefHeight="32.0" prefWidth="142.0" text="Employees">
+      <Button layoutX="31.0" layoutY="172.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" text="Employees">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnManage" layoutX="31.0" layoutY="214.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage">
+      <Button fx:id="btnManage" layoutX="31.0" layoutY="214.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage Order">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
@@ -32,5 +32,10 @@
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
+      <Button layoutX="31.0" layoutY="257.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
+         <font>
+            <Font name="Inconsolata" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

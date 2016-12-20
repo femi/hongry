@@ -49,6 +49,11 @@ public class Platform {
 		employees.put(employee.getEmployeeUsername(), employee);
 	}
 	
+	public static void removeEmployee(String username) {
+		employees.remove(username);
+		System.out.println("EMPLOYEE " + username + " REMOVED FROM PLATFORM");
+	}
+	
 	//-------------------------TABLES-----------------------------
 
 	// add specific table

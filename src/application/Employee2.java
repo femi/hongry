@@ -52,16 +52,24 @@ public class Employee2 {
 			return this.firstName + " " + this.lastName;
 		}
 		
+		public String getFirstName() {
+			return this.firstName;
+		}
+		
+		public String getLastName() {
+			return this.lastName;
+		}
+		
+		public String getUsername() {
+			return this.username;
+		}
+		
+		
 		//-----------------------------------------------------------------------------
 
 		// return the employee type 
-		public String getEmployeetype() {
-			if (this.employeeType.equals("Manager")) {
-				return "Manager";
-			}
-			else {
-				return "Staff";
-			}
+		public String getEmployeeType() {
+			return this.employeeType;
 		}
 		
 		public String getEmployeeUsername() {
@@ -111,11 +119,7 @@ public class Employee2 {
 //		
 		//-----------------------------------------------------------------------------
 		
-		
-		// allows the user to get username
-		public String getUsername() {
-			return this.username;
-		}
+
 		
 		//-----------------------------------------------------------------------------
 		
