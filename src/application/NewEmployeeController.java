@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class NewEmployeeController {
 	
@@ -26,6 +27,11 @@ public class NewEmployeeController {
 		Platform.putEmployee(employee, employee.getEmployeeUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);
+		
+		MainController.goHome(); 
+		
+//		Main.getStage().setScene(MainController.manageEmployeesScene);
 
 	}
+
 }

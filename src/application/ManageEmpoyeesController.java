@@ -35,7 +35,6 @@ public class ManageEmpoyeesController implements Initializable {
 	@FXML private TableColumn<Employee2, String> employeeType;
 
 	
-	
 	// List of all of the employees that are in the platform 
 	public ObservableList<Employee2> employees = FXCollections.observableArrayList(Platform.getAllEmployee().values());
 
@@ -52,7 +51,7 @@ public class ManageEmpoyeesController implements Initializable {
 
 	}
 	
-	public void deleteEmployee() {
+	public void deleteEmployee(ActionEvent event) {
 		
 		// create a list to hold all of the employees 
 		ObservableList<Employee2> allEmployees;
