@@ -47,6 +47,15 @@ public class Main extends Application {
 		// NEW EMPLOYEE
 
 		Employee2 test = new Employee2("Manager", "Derek", "Jones", "", "");
+		test.addToLog("Employee Created");
+		test.addToLog("Employee Boom");
+		test.addToLog("Employee creted new order 1");
+		test.addToLog("Employee creted new order 2");
+		test.addToLog("Employee creted new order 3");
+		test.addToLog("Employee creted new order 4");
+		test.addToLog("Employee creted new order 5");
+		test.addToLog("Employee creted new order 6");
+		test.addToLog("Employee creted new order 7");
 		Employee2 manager = new Employee2("Manager", "Derek", "Jones", "Derek", "password");
 		Employee2 staff = new Employee2("Staff", "Barry", "Flynn", "Barry", "password");
 		

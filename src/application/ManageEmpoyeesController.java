@@ -11,10 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -33,6 +32,8 @@ public class ManageEmpoyeesController implements Initializable {
 	@FXML private TableColumn<Employee2, String> lastname;
 	@FXML private TableColumn<Employee2, String> username;
 	@FXML private TableColumn<Employee2, String> employeeType;
+	@FXML private TextArea log;
+
 
 	
 	// List of all of the employees that are in the platform 
@@ -93,6 +94,25 @@ public class ManageEmpoyeesController implements Initializable {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+	}
+	
+	public void showLog(ActionEvent event) {
+		
+		// create a list to hold all of the employees 
+		//ObservableList<Employee2> allEmployees;
+		
+		//create employee object 
+		Employee2 employeeSelected;
+		
+		// get all of the current employees in the TableView
+		//allEmployees = tvEmployeeTable.getItems();
+		
+		// put the current employee selected into this variable 
+		employeeSelected = tvEmployeeTable.getSelectionModel().getSelectedItem();
+		
+		log.setText(employeeSelected.getLog());
+		
 		
 	}
 //	

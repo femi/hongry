@@ -1,6 +1,8 @@
 package application;
 
-import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Employee2 {
 	
@@ -85,7 +87,13 @@ public class Employee2 {
 		//-----------------------------------------------------------------------------
 		
 		public void addToLog(String logMessage) {
-			this.log += logMessage + "\n";
+			this.log += logMessage + "  " + getTime() +  "\n" ;
+		}
+		
+		private String getTime() {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			return dateFormat.format(date); //2016/11/16 12:08:43
 		}
 		
 		//-----------------------------------------------------------------------------

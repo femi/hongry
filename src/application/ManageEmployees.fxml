@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -18,7 +19,7 @@
             <TableColumn fx:id="employeeType" prefWidth="85.0" text="Type" />
         </columns>
       </TableView>
-      <Text layoutX="38.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Employess">
+      <Text layoutX="38.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Employees" wrappingWidth="309.99998822808266">
          <font>
             <Font name="Inconsolata" size="36.0" />
          </font>
@@ -26,6 +27,12 @@
       <Button layoutX="392.0" layoutY="438.0" mnemonicParsing="false" onAction="#goToNewEmployeePage" text="Add Employee " />
       <Button layoutX="38.0" layoutY="438.0" mnemonicParsing="false" onAction="#Home" text="Home " />
       <Button layoutX="513.0" layoutY="438.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete Employee" />
-      <Button layoutX="642.0" layoutY="438.0" mnemonicParsing="false" text="View Log" />
+      <Button layoutX="642.0" layoutY="438.0" mnemonicParsing="false" onAction="#showLog" text="View Log" />
+      <TextArea fx:id="log" editable="false" layoutX="38.0" layoutY="140.0" prefHeight="284.0" prefWidth="310.0" />
+      <Text layoutX="41.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Log" wrappingWidth="110.00000014901161">
+         <font>
+            <Font name="Inconsolata" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
