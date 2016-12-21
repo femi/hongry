@@ -23,16 +23,16 @@ public class ManageOrderController implements Initializable  {
 
 	public static boolean answer;
 	private static Stage window;
-	@FXML private TableView<Order> tvOrderTable;
-	@FXML private TableColumn<Order, Integer> id;
-	@FXML private TableColumn<Order, Integer> tableNumber;
-	@FXML private TableColumn<Order, String> date;
-	@FXML private TableColumn<Order, String> orderTotal;
+	@FXML private TableView<Orders> tvOrderTable;
+	@FXML private TableColumn<Orders, Integer> id;
+	@FXML private TableColumn<Orders, Integer> tableNumber;
+	@FXML private TableColumn<Orders, String> date;
+	@FXML private TableColumn<Orders, String> orderTotal;
 	@FXML private Button yesButton;
 	@FXML private Button noButton;
 	
 	// List of all of the orders that are in the platform 
-	public ObservableList<Order> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
+	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,10 +41,10 @@ public class ManageOrderController implements Initializable  {
 		tvOrderTable.setItems(orders);
 		
 		// assign the object variables to the table columns
-		id.setCellValueFactory(new PropertyValueFactory<Order, Integer>("orderID"));
-		tableNumber.setCellValueFactory(new PropertyValueFactory<Order, Integer>("tableNumber"));
-		date.setCellValueFactory(new PropertyValueFactory<Order, String>("timeOfOrder"));
-		orderTotal.setCellValueFactory(new PropertyValueFactory<Order, String>("orderTotal"));
+		id.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("orderID"));
+		tableNumber.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("tableNumber"));
+		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
+		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
 		
 	}
 	
@@ -52,10 +52,10 @@ public class ManageOrderController implements Initializable  {
 		
 	
 		// create a list to hold all of the orders 
-		ObservableList<Order> allOrders;
+		ObservableList<Orders> allOrders;
 		
 		//create order object 
-		Order orderSelected;
+		Orders orderSelected;
 		
 		// get all of the current orders in the TableView
 		allOrders = tvOrderTable.getItems();
@@ -106,7 +106,7 @@ public class ManageOrderController implements Initializable  {
 	public void modifyOrder(ActionEvent event) throws IOException {
 		
 		//create order object 
-		Order orderSelected;
+		Orders orderSelected;
 				
 		// put the current order selected into this variable 
 		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
@@ -125,5 +125,21 @@ public class ManageOrderController implements Initializable  {
 		
 	}
 	
-	
+	public void closeOrder(ActionEvent event) {
+		
+		//create order object 
+		Orders orderSelected;
+						
+		// put the current order selected into this variable 
+		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
+		
+		// set the order table to 0 
+		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
+		orderSelected.setTableNumber(0);
+		
+		// refreshes the table to update the available ones
+		tvOrderTable.refresh();
+		
+	}
+
 }

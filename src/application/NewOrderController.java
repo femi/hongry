@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -30,6 +31,7 @@ public class NewOrderController implements Initializable {
 	@FXML private TableColumn<ItemBuffer, String> quantityColumn;
 	@FXML private TableColumn<ItemBuffer, String> itemColumn;
 	@FXML private TableColumn<ItemBuffer, Integer> priceColumn;
+	@FXML private TextArea txtComments;
 	
 	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList();
 	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
@@ -57,9 +59,9 @@ public class NewOrderController implements Initializable {
 	
 	//ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
-	public ObservableList<String> hasOrders(HashMap<Integer, Table> map) {
+	public ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
 		ObservableList<String> tablesOlist = FXCollections.observableArrayList();
-		for (Map.Entry<Integer, Table> table : map.entrySet()) {
+		for (Map.Entry<Integer, Tables> table : map.entrySet()) {
 			if (table.getValue().orderID == 0) {
 				tablesOlist.add(table.getKey().toString());
 			}
@@ -100,11 +102,13 @@ public class NewOrderController implements Initializable {
 		table = Integer.parseInt(tableNumber);
 		
 		// create a new order
-		Order order = new Order(table); 
+		Orders order = new Orders(table); 
 		
 		//order.addMultipleOrderItems(orderList); // add all items to order
 		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version
 		
+		// add text from text area to the order
+		order.comments(txtComments.getText());
 		
 		
 		//----------------------------------EXPERIMENTAL-----------------------------------

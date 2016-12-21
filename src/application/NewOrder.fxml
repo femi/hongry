@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -29,7 +30,7 @@
          </font>
       </Text>
       <ComboBox fx:id="cbTables" disable="true" layoutX="89.0" layoutY="138.0" onAction="#changeCombo" prefHeight="27.0" prefWidth="152.0" promptText="Table" />
-      <Button fx:id="btnHome" layoutX="189.0" layoutY="416.0" mnemonicParsing="false" onAction="#Home" text="home">
+      <Button fx:id="btnHome" layoutX="189.0" layoutY="416.0" mnemonicParsing="false" onAction="#Home" text="back">
          <font>
             <Font name="Inconsolata" size="14.0" />
          </font>
@@ -51,5 +52,11 @@
             <Font name="Inconsolata" size="24.0" />
          </font>
       </Label>
+      <TextArea fx:id="txtComments" layoutX="89.0" layoutY="225.0" prefHeight="165.0" prefWidth="298.0" />
+      <Text fill="#9e9c9c" layoutX="89.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments &amp; Special Requests " wrappingWidth="275.39208984375">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

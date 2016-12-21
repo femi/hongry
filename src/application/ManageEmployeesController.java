@@ -19,12 +19,12 @@ import javafx.stage.Stage;
 
 public class ManageEmployeesController implements Initializable {
 	
-	@FXML private TableView<Employee2> tvEmployeeTable;
-	@FXML private TableColumn<Employee2, Integer> id;
-	@FXML private TableColumn<Employee2, String> firstname;
-	@FXML private TableColumn<Employee2, String> lastname;
-	@FXML private TableColumn<Employee2, String> username;
-	@FXML private TableColumn<Employee2, String> employeeType;
+	@FXML private TableView<Employees> tvEmployeeTable;
+	@FXML private TableColumn<Employees, Integer> id;
+	@FXML private TableColumn<Employees, String> firstname;
+	@FXML private TableColumn<Employees, String> lastname;
+	@FXML private TableColumn<Employees, String> username;
+	@FXML private TableColumn<Employees, String> employeeType;
 	@FXML private TextArea log;
 	
 	public static boolean answer;
@@ -33,28 +33,28 @@ public class ManageEmployeesController implements Initializable {
 
 	
 	// List of all of the employees that are in the platform 
-	public ObservableList<Employee2> employees = FXCollections.observableArrayList(Platform.getAllEmployee().values());
+	public ObservableList<Employees> employees = FXCollections.observableArrayList(Platform.getAllEmployee().values());
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		tvEmployeeTable.setItems(employees);
 		
-		id.setCellValueFactory(new PropertyValueFactory<Employee2, Integer>("employeeNumber"));
-		firstname.setCellValueFactory(new PropertyValueFactory<Employee2, String>("firstName"));
-		lastname.setCellValueFactory(new PropertyValueFactory<Employee2, String>("lastName"));
-		username.setCellValueFactory(new PropertyValueFactory<Employee2, String>("username"));
-		employeeType.setCellValueFactory(new PropertyValueFactory<Employee2, String>("employeeType"));
+		id.setCellValueFactory(new PropertyValueFactory<Employees, Integer>("employeeNumber"));
+		firstname.setCellValueFactory(new PropertyValueFactory<Employees, String>("firstName"));
+		lastname.setCellValueFactory(new PropertyValueFactory<Employees, String>("lastName"));
+		username.setCellValueFactory(new PropertyValueFactory<Employees, String>("username"));
+		employeeType.setCellValueFactory(new PropertyValueFactory<Employees, String>("employeeType"));
 
 	}
 	
 	public void deleteEmployee(ActionEvent event) {
 		
 		// create a list to hold all of the employees 
-		ObservableList<Employee2> allEmployees;
+		ObservableList<Employees> allEmployees;
 		
 		//create employee object 
-		Employee2 employeeSelected;
+		Employees employeeSelected;
 		
 		// get all of the current employees in the TableView
 		allEmployees = tvEmployeeTable.getItems();
@@ -99,7 +99,7 @@ public class ManageEmployeesController implements Initializable {
 		//ObservableList<Employee2> allEmployees;
 		
 		//create employee object 
-		Employee2 employeeSelected;
+		Employees employeeSelected;
 		
 		// get all of the current employees in the TableView
 		//allEmployees = tvEmployeeTable.getItems();

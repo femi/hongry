@@ -32,7 +32,7 @@ public class MainPageController {
 		String password = txtPassword.getText();
 
 		// Try to get the employee using the username they entered
-		Employee2 employee = Platform.getEmployee(username);
+		Employees employee = Platform.getEmployee(username);
 
 		String user = employee.getUsername();
 		String pass = employee.getPassword();

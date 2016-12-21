@@ -22,7 +22,7 @@ public class NewEmployeeController {
 		String password = txtPassword.getText();
 		String type = txtType.getText();
 		
-		Employee2 employee = new Employee2(type, firstname, lastname, username, password);
+		Employees employee = new Employees(type, firstname, lastname, username, password);
 		Platform.putEmployee(employee, employee.getEmployeeUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);

@@ -7,17 +7,17 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainPageController">
    <children>
-      <Button fx:id="btnMenu" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="Menu">
+      <Button fx:id="btnMenu" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="New Item">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnOrders" layoutX="31.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToOrder" prefHeight="32.0" prefWidth="142.0" text="Orders">
+      <Button fx:id="btnOrders" layoutX="31.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToOrder" prefHeight="32.0" prefWidth="142.0" text="New Order">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnManage" layoutX="31.0" layoutY="174.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage Order">
+      <Button fx:id="btnManage" layoutX="31.0" layoutY="254.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage Orders">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
@@ -27,12 +27,12 @@
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="31.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
+      <Button layoutX="31.0" layoutY="297.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="31.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToTableManager" prefHeight="32.0" prefWidth="142.0" text="Manage Tables">
+      <Button layoutX="31.0" layoutY="340.0" mnemonicParsing="false" onAction="#goToTableManager" prefHeight="32.0" prefWidth="142.0" text="Manage Tables">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>

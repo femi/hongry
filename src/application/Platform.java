@@ -7,9 +7,9 @@ import javafx.collections.ObservableList;
 
 public class Platform {
 	
-	private static HashMap<Integer, Order> orders = new HashMap<Integer, Order>();
-	private static HashMap<String, Employee2> employees = new HashMap<String, Employee2>();
-	private static HashMap<Integer, Table> tables = new HashMap<Integer, Table>();
+	private static HashMap<Integer, Orders> orders = new HashMap<Integer, Orders>();
+	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
+	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
 	private static String loggedIn;
 	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
@@ -17,35 +17,35 @@ public class Platform {
 	//-------------------------ORDERS-----------------------------
 	
 	// add order object to store
-	public static void putOrder(Order order, int order_id) {
+	public static void putOrder(Orders order, int order_id) {
 		orders.put(order_id, order);
 	}
 	
 	// get specific order 
-	public static Order getOrder(int order_id) {
+	public static Orders getOrder(int order_id) {
 		return orders.get(order_id);
 	}
 	
 	// get all orders
-	public static HashMap<Integer, Order> getAllOrders() {
+	public static HashMap<Integer, Orders> getAllOrders() {
 		return orders;
 	}
 	
 	//-------------------------EMPLOYEES-----------------------------	
 
 	// get specific employee
-	public static Employee2 getEmployee(String username) {
+	public static Employees getEmployee(String username) {
 		return employees.get(username);
 	}
 	
 	// get all employee
-	public static HashMap<String, Employee2> getAllEmployee() {
+	public static HashMap<String, Employees> getAllEmployee() {
 		return employees;
 	}
 	
 	
 	// add employee object to store
-	public static void putEmployee(Employee2 employee, String username) {
+	public static void putEmployee(Employees employee, String username) {
 		employees.put(employee.getEmployeeUsername(), employee);
 	}
 	
@@ -57,17 +57,17 @@ public class Platform {
 	//-------------------------TABLES-----------------------------
 
 	// add specific table
-	public static void putTable(int table_id, Table table) {
+	public static void putTable(int table_id, Tables table) {
 		tables.put(table_id, table);
 	}
 	
 	// get specific table
-	public static Table getTable(int table_id) {
+	public static Tables getTable(int table_id) {
 		return tables.get(table_id);
 	}
 	
 	// get specific table
-	public static HashMap<Integer, Table> getAllTables() {
+	public static HashMap<Integer, Tables> getAllTables() {
 		return tables;
 	}
 	

@@ -3,7 +3,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Order {
+public class Orders {
 	
 	//-------------------------------VARIBLES------------------------------------
 	
@@ -11,14 +11,14 @@ public class Order {
 	private int orderID;
 	private int tableNumber;
 	private HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
-	private String comments;
+	private String comments = "";
 	private String timeOfOrder;
 	private int orderTotal;
 	private ArrayList<ItemBuffer> moreOrderContents = new ArrayList<ItemBuffer>();
 	
 	//------------------------------CONSTRUCTOR----------------------------------
 
-	public Order(int tableNumber) {
+	public Orders(int tableNumber) {
 		
 		this.orderID = orderCount + 1; // Ensures the order starts at 1 instead of 0
 		this.orderIncrement(); // Increments by 1 each time an order is created
@@ -163,6 +163,10 @@ public class Order {
 		for (String item : items) {
 			orderContents.remove(item);
 		}
+	}
+	
+	public String getComments() {
+		return comments;
 	}
 	
 	//----------------------------------------------------------------------------

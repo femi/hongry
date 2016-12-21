@@ -46,7 +46,7 @@ public class Main extends Application {
 		
 		// NEW EMPLOYEE
 
-		Employee2 test = new Employee2("Manager", "Derek", "Jones", "", "");
+		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
 		test.addToLog("Employee Created");
 		test.addToLog("Employee Boom");
 		test.addToLog("Employee creted new order 1");
@@ -56,8 +56,16 @@ public class Main extends Application {
 		test.addToLog("Employee creted new order 5");
 		test.addToLog("Employee creted new order 6");
 		test.addToLog("Employee creted new order 7");
-		Employee2 manager = new Employee2("Manager", "Derek", "Jones", "Derek", "password");
-		Employee2 staff = new Employee2("Staff", "Barry", "Flynn", "Barry", "password");
+		Employees manager = new Employees("Manager", "Derek", "Jones", "Derek", "password");
+		manager.addToLog("Employee Created");
+		manager.addToLog("Employee Boom");
+		manager.addToLog("Employee creted new order 1");
+		manager.addToLog("Employee creted new order 2");
+		Employees staff = new Employees("Staff", "Barry", "Flynn", "Barry", "password");
+		staff.addToLog("Employee Created");
+		staff.addToLog("Employee Boom");
+		staff.addToLog("Employee creted new order 1");
+		staff.addToLog("Employee creted new order 2");
 		
 		Platform.putEmployee(manager, manager.getEmployeeUsername());
 		Platform.putEmployee(staff, staff.getEmployeeUsername());
@@ -77,8 +85,8 @@ public class Main extends Application {
 		
 		// NEW TABLES 
 		
-		for (int i = 0; i < 100; i++) {
-			Table table = new Table();
+		for (int i = 0; i < 9; i++) {
+			Tables table = new Tables();
 			Platform.putTable(table.tableNumber, table);
 		}
 		
@@ -86,8 +94,8 @@ public class Main extends Application {
 		
 		Random rand = new Random();
 		
-		for (int i = 0; i < 50; i++) {
-			Order newOrder = new Order(i+1);
+		for (int i = 0; i < 5; i++) {
+			Orders newOrder = new Orders(i+1);
 			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), rand.nextInt(10));
 			Platform.putOrder(newOrder, newOrder.getOrderID());
 			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform

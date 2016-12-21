@@ -11,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 public class ModifyOrderController implements Initializable {
 	
@@ -22,6 +24,7 @@ public class ModifyOrderController implements Initializable {
 	@FXML private TableColumn<ItemBuffer, String> item;
 	@FXML private TableColumn<ItemBuffer, Integer> price;
 	@FXML private TableColumn<ItemBuffer, String> quantity;
+	@FXML private TextArea txtComments;
 	
 	// List of all of items in the order
 	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).getMoreOrderContents());
@@ -40,12 +43,15 @@ public class ModifyOrderController implements Initializable {
 		item.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
 		price.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
 		quantity.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
+		
+		// Display comments and special messages
+		txtComments.setText(Platform.getOrder(orderID).getComments());
 
 	}
 	
 	public void deleteItem(ActionEvent event) {
 		
-		Order order = Platform.getOrder(orderID);
+		Orders order = Platform.getOrder(orderID);
 		
 		// create a list to hold all of the Items 
 		ObservableList<ItemBuffer> allItems;
@@ -67,4 +73,21 @@ public class ModifyOrderController implements Initializable {
 		// remove item from order object
 		order.removeItemBuffer(itemSelected);
 	}
+	
+	
+	public void Home(ActionEvent event) {
+		
+		// Apply changes to comments and special messages
+		Platform.getOrder(orderID).comments(txtComments.getText());
+		
+		// get the primary stage from the main class
+		Stage primaryStage = Main.getStage();
+		
+		// set the scene to the main home screen 
+		primaryStage.setScene(MainPageController.getHomeScene());
+		
+	
+	}
+	
+	
 }

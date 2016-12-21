@@ -25,7 +25,7 @@
       </Text>
       <ButtonBar layoutX="191.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0" />
       <Button layoutX="594.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteOrder" text="Delete" />
-      <Button layoutX="665.0" layoutY="415.0" mnemonicParsing="false" text="Close" />
+      <Button layoutX="665.0" layoutY="415.0" mnemonicParsing="false" onAction="#closeOrder" text="Close" />
       <Button layoutX="803.0" layoutY="415.0" mnemonicParsing="false" text="Export" />
       <Button layoutX="732.0" layoutY="415.0" mnemonicParsing="false" text="Import" />
       <Button fx:id="btnHome" layoutX="43.0" layoutY="415.0" mnemonicParsing="false" onAction="#Home" text="Home" />

@@ -1,6 +1,6 @@
 package application;
 
-public class Table {
+public class Tables {
 	
 	//-------------------------------VARIBLES------------------------------------
 	
@@ -10,7 +10,7 @@ public class Table {
 	
 	//--------------------------------METHODS------------------------------------
 
-	public Table() {
+	public Tables() {
 		this.tableNumber = ++tableCount;
 		System.out.println("TABLE " + tableNumber  +  " CREATED");
 	}

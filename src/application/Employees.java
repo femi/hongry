@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Employee2 {
+public class Employees {
 	
 	//-------------------------------VARIBLES------------------------------------
 	
@@ -15,11 +15,11 @@ public class Employee2 {
 		private int employeeNumber;
 		private String password;
 		private String username;
-		private String log;
+		private String log = "";
 		
 		//------------------------------CONSTRUCTOR----------------------------------
 
-		public  Employee2(String employeeType, String firstname, String lastname, String username, String password) {
+		public  Employees(String employeeType, String firstname, String lastname, String username, String password) {
 			this.employeeType = employeeType;
 			this.firstName = firstname;
 			this.lastName = lastname;
