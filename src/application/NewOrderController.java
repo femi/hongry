@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class PageController2 implements Initializable {
+public class NewOrderController implements Initializable {
 	
 	@FXML private Label total;
 	@FXML private ComboBox<String> cbItems, cbTables;
@@ -78,7 +78,7 @@ public class PageController2 implements Initializable {
 	
 	public void Home(ActionEvent event) {
 		Stage primaryStage = Main.getStage();
-		primaryStage.setScene(MainController.getHomeScene());
+		primaryStage.setScene(MainPageController.getHomeScene());
 	}
 	
 	public void makeOrder(ActionEvent event) {
@@ -109,7 +109,7 @@ public class PageController2 implements Initializable {
 		table = 0;
 		
 		// go to homepage
-		MainController.goHome(); 
+		MainPageController.goHome(); 
 	}
 	
 	public void changeCombo(ActionEvent event) {

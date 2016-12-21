@@ -13,7 +13,7 @@
       <TableView fx:id="tvOrderTable" layoutX="460.0" layoutY="39.0" prefHeight="360.0" prefWidth="403.0">
         <columns>
           <TableColumn fx:id="id" prefWidth="75.0" text="Order" />
-          <TableColumn fx:id="tn" prefWidth="87.0" text="Table" />
+          <TableColumn fx:id="tableNumber" prefWidth="87.0" text="Table" />
             <TableColumn fx:id="date" prefWidth="101.0" text="Time" />
             <TableColumn fx:id="orderTotal" prefWidth="75.0" text="Total" />
         </columns>

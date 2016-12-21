@@ -19,13 +19,6 @@ import javafx.stage.Stage;
 
 public class ManageEmpoyeesController implements Initializable {
 	
-//	@FXML private Label lblNewEmployeeStatus;
-//	
-//	@FXML private TextField txtUsername;
-//	@FXML private TextField txtFirstname;
-//	@FXML private TextField txtLastname;
-//	@FXML private TextField txtType;
-//	@FXML private TextField txtPassword;
 	@FXML private TableView<Employee2> tvEmployeeTable;
 	@FXML private TableColumn<Employee2, Integer> id;
 	@FXML private TableColumn<Employee2, String> firstname;
@@ -33,7 +26,10 @@ public class ManageEmpoyeesController implements Initializable {
 	@FXML private TableColumn<Employee2, String> username;
 	@FXML private TableColumn<Employee2, String> employeeType;
 	@FXML private TextArea log;
-
+	
+	public static boolean answer;
+	public static Stage window = new Stage();
+	
 
 	
 	// List of all of the employees that are in the platform 
@@ -83,7 +79,7 @@ public class ManageEmpoyeesController implements Initializable {
 		Stage primaryStage = Main.getStage();
 		
 		// set the scene to the main home screen 
-		primaryStage.setScene(MainController.getHomeScene());
+		primaryStage.setScene(MainPageController.getHomeScene());
 	}
 	
 	public void goToNewEmployeePage(ActionEvent event) throws Exception {
@@ -115,6 +111,41 @@ public class ManageEmpoyeesController implements Initializable {
 		
 		
 	}
+	
+	public void deleteConformation(ActionEvent event) throws Exception {
+		
+		//window.initModality(Modality.APPLICATION_MODAL);
+		Parent root = FXMLLoader.load(getClass().getResource("/application/DeleteBox.fxml"));
+		Scene scene = new Scene(root, 300, 200);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		window.setScene(scene);
+		window.show();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	
 //	public void addEmployee(ActionEvent event) throws Exception {
 //		

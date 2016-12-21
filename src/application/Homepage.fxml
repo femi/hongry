@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainPageController">
    <children>
       <Button fx:id="btnMenu" layoutX="31.0" layoutY="88.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="Menu">
          <font>
@@ -17,12 +17,7 @@
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="31.0" layoutY="172.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="142.0" text="Employees">
-         <font>
-            <Font name="Inconsolata" size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnManage" layoutX="31.0" layoutY="214.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage Order">
+      <Button fx:id="btnManage" layoutX="31.0" layoutY="174.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Manage Order">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
@@ -32,7 +27,12 @@
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="31.0" layoutY="257.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
+      <Button layoutX="31.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
+         <font>
+            <Font name="Inconsolata" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="31.0" layoutY="260.0" mnemonicParsing="false" onAction="#goToTableManager" prefHeight="32.0" prefWidth="142.0" text="Manage Tables">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>

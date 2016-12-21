@@ -25,7 +25,7 @@ public class ManageOrderController implements Initializable  {
 	private static Stage window;
 	@FXML private TableView<Order> tvOrderTable;
 	@FXML private TableColumn<Order, Integer> id;
-	@FXML private TableColumn<Order, Integer> tn;
+	@FXML private TableColumn<Order, Integer> tableNumber;
 	@FXML private TableColumn<Order, String> date;
 	@FXML private TableColumn<Order, String> orderTotal;
 	@FXML private Button yesButton;
@@ -42,7 +42,7 @@ public class ManageOrderController implements Initializable  {
 		
 		// assign the object variables to the table columns
 		id.setCellValueFactory(new PropertyValueFactory<Order, Integer>("orderID"));
-		tn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("tableNumber"));
+		tableNumber.setCellValueFactory(new PropertyValueFactory<Order, Integer>("tableNumber"));
 		date.setCellValueFactory(new PropertyValueFactory<Order, String>("timeOfOrder"));
 		orderTotal.setCellValueFactory(new PropertyValueFactory<Order, String>("orderTotal"));
 		
@@ -88,7 +88,7 @@ public class ManageOrderController implements Initializable  {
 		Stage primaryStage = Main.getStage();
 		
 		// set the scene to the main home screen 
-		primaryStage.setScene(MainController.getHomeScene());
+		primaryStage.setScene(MainPageController.getHomeScene());
 	}
 	
 	
