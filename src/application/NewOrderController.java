@@ -74,6 +74,9 @@ public class NewOrderController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		txtQuantity.setText("1");
+		txtQuantity.setDisable(true);
+		
 		// create a TableView of the items that are currently in a persons order 
 		orderTable.setItems(itemList);
 		

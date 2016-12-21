@@ -67,12 +67,16 @@ public class ManageOrderController implements Initializable  {
 		allOrders.remove(orderSelected);
 		
 		//---------------------------------------------------------
+
 		
 		// set the table number of the order to 0 (free table)
 		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
 		
+
+		
 		// remove the table number from the order object 
 		orderSelected.setTableNumber(0);
+
 		
 		// remove the order from the platform 
 		Platform.removeOrder(orderSelected.getOrderID());
