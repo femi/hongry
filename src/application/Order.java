@@ -14,6 +14,7 @@ public class Order {
 	private String comments;
 	private String timeOfOrder;
 	private int orderTotal;
+	private ArrayList<ItemBuffer> moreOrderContents = new ArrayList<ItemBuffer>();
 	
 	//------------------------------CONSTRUCTOR----------------------------------
 
@@ -27,6 +28,33 @@ public class Order {
 		}
 	
 	//--------------------------------METHODS-------------------------------------
+	
+	
+	//--------------------------------EXPRIMENTAL-------------------------------------
+	//---------------------------------------------------------------------------------
+
+	public void addItemBuffer(ItemBuffer item) {
+		moreOrderContents.add(item);
+	}
+	
+	public void addMultipleItemBuffer(ArrayList<ItemBuffer> items) {
+		for (ItemBuffer item : items ) {
+			addItemBuffer(item);
+		}
+		System.out.println(moreOrderContents);
+	}
+	
+	public void removeItemBuffer(ItemBuffer item) {
+		moreOrderContents.remove(item);
+	}
+	
+	public ArrayList<ItemBuffer> getMoreOrderContents() {
+		return this.moreOrderContents;
+	}
+
+	//---------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------
+	
 	
 	public int getTableNumber() {
 		return tableNumber;

@@ -36,6 +36,18 @@ public class NewOrderController implements Initializable {
 	public int table;
 	public int subTotal = 0;
 	
+	
+	
+	//----------------------------------EXPERIMENTAL-----------------------------------
+	//---------------------------------------------------------------------------------
+
+	public ArrayList<ItemBuffer> exprimentOrderList = new ArrayList<ItemBuffer>();
+	
+	//---------------------------------------------------------------------------------	
+	//---------------------------------------------------------------------------------
+
+	
+	
 
 	// Contains a list of current items and quantity to be added to a users order [[Salmon, 2], [Steak, 1]]
 	public ArrayList<ArrayList<String>> orderList = new ArrayList<ArrayList<String>>();
@@ -93,6 +105,19 @@ public class NewOrderController implements Initializable {
 		//order.addMultipleOrderItems(orderList); // add all items to order
 		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version
 		
+		
+		
+		//----------------------------------EXPERIMENTAL-----------------------------------
+		//---------------------------------------------------------------------------------
+
+		order.addMultipleItemBuffer(exprimentOrderList);
+		exprimentOrderList.removeAll(exprimentOrderList);
+		
+		//---------------------------------------------------------------------------------	
+		//---------------------------------------------------------------------------------
+
+		
+		
 		// add the order to platform
 		Platform.putOrder(order, order.getOrderID()); 
 		
@@ -145,6 +170,15 @@ public class NewOrderController implements Initializable {
 		//ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), orderList2.get(text).toString());
 		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity);
 		
+		
+		//----------------------------------EXPERIMENTAL-----------------------------------
+		//---------------------------------------------------------------------------------
+		
+		exprimentOrderList.add(item);
+		
+		//---------------------------------------------------------------------------------
+		//---------------------------------------------------------------------------------
+
 		
 		// add the the price of the item to the current total
 		subTotal += Items.getItemPrice(text) * Integer.parseInt(quantity);

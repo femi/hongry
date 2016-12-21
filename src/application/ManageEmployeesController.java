@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ManageEmpoyeesController implements Initializable {
+public class ManageEmployeesController implements Initializable {
 	
 	@FXML private TableView<Employee2> tvEmployeeTable;
 	@FXML private TableColumn<Employee2, Integer> id;

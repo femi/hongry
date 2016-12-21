@@ -101,36 +101,29 @@ public class ManageOrderController implements Initializable  {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);
 		window.show();
-//		
-//		yesButton = new Button();
-//		noButton = new Button();
-//		
-//		yesButton.setOnAction(e -> {
-//			answer = false;
-//			window.close();
-//		});
-//		
-//		noButton.setOnAction(e -> {
-//			answer = false;
-//			window.close();
-//		});
+	}
 
+	public void modifyOrder(ActionEvent event) throws IOException {
+		
+		//create order object 
+		Order orderSelected;
+				
+		// put the current order selected into this variable 
+		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
+		
+		//System.out.println(Platform.getOrder(orderSelected.getOrderID()).getMoreOrderContents());
+		
+		Variables.setOrder(orderSelected.getOrderID());
+		
+		Stage primaryStage = Main.getStage();
+		FXMLLoader loader =  new FXMLLoader();
+		Parent root = loader.load(getClass().getResource("/application/ModifyOrder.fxml").openStream());
+		ModifyOrderController controller = (ModifyOrderController)loader.getController();
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		
 	}
 	
-	public void yesButton() {
-		answer = true;
-		window.close();
-	}
-	
-	public void noButton() {
-		answer = false;
-		window.close();
-	}
-	
-//	public void closeOrder() {
-//	}
-//	
-//	public void modifyOrder() {
-//	}
 	
 }
