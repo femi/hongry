@@ -74,9 +74,17 @@ public class Orders {
 		if (this.orderContents.containsKey(item) == true) {
 			int currentQuantity = this.orderContents.get(item);
 			this.orderContents.put(item, currentQuantity + quantity);
+			
+			// EXPERIMENT
+			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
+			// EXPERIMENT
 		}
 
-		else { this.orderContents.put(item, quantity);	}
+		else { this.orderContents.put(item, quantity);
+			// EXPERIMENT
+			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
+			// EXPERIMENT
+		}
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -88,6 +96,7 @@ public class Orders {
 			String foodItem = pair.get(0);
 			int quantityToAdd = Integer.parseInt(pair.get(1));
 			this.addOrderItem(foodItem, quantityToAdd);
+
 		}
 	}
 	
@@ -97,6 +106,7 @@ public class Orders {
 			String foodItem = pair.getKey();
 			int quantityToAdd = pair.getValue();
 			this.addOrderItem(foodItem, quantityToAdd);
+			
 		}
 	}
 	

@@ -96,7 +96,11 @@ public class Main extends Application {
 		
 		for (int i = 0; i < 5; i++) {
 			Orders newOrder = new Orders(i+1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), rand.nextInt(10));
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
 			Platform.putOrder(newOrder, newOrder.getOrderID());
 			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform
 		}
