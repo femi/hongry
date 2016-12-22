@@ -18,8 +18,9 @@ import javafx.stage.Stage;
 public class ModifyOrderController implements Initializable {
 	
 	private int orderID = Variables.getOrder();
+	private Orders ordermate = Platform.getOrder(orderID);
 
-	@FXML private Label lblOrderNumber;
+	@FXML private Label lblOrderNumber, lblTotal;
 	@FXML private TableView<ItemBuffer> tvItemTable;
 	@FXML private TableColumn<ItemBuffer, String> item;
 	@FXML private TableColumn<ItemBuffer, Integer> price;
@@ -36,6 +37,10 @@ public class ModifyOrderController implements Initializable {
 		lblOrderNumber.setText("Order " + orderID);
 		lblOrderNumber.setVisible(true);
 		
+		//lblTotal.setVisible(true);
+		lblTotal.setText("£" + ordermate.getExperimentalOrderTotal() + ".00" );
+		
+		
 		// populate the table with all of the items 
 		tvItemTable.setItems(itemList);
 		
@@ -51,6 +56,7 @@ public class ModifyOrderController implements Initializable {
 	
 	public void deleteItem(ActionEvent event) {
 		
+
 		Orders order = Platform.getOrder(orderID);
 		
 		// create a list to hold all of the Items 
@@ -67,11 +73,16 @@ public class ModifyOrderController implements Initializable {
 				
 		// remove this order from the table view 
 		allItems.remove(itemSelected);
+		
+		
 				
 		//---------------------------------------------------------
 		
 		// remove item from order object
 		order.removeItemBuffer(itemSelected);
+		
+		// set the total again
+		lblTotal.setText("£" + order.getExperimentalOrderTotal() + ".00" );
 	}
 	
 	

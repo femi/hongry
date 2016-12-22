@@ -14,6 +14,7 @@ public class Orders {
 	private String comments = "";
 	private String timeOfOrder;
 	private int orderTotal;
+	private int experimentalOrderTotal;
 	private ArrayList<ItemBuffer> moreOrderContents = new ArrayList<ItemBuffer>();
 	
 	//------------------------------CONSTRUCTOR----------------------------------
@@ -50,6 +51,16 @@ public class Orders {
 	
 	public ArrayList<ItemBuffer> getMoreOrderContents() {
 		return this.moreOrderContents;
+	}
+	
+	public int getExperimentalOrderTotal() {
+		int total = 0;
+		for (ItemBuffer item : moreOrderContents) {
+			total += item.getPrice();
+		}
+		
+		this.experimentalOrderTotal = total;
+		return experimentalOrderTotal;
 	}
 
 	//---------------------------------------------------------------------------------

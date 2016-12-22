@@ -44,7 +44,9 @@ public class ManageOrderController implements Initializable  {
 		id.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("orderID"));
 		tableNumber.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("tableNumber"));
 		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
-		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
+		//orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
+		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
+
 		
 	}
 	

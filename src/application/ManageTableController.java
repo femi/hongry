@@ -1,16 +1,21 @@
 package application;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class ManageTableController {
+public class ManageTableController implements Initializable {
 	
 	@FXML private Button btn1 = new Button("1");
 	@FXML private Button btn2 = new Button("2");
@@ -22,6 +27,53 @@ public class ManageTableController {
 	@FXML private Button btn8 = new Button("8");
 	@FXML private Button btn9 = new Button("9");
 	
+	// A list of all of the buttons
+	public ArrayList<Button> allButtons = new ArrayList<Button>();
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		addButtons();
+		setButtonColour(allButtons);
+		
+	}
+	
+	
+	public void setButtonColour(ArrayList<Button> allButtons) {
+		
+		Collection<Tables> allTables = Platform.getAllTables().values();
+		ArrayList<Integer> availableTables = new ArrayList<Integer>();
+		
+		// get all tables that do not hve orders
+		for (Tables table : allTables ) {
+			if ( table.getOrderID() == 0) {
+				availableTables.add(table.tableNumber);
+			}
+		}
+		
+		// If the button does not have an order set the colour of the button red
+		for (Button button : allButtons ) {
+			if ( availableTables.contains(Integer.parseInt(button.getText()))) {
+				button.setStyle("-fx-color: #F06767;}");
+			}
+		}
+		
+	}
+	
+	
+	public void addButtons() {
+		allButtons.removeAll(allButtons);
+		allButtons.add(btn1);
+		allButtons.add(btn2);
+		allButtons.add(btn3);
+		allButtons.add(btn4);
+		allButtons.add(btn5);
+		allButtons.add(btn6);
+		allButtons.add(btn7);
+		allButtons.add(btn8);
+		allButtons.add(btn9);	
+	}
 	
 	public void modifyOrder(ActionEvent event) throws IOException {
 		
@@ -29,6 +81,7 @@ public class ManageTableController {
 		Orders order;
 		
 		String selectedButton = event.getSource().toString().substring(35, 36);
+
 		
 		try {
 			
@@ -76,5 +129,6 @@ public class ManageTableController {
 		// set the scene to the main home screen 
 		primaryStage.setScene(MainPageController.getHomeScene());
 	}
+
 
 }
