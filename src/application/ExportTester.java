@@ -15,19 +15,12 @@ public class ExportTester {
 	public static void main(String[] args) throws Exception {
 		
 		Main.initialise();
-		
-		String [] record = "4,Bob, Item-Item 2-Item 3,USA,40".split(",");
+		//newRecords(exportToFile());
+		//readRecords();
 
-		//newRecord(record); 
-		//newRecords(ooo());
-		readRecords();
-		
-		//ooo();
-		
 	}
 	
-	public static ArrayList<String []> ooo() {
-		
+	public static ArrayList<String []> exportToFile() {
 		
 		// get all of the curent orders in the platform 
 		Collection<Orders> orders = Platform.getAllOrders().values();
@@ -64,7 +57,7 @@ public class ExportTester {
 	
 	public static void newRecord(String[] record) throws IOException {
 		
-	    String csv = "/Users/femi/Desktop/data.csv";
+	    String csv = "./data/orders.csv";
 	    CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
 	        
 	    writer.writeNext(record);
@@ -75,7 +68,7 @@ public class ExportTester {
 	
 	public static void newRecords(ArrayList<String[]> records) throws IOException {
 		
-	    String csv = "/Users/femi/Desktop/data.csv";
+	    String csv = "./data/orders.csv";
 	    CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
 	    
 	    for (String [] record : records) {
@@ -88,7 +81,7 @@ public class ExportTester {
 	
 	public static void readRecords() throws IOException {
 		
-		CSVReader reader = new CSVReader(new FileReader("/Users/femi/Desktop/data.csv"));
+		CSVReader reader = new CSVReader(new FileReader("./data/orders.csv"));
 		
 		String[] record = null;
 		
@@ -121,6 +114,9 @@ public class ExportTester {
 
 		
 	}
+	
+	
+	
 	
 	
 }

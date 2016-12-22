@@ -1,8 +1,13 @@
 package application;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
+
+import com.opencsv.CSVWriter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,16 +40,22 @@ public class ManageOrderController implements Initializable  {
 	// List of all of the orders that are in the platform 
 	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
 	
+	// tvOrderTable.getSelectionModel().getSelectedItems().size() != 1
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		// allows user to select multiple items
+		tvOrderTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		// listens to see if an item in the table is selected 
 		tvOrderTable.getSelectionModel().selectedItemProperty().addListener((order) -> {
 			// if an item is selected then we enable the delete and modify buttons
-			if ( !tvOrderTable.getSelectionModel().isEmpty()) {
+			if ( !tvOrderTable.getSelectionModel().isEmpty() ) {
 				modify.setDisable(false);
 				delete.setDisable(false);
 			}
+			
 			else {
 				modify.setDisable(true);
 				delete.setDisable(true);
@@ -155,7 +167,10 @@ public class ManageOrderController implements Initializable  {
 		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
 		
 		// set the order table to 0 
+		if (orderSelected.getTableNumber() != 0) {
 		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
+		}
+		
 		orderSelected.setTableNumber(0);
 		
 		// refreshes the table to update the available ones
@@ -167,5 +182,19 @@ public class ManageOrderController implements Initializable  {
 		return window;
 	}
 	
-
+	public void exportSelectedItems(ActionEvent event) throws IOException { 
+		
+		//create order object 
+		ObservableList<Orders> ordersSelected;
+		
+		// put the current order selected into this variable 
+		ordersSelected = tvOrderTable.getSelectionModel().getSelectedItems();
+		
+		// export the data to csv
+		Platform.exportToFile(ordersSelected);
+		
+	}
+	
+	
+	
 }

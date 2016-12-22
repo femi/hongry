@@ -38,7 +38,10 @@ public class ConfirmBoxController implements Initializable {
 		//---------------------------------------------------------
 
 		// set the table number of the order to 0 (free table)
+		// we need this if statement because some orders mat be closed i.e. table = 0
+		if (orderSelected.getTableNumber() != 0) {
 		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
+		}
 		
 		// remove the table number from the order object 
 		orderSelected.setTableNumber(0);

@@ -1,6 +1,11 @@
 package application;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.opencsv.CSVWriter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -88,8 +93,54 @@ public class Platform {
 	
 	//-------------------------EXPORT---------------------------------
 	
-	public static void exportOrder() {
+	public static void exportToFile(ObservableList<Orders> orders) throws IOException {
 		
+		// get all of the current orders in the platform 
+		//Collection<Orders> orders = Platform.getAllOrders().values();
+		
+		// use this to hold all of the line
+		ArrayList<String []> lines = new ArrayList<String []>();
+		
+		for (Orders order : orders) {
+			
+			String orderID;
+			String tableID;
+			String date;
+			String items = "";
+			String line = "";
+			String [] record;
+			
+			orderID = order.getOrderID() + "";
+			tableID = order.getTableNumber() + "";
+			date = order.getTimeOfOrder();
+			
+			for (ItemBuffer item : order.getMoreOrderContents()) {
+				items += item.getItem() + "-";
+			}
+			
+			line = orderID + "," + tableID + "," + date + "," + items;
+			System.out.println(line);
+			record = line.split(",");
+			lines.add(record);
+		}
+		
+		System.out.println(lines.toString());
+		
+		createCSV(lines);
+	}
+	
+	
+	private static void createCSV(ArrayList<String[]> records) throws IOException {
+		
+	    String csv = "./data/orders.csv";
+	    CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
+	    
+	    for (String [] record : records) {
+	    	writer.writeNext(record);
+	    }
+	    
+	    writer.close();
+
 	}
 	
 }
