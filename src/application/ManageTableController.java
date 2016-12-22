@@ -75,7 +75,7 @@ public class ManageTableController implements Initializable {
 		allButtons.add(btn9);	
 	}
 	
-	public void modifyOrder(ActionEvent event) throws IOException {
+	public void modifyOrder(ActionEvent event) throws Exception {
 		
 		Tables table;
 		Orders order;
@@ -100,12 +100,9 @@ public class ManageTableController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("This table is currently empty.");
-		}
-		
-		
-		
+			goToOrder();
 
-		
+		}
 	}
 	
 	
@@ -121,6 +118,17 @@ public class ManageTableController implements Initializable {
 		
 	}
 	
+	public void goToOrder() throws Exception {
+
+		Stage primaryStage = Main.getStage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/NewOrder.fxml"));
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+	}
+
 	
 	public void Home(ActionEvent event) {
 		// get the primary stage from the main class
