@@ -117,7 +117,7 @@ public class MainPageController {
 	public void goToTableManager(ActionEvent event) throws Exception {
 
 		Stage primaryStage = Main.getStage();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageTables.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageTables2.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);

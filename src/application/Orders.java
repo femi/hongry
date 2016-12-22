@@ -13,6 +13,8 @@ public class Orders {
 	private HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
 	private String comments = "";
 	private String timeOfOrder;
+
+
 	private int orderTotal;
 	private int experimentalOrderTotal;
 	private ArrayList<ItemBuffer> moreOrderContents = new ArrayList<ItemBuffer>();
@@ -62,6 +64,8 @@ public class Orders {
 		this.experimentalOrderTotal = total;
 		return experimentalOrderTotal;
 	}
+	
+
 
 	//---------------------------------------------------------------------------------
 	//---------------------------------------------------------------------------------
@@ -242,6 +246,14 @@ public class Orders {
 
 	public void deleteExistingOrder() {
 		// Delete and order that has been completed
+	}
+	
+	public void setTimeOfOrder(String timeOfOrder) {
+		this.timeOfOrder = timeOfOrder;
+	}
+	
+	public void setOrderID(int orderID) {
+		this.orderID = orderID;
 	}
 	
 }

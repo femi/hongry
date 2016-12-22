@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.util.Random;
 
 import javafx.application.Application;
@@ -38,8 +39,9 @@ public class Main extends Application {
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		initialise();
+		ExportTester.readRecords();
 		launch(args);
 	}
 
