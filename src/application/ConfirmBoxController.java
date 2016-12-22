@@ -10,7 +10,6 @@ import javafx.scene.control.TableView;
 
 public class ConfirmBoxController implements Initializable {
 	
-	public TableView<Orders> tvOrderTable;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -19,7 +18,7 @@ public class ConfirmBoxController implements Initializable {
 		
 	}
 	
-	public void deleteOrder(ActionEvent event)  {
+	public void deleteOrderConformation(ActionEvent event)  {
 		
 		// create a list to hold all of the orders 
 		ObservableList<Orders> allOrders;
@@ -41,21 +40,20 @@ public class ConfirmBoxController implements Initializable {
 		// set the table number of the order to 0 (free table)
 		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
 		
-
 		// remove the table number from the order object 
 		orderSelected.setTableNumber(0);
 
-		
 		// remove the order from the platform 
 		Platform.removeOrder(orderSelected.getOrderID());
 		
 		// Close the stage 
-		//closeStage(window);
+		ManageOrderController.getWindow().close();
 	
 	}
-
-
 	
-
+	public void cancel(ActionEvent event) {
+		ManageOrderController.getWindow().close();
+	}
+	
 
 }

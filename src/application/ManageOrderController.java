@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,14 +29,28 @@ public class ManageOrderController implements Initializable  {
 	@FXML private TableColumn<Orders, Integer> tableNumber;
 	@FXML private TableColumn<Orders, String> date;
 	@FXML private TableColumn<Orders, String> orderTotal;
-	@FXML private Button yesButton;
-	@FXML private Button noButton;
+	@FXML private Button delete;
+	@FXML private Button modify;
 	
 	// List of all of the orders that are in the platform 
 	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		// listens to see if an item in the table is selected 
+		tvOrderTable.getSelectionModel().selectedItemProperty().addListener((order) -> {
+			// if an item is selected then we enable the delete and modify buttons
+			if ( !tvOrderTable.getSelectionModel().isEmpty()) {
+				modify.setDisable(false);
+				delete.setDisable(false);
+			}
+			else {
+				modify.setDisable(true);
+				delete.setDisable(true);
+			}
+		});
+		
 		
 		// put all of the orders into the TableView 
 		tvOrderTable.setItems(orders);
@@ -47,48 +62,44 @@ public class ManageOrderController implements Initializable  {
 		//orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
 		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
 		
-		Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
+		//Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
 		//orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
+	
 		
 	}
 	
-	public void deleteOrder(ActionEvent event)  {
-		
-	
-		// create a list to hold all of the orders 
-		ObservableList<Orders> allOrders;
-		
-		//create order object 
-		Orders orderSelected;
-		
-		// get all of the current orders in the TableView
-		allOrders = tvOrderTable.getItems();
-		
-		// put the current order selected into this variable 
-		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
-		
-		// remove this order from the table view 
-		allOrders.remove(orderSelected);
-		
-		//---------------------------------------------------------
-
-		
-		// set the table number of the order to 0 (free table)
-		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
-		
-
-		
-		// remove the table number from the order object 
-		orderSelected.setTableNumber(0);
-
-		
-		// remove the order from the platform 
-		Platform.removeOrder(orderSelected.getOrderID());
-		
-		// Close the stage 
-		//closeStage(window);
-	
-	}
+//	public void deleteOrder(ActionEvent event)  {
+//		
+//		// create a list to hold all of the orders 
+//		ObservableList<Orders> allOrders;
+//		
+//		//create order object 
+//		Orders orderSelected;
+//		
+//		// get all of the current orders in the TableView
+//		allOrders = tvOrderTable.getItems();
+//		
+//		// put the current order selected into this variable 
+//		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
+//		
+//		// remove this order from the table view 
+//		allOrders.remove(orderSelected);
+//		
+//		//---------------------------------------------------------
+//
+//		// set the table number of the order to 0 (free table)
+//		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
+//		
+//		// remove the table number from the order object 
+//		orderSelected.setTableNumber(0);
+//
+//		// remove the order from the platform 
+//		Platform.removeOrder(orderSelected.getOrderID());
+//		
+//		// Close the stage 
+//		//closeStage(window);
+//	
+//	}
 	
 	public void Home(ActionEvent event) {
 		
@@ -152,5 +163,10 @@ public class ManageOrderController implements Initializable  {
 		tvOrderTable.refresh();
 		
 	}
+
+	public static Stage getWindow() {
+		return window;
+	}
+	
 
 }

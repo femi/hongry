@@ -24,11 +24,11 @@
          </font>
       </Text>
       <ButtonBar layoutX="191.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button layoutX="594.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteOrder" text="Delete" />
+      <Button fx:id="delete" disable="true" layoutX="594.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteConformation" text="Delete" />
       <Button layoutX="665.0" layoutY="415.0" mnemonicParsing="false" onAction="#closeOrder" text="Close" />
       <Button layoutX="803.0" layoutY="415.0" mnemonicParsing="false" text="Export" />
-      <Button layoutX="732.0" layoutY="415.0" mnemonicParsing="false" onAction="#deleteConformation" text="Import" />
+      <Button layoutX="732.0" layoutY="415.0" mnemonicParsing="false" text="Import" />
       <Button fx:id="btnHome" layoutX="43.0" layoutY="415.0" mnemonicParsing="false" onAction="#Home" text="Home" />
-      <Button layoutX="526.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifyOrder" text="Modify" />
+      <Button fx:id="modify" disable="true" layoutX="526.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifyOrder" text="Modify" />
    </children>
 </AnchorPane>
