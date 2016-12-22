@@ -16,6 +16,7 @@ public class Platform {
 	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
 	private static String loggedIn;
+	private static Integer total;
 	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
@@ -80,6 +81,14 @@ public class Platform {
 
 	public static void loggedInUser(String type) {
 		loggedIn = type;
+	}
+	
+	public static int getTotal() {
+		int total = 0;
+		for (Orders order : getAllOrders().values()) {
+			total += order.getOrderTotal();
+		}
+		return total;
 	}
 	
 	public static String whosLoggedIn() {

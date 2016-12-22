@@ -1,8 +1,12 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -13,9 +17,12 @@ import javafx.stage.Stage;
 public class MainPageController {
 
 	// public static Scene manageEmployeesScene;
+	
 
 	@FXML
 	private Label lblStatus, itemStatus, lblNewEmployeeStatus;
+	
+	@FXML private Label lblPlatformTotal;
 
 	@FXML
 	private TextField txtUsername, txtPassword, txtItem, txtPrice;
@@ -39,8 +46,9 @@ public class MainPageController {
 		String type = employee.getEmployeeType();
 
 		if (username.equals(user) && password.equals(pass) && type.equals("Manager")) {
-
+			
 			lblStatus.setText("Login Success");
+			
 			Stage primaryStage = Main.getStage(); // set stage to main stage
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Homepage.fxml"));
 			Scene scene = new Scene(root, 900, 500);
@@ -48,6 +56,12 @@ public class MainPageController {
 			home = scene;
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			
+			
+			//System.out.println(employee.getFirstName());
+//			lblUserName.setText(employee.getFirstName());
+//			lblUserName.setVisible(true);
 		}
 
 		else {
@@ -78,7 +92,8 @@ public class MainPageController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
+		
+		
 	}
 
 	public void goToOrder(ActionEvent event) throws Exception {
@@ -138,21 +153,6 @@ public class MainPageController {
 
 	}
 
-	// ----------------------------------------------------------------------------------------------------------
 
-	// public void addEmployees(ActionEvent event) throws Exception {
-	//
-	// String firstname = txtFirstname.getText();
-	// String lastname = txtLastname.getText();
-	// String username = txtUsername.getText();
-	// String password = txtNewPassword.getText();
-	// String type = txtType.getText();
-	// Employee2 employee = new Employee2(type, firstname, lastname, username,
-	// password);
-	// Platform.putEmployee(employee, employee.getEmployeeUsername());
-	// lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + "
-	// has been created.");
-	// lblNewEmployeeStatus.setVisible(true);
-	//
-	// }
+
 }

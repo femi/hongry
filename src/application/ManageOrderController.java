@@ -193,8 +193,9 @@ public class ManageOrderController implements Initializable  {
 		// export the data to csv
 		Platform.exportToFile(ordersSelected);
 		
+		// to improve this, I could add a file chooser so the user can select .csv destination 
+		
 	}
-	
-	
+
 	
 }
