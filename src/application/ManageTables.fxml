@@ -6,7 +6,10 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManageTableController">
    <children>
-      <Button layoutX="32.0" layoutY="446.0" mnemonicParsing="false" onAction="#Home" text="Home" />
+      <Button layoutX="32.0" layoutY="446.0" mnemonicParsing="false" onAction="#Home" text="Home">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
       <Button fx:id="btn1" layoutX="340.0" layoutY="153.0" mnemonicParsing="false" onAction="#modifyOrder" text="1">
          <font>
             <Font name="Inconsolata" size="24.0" />

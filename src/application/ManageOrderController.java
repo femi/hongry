@@ -46,7 +46,9 @@ public class ManageOrderController implements Initializable  {
 		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
 		//orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
 		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
-
+		
+		Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
+		//orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
 		
 	}
 	
@@ -100,9 +102,12 @@ public class ManageOrderController implements Initializable  {
 	
 	public void deleteConformation(ActionEvent event ) throws IOException {
 		
+		Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
+		Variables.setAllOrders(tvOrderTable);
+		
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
-		Parent root = FXMLLoader.load(getClass().getResource("/application/DeleteConformation.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ConfirmBox.fxml"));
 		Scene scene = new Scene(root, 300, 200);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);
