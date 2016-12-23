@@ -63,16 +63,16 @@ public class ManageMenuController implements Initializable {
 		// create a list to hold all of the Items 
 		ObservableList<ItemBuffer> allItems;
 				
-		//create order object 
+		//create item object 
 		ItemBuffer itemSelected;
 				
-		// get all of the current orders in the TableView
+		// get all of the current items in the TableView
 		allItems = tvItems.getItems();
 				
-		// put the current order selected into this variable 
+		// put the current item selected into this variable 
 		itemSelected = tvItems.getSelectionModel().getSelectedItem();
 				
-		// remove this order from the table view 
+		// remove this item from the table view 
 		allItems.remove(itemSelected);
 		
 		//---------------------------------------------------------

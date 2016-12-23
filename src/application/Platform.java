@@ -17,7 +17,8 @@ public class Platform {
 	private static HashMap<Integer, Orders> orders = new HashMap<Integer, Orders>();
 	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
-	private static String loggedIn;
+	private static Employees loggedIn;
+
 	private static Scenes scene = new Scenes();
 	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
@@ -27,6 +28,9 @@ public class Platform {
 	// add order object to store
 	public static void putOrder(Orders order, int order_id) {
 		orders.put(order_id, order);
+		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE CREATED ORDER: " + order_id);
 	}
 	
 	// get specific order 
@@ -60,8 +64,19 @@ public class Platform {
 	public static void removeEmployee(String username) {
 		employees.remove(username);
 		System.out.println("EMPLOYEE " + username + " REMOVED FROM PLATFORM");
+		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED EMPLOYEE: " + username);
 	}
 	
+	public static Employees getLoggedIn() {
+		return loggedIn;
+	}
+
+	public static void setLoggedIn(Employees loggedIn) {
+		Platform.loggedIn = loggedIn;
+	}
+
 	//-------------------------TABLES-----------------------------
 
 	// add specific table
@@ -81,9 +96,7 @@ public class Platform {
 	
 	//--------------------------------------------------------------
 
-	public static void loggedInUser(String type) {
-		loggedIn = type;
-	}
+
 	
 	public static int getTotal() {
 		int total = 0;
@@ -93,12 +106,13 @@ public class Platform {
 		return total;
 	}
 	
-	public static String whosLoggedIn() {
-		return loggedIn;
-	}
+
 	public static void removeOrder(Integer orderID) {
 		orders.remove(orderID);
 		System.out.println("ORDER " + orderID + " REMOVED FROM STORE");
+		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED ORDER: " + orderID);
 	}
 	
 	
@@ -138,6 +152,9 @@ public class Platform {
 		System.out.println(lines.toString());
 		
 		createCSV(lines);
+		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE CREATED EXPORT");
 	}
 	
 	
@@ -189,7 +206,8 @@ public class Platform {
 
 		}
 
-		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE IMPORTED ORDERS");
 	}
 	
 }

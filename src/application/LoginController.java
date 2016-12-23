@@ -30,7 +30,7 @@ public class LoginController {
 
 			lblStatus.setText("Login Success");
 			
-			Platform.loggedInUser(employee.getEmployeeType());
+			Platform.setLoggedIn(employee);
 			
 			// go to homepage 
 			Platform.getScene().home();

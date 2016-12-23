@@ -47,7 +47,7 @@ public class MainPageController implements Initializable {
 		setButtonColour(allButtons);
 		
 		// general staff don't get access to the menu and staff management 
-		if (Platform.whosLoggedIn().equals("Staff")) {
+		if (Platform.getLoggedIn().getEmployeeType().equals("Staff")) {
 			menuManager.setDisable(true);
 			staffManager.setDisable(true);
 		}
@@ -62,6 +62,7 @@ public class MainPageController implements Initializable {
 //				System.out.println(button.getText());
 //			});
 //		}
+		
 
 	}
 	

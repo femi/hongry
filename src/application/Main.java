@@ -50,25 +50,26 @@ public class Main extends Application {
 		// NEW EMPLOYEE
 
 		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
-		test.addToLog("Employee Created");
-		test.addToLog("Employee Boom");
-		test.addToLog("Employee creted new order 1");
-		test.addToLog("Employee creted new order 2");
-		test.addToLog("Employee creted new order 3");
-		test.addToLog("Employee creted new order 4");
-		test.addToLog("Employee creted new order 5");
-		test.addToLog("Employee creted new order 6");
-		test.addToLog("Employee creted new order 7");
+		Platform.setLoggedIn(test);
+//		test.addToLog("Employee Created");
+//		test.addToLog("Employee Boom");
+//		test.addToLog("Employee creted new order 1");
+//		test.addToLog("Employee creted new order 2");
+//		test.addToLog("Employee creted new order 3");
+//		test.addToLog("Employee creted new order 4");
+//		test.addToLog("Employee creted new order 5");
+//		test.addToLog("Employee creted new order 6");
+//		test.addToLog("Employee creted new order 7");
 		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
-		manager.addToLog("Employee Created");
-		manager.addToLog("Employee Boom");
-		manager.addToLog("Employee creted new order 1");
-		manager.addToLog("Employee creted new order 2");
+//		manager.addToLog("Employee Created");
+//		manager.addToLog("Employee Boom");
+//		manager.addToLog("Employee creted new order 1");
+//		manager.addToLog("Employee creted new order 2");
 		Employees staff = new Employees("Staff", "Barry", "Flynn", "Barry", "password");
-		staff.addToLog("Employee Created");
-		staff.addToLog("Employee Boom");
-		staff.addToLog("Employee creted new order 1");
-		staff.addToLog("Employee creted new order 2");
+//		staff.addToLog("Employee Created");
+//		staff.addToLog("Employee Boom");
+//		staff.addToLog("Employee creted new order 1");
+//		staff.addToLog("Employee creted new order 2");
 		
 		Platform.putEmployee(manager, manager.getEmployeeUsername());
 		Platform.putEmployee(staff, staff.getEmployeeUsername());
