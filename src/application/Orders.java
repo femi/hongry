@@ -13,6 +13,7 @@ public class Orders {
 	private HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
 	private String comments = "";
 	private String timeOfOrder;
+	private String itemOrderedString;
 
 
 	private int orderTotal;
@@ -38,6 +39,8 @@ public class Orders {
 
 	public void addItemBuffer(ItemBuffer item) {
 		moreOrderContents.add(item);
+		// update the order string when item added 
+		itemsOrderedString();
 	}
 	
 	public void addMultipleItemBuffer(ArrayList<ItemBuffer> items) {
@@ -49,6 +52,8 @@ public class Orders {
 	
 	public void removeItemBuffer(ItemBuffer item) {
 		moreOrderContents.remove(item);
+		// update the order string when item removed
+		itemsOrderedString();
 	}
 	
 	public ArrayList<ItemBuffer> getMoreOrderContents() {
@@ -65,12 +70,24 @@ public class Orders {
 		return experimentalOrderTotal;
 	}
 	
+	private void itemsOrderedString() {
+		String itemString = "";
+		for (ItemBuffer item : moreOrderContents) {
+			itemString +=  item.getItem() + " ";
+		}
+		this.itemOrderedString = itemString;	
+	}
+	
 
 
 	//---------------------------------------------------------------------------------
 	//---------------------------------------------------------------------------------
 	
 	
+	public String getItemOrderedString() {
+		return itemOrderedString;
+	}
+
 	public int getTableNumber() {
 		return tableNumber;
 	}
@@ -225,8 +242,6 @@ public class Orders {
 		this.orderTotal = total;
 		return orderTotal;
 	}
-	
-
 	
 	//-----------------------------------------------------------------------------
 

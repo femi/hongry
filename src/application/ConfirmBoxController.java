@@ -32,7 +32,8 @@ public class ConfirmBoxController implements Initializable {
 		orderSelected = Variables.getOrderSelected();
 		
 		// remove this order from the table view 
-		allOrders.remove(orderSelected);
+		//allOrders.remove(orderSelected);
+		Variables.getMasterData().remove(Variables.getSourceIndex());
 		
 		//---------------------------------------------------------
 

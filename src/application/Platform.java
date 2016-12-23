@@ -19,7 +19,7 @@ public class Platform {
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
 	private static Employees loggedIn;
 
-	private static Scenes scene = new Scenes();
+	private static SceneController scene = new SceneController();
 	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
@@ -171,11 +171,11 @@ public class Platform {
 
 	}
 
-	public static Scenes getScene() {
+	public static SceneController getScene() {
 		return scene;
 	}
 
-	public static void setScene(Scenes scene) {
+	public static void setScene(SceneController scene) {
 		Platform.scene = scene;
 	}
 	

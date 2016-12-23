@@ -11,6 +11,8 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -35,16 +38,23 @@ public class ManageOrderController implements Initializable  {
 	@FXML private TableColumn<Orders, Integer> tableNumber;
 	@FXML private TableColumn<Orders, String> date;
 	@FXML private TableColumn<Orders, String> orderTotal;
+	@FXML private TableColumn<Orders, String> itemsOrdered;
 	@FXML private Button delete;
 	@FXML private Button modify;
+	@FXML private TextField filterField;
+	private int sourceIndex;
+	private int visibleIndex;
+	SortedList<Orders> sortedData;
 	
 	// List of all of the orders that are in the platform 
 	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
+	public FilteredList<Orders> filteredData = new FilteredList<>(orders, p -> true);
 	
 	// tvOrderTable.getSelectionModel().getSelectedItems().size() != 1
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		
 		// allows user to select multiple items
 		tvOrderTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -63,7 +73,6 @@ public class ManageOrderController implements Initializable  {
 			}
 		});
 		
-		
 		// put all of the orders into the TableView 
 		tvOrderTable.setItems(orders);
 		
@@ -73,49 +82,46 @@ public class ManageOrderController implements Initializable  {
 		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
 		//orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
 		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
-		
-		//Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
-		//orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
+		itemsOrdered.setCellValueFactory(new PropertyValueFactory<Orders, String>("itemOrderedString"));
+				 
 	
-		
+		// SEARCH FINCTIONALITY with some help from http://code.makery.ch/blog/javafx-8-tableview-sorting-filtering/
+	
+		filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+	            filteredData.setPredicate(order -> {
+	                // If filter text is empty, display all persons.
+	                if (newValue == null || newValue.isEmpty()) {
+	                    return true;
+	                }
+	                // Compare first name and last name of every person with filter text.
+	                String lowerCaseFilter = newValue.toLowerCase();
+
+	                if ((order.getTableNumber() + "").contains(lowerCaseFilter)) {
+	                    return true; // Filter matches first name.
+	                } else if ((order.getTableNumber()+"").toLowerCase().contains(lowerCaseFilter)) {
+	                    return true; // Filter matches last name.
+	                } else if ((order.getItemOrderedString()).toLowerCase().contains(lowerCaseFilter)) {
+	                    return true; // Filter matches last name.
+	                }
+	                
+	                return false; // Does not match.
+	            });
+	        });
+		 
+		 sortedData = new SortedList<>(filteredData);
+		 sortedData.comparatorProperty().bind(tvOrderTable.comparatorProperty());		 
+		 tvOrderTable.setItems(sortedData);
+
 	}
 	
-//	public void deleteOrder(ActionEvent event)  {
-//		
-//		// create a list to hold all of the orders 
-//		ObservableList<Orders> allOrders;
-//		
-//		//create order object 
-//		Orders orderSelected;
-//		
-//		// get all of the current orders in the TableView
-//		allOrders = tvOrderTable.getItems();
-//		
-//		// put the current order selected into this variable 
-//		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
-//		
-//		// remove this order from the table view 
-//		allOrders.remove(orderSelected);
-//		
-//		//---------------------------------------------------------
-//
-//		// set the table number of the order to 0 (free table)
-//		Platform.getTable(orderSelected.getTableNumber()).setOrderID(0);
-//		
-//		// remove the table number from the order object 
-//		orderSelected.setTableNumber(0);
-//
-//		// remove the order from the platform 
-//		Platform.removeOrder(orderSelected.getOrderID());
-//		
-//		// Close the stage 
-//		//closeStage(window);
-//	
-//	}
-	
-
-	
 	public void deleteConformation(ActionEvent event ) throws IOException {
+		
+		visibleIndex = tvOrderTable.getSelectionModel().getSelectedIndex();
+		sourceIndex = sortedData.getSourceIndexFor(orders, visibleIndex);
+		
+		Variables.setMasterData(orders);
+		Variables.setSourceIndex(sourceIndex);
+		Variables.setVisibleIndex(visibleIndex);
 		
 		Variables.setOrderSelected(tvOrderTable.getSelectionModel().getSelectedItem());
 		Variables.setAllOrders(tvOrderTable);

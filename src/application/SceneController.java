@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Scenes {
+public class SceneController {
 	
 		public void home() throws IOException {
 			
