@@ -29,7 +29,10 @@ public class MainPageController implements Initializable {
 	@FXML private Button btn8 = new Button("8");
 	@FXML private Button btn9 = new Button("9");
 	
-	// A list of all of the table buttons
+	@FXML private Button menuManager = new Button();
+	@FXML private Button staffManager = new Button();
+	
+	// A list of all of the table  buttons
 	public ArrayList<Button> allButtons = new ArrayList<Button>();
 	
 
@@ -37,10 +40,29 @@ public class MainPageController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+
+
 		lblPlatformTotal.setText("£" + Platform.getTotal() + ".00");
 		addButtons();
 		setButtonColour(allButtons);
+		
+		// general staff don't get access to the menu and staff management 
+		if (Platform.whosLoggedIn().equals("Staff")) {
+			menuManager.setDisable(true);
+			staffManager.setDisable(true);
+		}
+		
+		// Implementing order previews
+		
+//		for (Button button : allButtons) {
+//			button.hoverProperty().addListener( (e) -> {
+//				int tableNumber = Integer.parseInt(button.getText());
+//				Tables table = Platform.getTable(tableNumber);
+//				Orders order = Platform.getOrder(table.getOrderID());
+//				System.out.println(button.getText());
+//			});
+//		}
+
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------

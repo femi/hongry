@@ -104,12 +104,6 @@ public class ExportTester {
 			
 			Platform.putOrder(order, order.getOrderID());
 
-			
-//			emp.setId(record[0]);
-//			emp.setName(record[1]);
-//			emp.setAge(record[2]);
-//			emp.setCountry(record[3]);
-//			emps.add(emp);
 		}
 
 		

@@ -27,7 +27,7 @@ public class NewEmployeeController {
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);
 		
-		//go to homepage 
-		Platform.getScene().Home();
+		//go back 
+		Platform.getScene().manageEmployees();
 	}
 }

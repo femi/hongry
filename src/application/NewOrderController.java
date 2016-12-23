@@ -97,7 +97,7 @@ public class NewOrderController implements Initializable {
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage
-		Platform.getScene().Home();
+		Platform.getScene().home();
 	}
 	
 	public void makeOrder(ActionEvent event) throws IOException {
@@ -143,7 +143,7 @@ public class NewOrderController implements Initializable {
 		table = 0;
 		
 		// go to homepage
-		Platform.getScene().Home();
+		Platform.getScene().home();
 	}
 	
 	public void changeCombo(ActionEvent event) {

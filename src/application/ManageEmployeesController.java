@@ -77,7 +77,7 @@ public class ManageEmployeesController implements Initializable {
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage 
-		Platform.getScene().Home();
+		Platform.getScene().home();
 		
 	}
 	
@@ -111,14 +111,4 @@ public class ManageEmployeesController implements Initializable {
 		
 	}
 	
-	public void deleteConformation(ActionEvent event) throws Exception {
-		
-		//window.initModality(Modality.APPLICATION_MODAL);
-		Parent root = FXMLLoader.load(getClass().getResource("/application/DeleteBox.fxml"));
-		Scene scene = new Scene(root, 300, 200);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		window.setScene(scene);
-		window.show();
-		
-	}
 }

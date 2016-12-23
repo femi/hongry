@@ -59,7 +59,7 @@ public class Main extends Application {
 		test.addToLog("Employee creted new order 5");
 		test.addToLog("Employee creted new order 6");
 		test.addToLog("Employee creted new order 7");
-		Employees manager = new Employees("Manager", "Derek", "Jones", "Derek", "password");
+		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
 		manager.addToLog("Employee Created");
 		manager.addToLog("Employee Boom");
 		manager.addToLog("Employee creted new order 1");

@@ -13,47 +13,47 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NewOrderController">
    <children>
-      <ComboBox fx:id="cbItems" layoutX="89.0" layoutY="104.0" prefHeight="27.0" prefWidth="152.0" promptText="Item" />
-      <TextField fx:id="txtQuantity" layoutX="257.0" layoutY="104.0" prefHeight="27.0" prefWidth="81.0" promptText="Quantity" />
-      <Button fx:id="btnAdd" layoutX="349.0" layoutY="104.0" mnemonicParsing="false" onAction="#addItem" text="add">
+      <ComboBox fx:id="cbItems" layoutX="47.0" layoutY="104.0" prefHeight="27.0" prefWidth="152.0" promptText="Item" />
+      <TextField fx:id="txtQuantity" layoutX="215.0" layoutY="104.0" prefHeight="27.0" prefWidth="81.0" promptText="Quantity" />
+      <Button fx:id="btnAdd" layoutX="307.0" layoutY="104.0" mnemonicParsing="false" onAction="#addItem" text="add">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font></Button>
-      <Button fx:id="btnOrder" disable="true" layoutX="89.0" layoutY="415.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="27.0" prefWidth="91.0" text="order">
+      <Button fx:id="btnOrder" disable="true" layoutX="105.0" layoutY="443.0" mnemonicParsing="false" onAction="#makeOrder" prefHeight="27.0" prefWidth="91.0" text="order">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font>
       </Button>
-      <Text layoutX="89.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Order">
+      <Text layoutX="47.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Order">
          <font>
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
-      <ComboBox fx:id="cbTables" disable="true" layoutX="89.0" layoutY="138.0" onAction="#changeCombo" prefHeight="27.0" prefWidth="152.0" promptText="Table" />
-      <Button fx:id="btnHome" layoutX="189.0" layoutY="416.0" mnemonicParsing="false" onAction="#Home" text="back">
+      <ComboBox fx:id="cbTables" disable="true" layoutX="47.0" layoutY="138.0" onAction="#changeCombo" prefHeight="27.0" prefWidth="152.0" promptText="Table" />
+      <Button fx:id="btnHome" layoutX="47.0" layoutY="444.0" mnemonicParsing="false" onAction="#Home" text="back">
          <font>
             <Font name="Inconsolata" size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="orderTable" layoutX="539.0" layoutY="54.0" prefHeight="339.0" prefWidth="307.0">
+      <TableView fx:id="orderTable" layoutX="505.0" layoutY="54.0" prefHeight="383.0" prefWidth="341.0">
         <columns>
           <TableColumn fx:id="itemColumn" prefWidth="179.0" text="Item" />
           <TableColumn fx:id="quantityColumn" prefWidth="64.0" text="Quantity" />
-            <TableColumn fx:id="priceColumn" prefWidth="54.0" text="Price" />
+            <TableColumn fx:id="priceColumn" prefWidth="91.0" text="Price" />
         </columns>
       </TableView>
-      <Text layoutX="698.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: ">
+      <Text layoutX="698.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total: ">
          <font>
             <Font name="Inconsolata" size="24.0" />
          </font>
       </Text>
-      <Label fx:id="total" layoutX="778.0" layoutY="416.0" text="0.00">
+      <Label fx:id="total" layoutX="778.0" layoutY="449.0" text="0.00">
          <font>
             <Font name="Inconsolata" size="24.0" />
          </font>
       </Label>
-      <TextArea fx:id="txtComments" layoutX="89.0" layoutY="225.0" prefHeight="165.0" prefWidth="298.0" />
-      <Text fill="#9e9c9c" layoutX="89.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments &amp; Special Requests " wrappingWidth="275.39208984375">
+      <TextArea fx:id="txtComments" layoutX="47.0" layoutY="266.0" prefHeight="165.0" prefWidth="298.0" />
+      <Text fill="#9e9c9c" layoutX="47.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments &amp; Special Requests " wrappingWidth="275.39208984375">
          <font>
             <Font name="Inconsolata" size="18.0" />
          </font>

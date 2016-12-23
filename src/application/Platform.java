@@ -1,10 +1,12 @@
 package application;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 
 import javafx.collections.FXCollections;
@@ -158,6 +160,36 @@ public class Platform {
 
 	public static void setScene(Scenes scene) {
 		Platform.scene = scene;
+	}
+	
+	public static void readRecords(String path) throws IOException {
+		
+		CSVReader reader = new CSVReader(new FileReader(path));
+		
+		String[] record = null;
+		
+		while ((record = reader.readNext()) != null) {
+			
+			// create new order and set table number to 0
+			Orders order = new Orders(0);
+			
+			// set the order id
+			order.setOrderID(Integer.parseInt(record[0]));
+			// set the time of the order
+			order.setTimeOfOrder(record[2]);
+
+			// split the list of items into individual ones
+			String[] items = record[3].split("-");
+			
+			for (int i = 0; i < items.length; i++) {
+				order.addItemBuffer(new ItemBuffer(items[i], Items.getItemPrice(items[i]), "1"));
+			}
+			
+			Platform.putOrder(order, order.getOrderID());
+
+		}
+
+		
 	}
 	
 }

@@ -26,12 +26,14 @@ public class LoginController {
 		String pass = employee.getPassword();
 		String type = employee.getEmployeeType();
 
-		if (username.equals(user) && password.equals(pass) && type.equals("Manager")) {
+		if (username.equals(user) && password.equals(pass) && (type.equals("Manager") || type.equals("Staff")))  {
 
 			lblStatus.setText("Login Success");
-
+			
+			Platform.loggedInUser(employee.getEmployeeType());
+			
 			// go to homepage 
-			Platform.getScene().Home();
+			Platform.getScene().home();
 
 		}
 

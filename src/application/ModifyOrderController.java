@@ -93,7 +93,7 @@ public class ModifyOrderController implements Initializable {
 		Platform.getOrder(orderID).comments(txtComments.getText());
 		
 		// go to homepage 
-		Platform.getScene().Home();
+		Platform.getScene().home();
 	
 	}
 	

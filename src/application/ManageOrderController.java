@@ -1,5 +1,8 @@
 package application;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +25,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -194,7 +198,31 @@ public class ManageOrderController implements Initializable  {
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage 
-		Platform.getScene().Home();
+		Platform.getScene().home();
+	}
+	
+	public void importOrders(ActionEvent event) throws IOException {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Upload CSV");
+		fileChooser.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("CSV", "*.csv"));
+
+		File file = fileChooser.showOpenDialog(Main.getStage());
+		String path = "";
+		
+		try {
+		
+			if (file != null) {
+				path = file.getPath();
+				System.out.println(path);
+			}
+		
+			Platform.readRecords(path);
+			Platform.getScene().manageOrder();
+			}
+		
+		catch (FileNotFoundException e) {
+			System.out.println("NO FILE SELECTED");
+		}
 	}
 
 	

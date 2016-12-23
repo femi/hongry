@@ -28,7 +28,7 @@
          </font>
       </Text>
       <Button layoutX="450.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteItem" prefHeight="27.0" prefWidth="100.0" text="delete Item " />
-      <Button layoutX="37.0" layoutY="441.0" mnemonicParsing="false" onAction="#Home" text="Home" />
+      <Button layoutX="37.0" layoutY="441.0" mnemonicParsing="false" onAction="#Home" text="Back" />
       <TextArea fx:id="txtComments" layoutX="37.0" layoutY="227.0" prefHeight="200.0" prefWidth="346.0" />
       <Text layoutX="38.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comments &amp; Special Messages ">
          <font>
