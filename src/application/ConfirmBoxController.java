@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
 
 public class ConfirmBoxController implements Initializable {
 	

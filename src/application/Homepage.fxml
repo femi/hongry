@@ -101,14 +101,9 @@
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#eeeeee" height="82.0" layoutX="249.0" layoutY="79.0" stroke="#fffafa" strokeType="INSIDE" strokeWidth="4.0" width="158.0" />
-      <Text layoutX="279.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£1500" wrappingWidth="95.9111328125">
+      <Label fx:id="lblPlatformTotal" layoutX="269.0" layoutY="105.0" text="Label">
          <font>
-            <Font name="Inconsolata" size="36.0" />
-         </font>
-      </Text>
-      <Label fx:id="lblPlatformTotal" layoutX="252.0" layoutY="200.0" text="Label">
-         <font>
-            <Font name="Inconsolata" size="36.0" />
+            <Font name="Inconsolata" size="30.0" />
          </font>
       </Label>
    </children>

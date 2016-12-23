@@ -128,14 +128,11 @@ public class ManageTableController implements Initializable {
 		primaryStage.show();
 
 	}
-
 	
-	public void Home(ActionEvent event) {
-		// get the primary stage from the main class
-		Stage primaryStage = Main.getStage();
+	public void Home(ActionEvent event) throws IOException {
 		
-		// set the scene to the main home screen 
-		primaryStage.setScene(MainPageController.getHomeScene());
+		// go to homepage
+		Platform.getScene().Home();
 	}
 
 

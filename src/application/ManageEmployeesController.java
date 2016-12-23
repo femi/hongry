@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -73,13 +74,11 @@ public class ManageEmployeesController implements Initializable {
 		
 	}
 	
-	public void Home(ActionEvent event) {
+	public void Home(ActionEvent event) throws IOException {
 		
-		// get the primary stage from the main class
-		Stage primaryStage = Main.getStage();
+		// go to homepage 
+		Platform.getScene().Home();
 		
-		// set the scene to the main home screen 
-		primaryStage.setScene(MainPageController.getHomeScene());
 	}
 	
 	public void goToNewEmployeePage(ActionEvent event) throws Exception {
@@ -122,45 +121,4 @@ public class ManageEmployeesController implements Initializable {
 		window.show();
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	
-//	public void addEmployee(ActionEvent event) throws Exception {
-//		
-//		String firstname = txtFirstname.getText();
-//		String lastname = txtLastname.getText();
-//		String username = txtUsername.getText();
-//		String password = txtPassword.getText();
-//		String type = txtType.getText();
-//		
-//		Employee2 employee = new Employee2(type, firstname, lastname, username, password);
-//		Platform.putEmployee(employee, employee.getEmployeeUsername());
-//		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
-//		lblNewEmployeeStatus.setVisible(true);
-//
-//	}
-	
-
 }

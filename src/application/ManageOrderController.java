@@ -112,15 +112,7 @@ public class ManageOrderController implements Initializable  {
 //	
 //	}
 	
-	public void Home(ActionEvent event) {
-		
-		// get the primary stage from the main class
-		Stage primaryStage = Main.getStage();
-		
-		// set the scene to the main home screen 
-		primaryStage.setScene(MainPageController.getHomeScene());
-	}
-	
+
 	
 	public void deleteConformation(ActionEvent event ) throws IOException {
 		
@@ -195,6 +187,14 @@ public class ManageOrderController implements Initializable  {
 		
 		// to improve this, I could add a file chooser so the user can select .csv destination 
 		
+	}
+	
+	//--------------------------------------------------------------------------------------------
+	
+	public void Home(ActionEvent event) throws IOException {
+		
+		// go to homepage 
+		Platform.getScene().Home();
 	}
 
 	

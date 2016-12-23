@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+
 
 public class ModifyOrderController implements Initializable {
 	
@@ -86,17 +87,13 @@ public class ModifyOrderController implements Initializable {
 	}
 	
 	
-	public void Home(ActionEvent event) {
+	public void Home(ActionEvent event) throws IOException {
 		
 		// Apply changes to comments and special messages
 		Platform.getOrder(orderID).comments(txtComments.getText());
 		
-		// get the primary stage from the main class
-		Stage primaryStage = Main.getStage();
-		
-		// set the scene to the main home screen 
-		primaryStage.setScene(MainPageController.getHomeScene());
-		
+		// go to homepage 
+		Platform.getScene().Home();
 	
 	}
 	

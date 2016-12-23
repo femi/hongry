@@ -16,7 +16,7 @@ public class Platform {
 	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
 	private static String loggedIn;
-	private static Integer total;
+	private static Scenes scene = new Scenes();
 	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
@@ -150,6 +150,14 @@ public class Platform {
 	    
 	    writer.close();
 
+	}
+
+	public static Scenes getScene() {
+		return scene;
+	}
+
+	public static void setScene(Scenes scene) {
+		Platform.scene = scene;
 	}
 	
 }
