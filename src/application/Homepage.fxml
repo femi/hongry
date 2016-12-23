@@ -9,32 +9,32 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainPageController">
    <children>
-      <Button fx:id="menuManager" layoutX="49.0" layoutY="246.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="Menu">
+      <Button fx:id="menuManager" layoutX="49.0" layoutY="78.0" mnemonicParsing="false" onAction="#newOrder" prefHeight="32.0" prefWidth="142.0" text="Manage Menu">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnOrders" layoutX="49.0" layoutY="82.0" mnemonicParsing="false" onAction="#goToOrder" prefHeight="32.0" prefWidth="142.0" text="New Order">
+      <Button fx:id="btnOrders" layoutX="49.0" layoutY="222.0" mnemonicParsing="false" onAction="#goToOrder" prefHeight="32.0" prefWidth="142.0" text="New Order">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnManage" layoutX="49.0" layoutY="124.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="Orders">
+      <Button fx:id="btnManage" layoutX="49.0" layoutY="264.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="All Orders">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="staffManager" layoutX="49.0" layoutY="287.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
+      <Button fx:id="staffManager" layoutX="49.0" layoutY="119.0" mnemonicParsing="false" onAction="#goToEmployeeManager" prefHeight="32.0" prefWidth="142.0" text="Manage Staff">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Text layoutX="49.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management" wrappingWidth="142.00000762939453">
+      <Text layoutX="49.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Management" wrappingWidth="142.00000762939453">
          <font>
             <Font name="Inconsolata" size="24.0" />
          </font>
       </Text>
-      <Text layoutX="49.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="200.21875">
+      <Text layoutX="49.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders" wrappingWidth="200.21875">
          <font>
             <Font name="Inconsolata" size="24.0" />
          </font>

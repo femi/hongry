@@ -50,32 +50,14 @@ public class Main extends Application {
 		// NEW EMPLOYEE
 
 		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
-		Platform.setLoggedIn(test);
-//		test.addToLog("Employee Created");
-//		test.addToLog("Employee Boom");
-//		test.addToLog("Employee creted new order 1");
-//		test.addToLog("Employee creted new order 2");
-//		test.addToLog("Employee creted new order 3");
-//		test.addToLog("Employee creted new order 4");
-//		test.addToLog("Employee creted new order 5");
-//		test.addToLog("Employee creted new order 6");
-//		test.addToLog("Employee creted new order 7");
+		Platform.setLoggedIn(test); // log to this employee initially
 		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
-//		manager.addToLog("Employee Created");
-//		manager.addToLog("Employee Boom");
-//		manager.addToLog("Employee creted new order 1");
-//		manager.addToLog("Employee creted new order 2");
 		Employees staff = new Employees("Staff", "Barry", "Flynn", "Barry", "password");
-//		staff.addToLog("Employee Created");
-//		staff.addToLog("Employee Boom");
-//		staff.addToLog("Employee creted new order 1");
-//		staff.addToLog("Employee creted new order 2");
-		
+
 		Platform.putEmployee(manager, manager.getEmployeeUsername());
 		Platform.putEmployee(staff, staff.getEmployeeUsername());
 		Platform.putEmployee(test, test.getEmployeeUsername());
 		
-		// §System.out.println(Platform.getAllEmployee());
 
 		// NEW ITEMS 
 
@@ -85,6 +67,9 @@ public class Main extends Application {
 		Items.addItem("Slow Roasted Beef Brisket", 11);
 		Items.addItem("Water", 3);
 		Items.addItem("Wine", 7);
+		Items.addItem("Lobster", 50);
+		Items.addItem("Strawberry Cheescake", 13);
+		Items.addItem("Chocolate Milkshake", 8);
 		
 		
 		// NEW TABLES 
@@ -100,11 +85,10 @@ public class Main extends Application {
 		
 		for (int i = 0; i < 5; i++) {
 			Orders newOrder = new Orders(i+1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(5)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
 			Platform.putOrder(newOrder, newOrder.getOrderID());
 			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform
 		}
