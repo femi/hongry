@@ -47,15 +47,9 @@ public class NewOrderController implements Initializable {
 	
 	//---------------------------------------------------------------------------------	
 	//---------------------------------------------------------------------------------
-
-
-	// Contains a list of current items and quantity to be added to a users order [[Salmon, 2], [Steak, 1]]
-	public ArrayList<ArrayList<String>> orderList = new ArrayList<ArrayList<String>>();
 	
 	// Contains a list of items that are available for the user to select from 
-	ObservableList<String> olist = FXCollections.observableArrayList(Items.items.keySet());
-	
-	//ObservableList<String> tablesOlist = FXCollections.observableArrayList();
+	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
 	
 
 	@Override
@@ -73,7 +67,7 @@ public class NewOrderController implements Initializable {
 		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
 		
 		// add all items (foods) to the combo list
-		cbItems.setItems(olist);
+		cbItems.setItems(dropdownList);
 		
 		// Show all of the tables that are currently available
 		cbTables.setItems(hasOrders(Platform.getAllTables()));
@@ -95,35 +89,26 @@ public class NewOrderController implements Initializable {
 		// create a new order
 		Orders order = new Orders(table); 
 		
-		//order.addMultipleOrderItems(orderList); // add all items to order
+		// add all items to the order 
 		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version // removed this, duplicated items
+		order.addMultipleItemBuffer(exprimentOrderList);
 		
 		// add text from text area to the order
 		order.comments(txtComments.getText());
 		
+		// display order receipt in console 
+		order.displayOrder(); 
 		
-		//----------------------------------EXPERIMENTAL-----------------------------------
-		//---------------------------------------------------------------------------------
-
-		order.addMultipleItemBuffer(exprimentOrderList);
+		//--------------------------------------------------------
+		
+		// remove all items from the current order list 
 		exprimentOrderList.removeAll(exprimentOrderList);
-		
-		//---------------------------------------------------------------------------------	
-		//---------------------------------------------------------------------------------
-
-		
 		
 		// add the order to platform
 		Platform.putOrder(order, order.getOrderID()); 
 		
-		// display order receipt in console 
-		order.displayOrder(); 
-		
 		// update table with order number in platform
 		Platform.getTable(table).orderID = order.getOrderID(); 
-		
-		// CLEANUP: clear order list file
-		orderList.removeAll(orderList);
 		
 		// set the current table to 0
 		table = 0;
@@ -140,18 +125,9 @@ public class NewOrderController implements Initializable {
 		
 		// get the selected item from the drop down menu 
 		String text = cbItems.getSelectionModel().getSelectedItem();
-		String quantity = txtQuantity.getText();
 		int quantity2 = Integer.parseInt(txtQuantity.getText()); //hashmap version
 				
-		// Add the selected item to a list that will be added to the order
-		ArrayList<String> order = new ArrayList<String>();
-		order.add(text); 
-		order.add(quantity);
-		orderList.add(order); // add item and quantity pair to orderList
 		
-		// USE HASHMAP INSTEAD
-		
-		////---------
 		if (orderList2.containsKey(text)) {
 			orderList2.put(text, orderList2.get(text) + quantity2);
 		}
@@ -159,23 +135,15 @@ public class NewOrderController implements Initializable {
 		else {
 			orderList2.put(text, quantity2);
 		}
-		//-------------
 		
 		// Allow user to see what has been added to their order
-		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity);
-		
-		
-		//----------------------------------EXPERIMENTAL-----------------------------------
-		//---------------------------------------------------------------------------------
-		
-		exprimentOrderList.add(item);
-		
-		//---------------------------------------------------------------------------------
-		//---------------------------------------------------------------------------------
+		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity2+"");
 
-		
+		// add the item to the order
+		exprimentOrderList.add(item);
+
 		// add the the price of the item to the current total
-		subTotal += Items.getItemPrice(text) * Integer.parseInt(quantity);
+		subTotal += Items.getItemPrice(text) * (quantity2);
 		
 		// update the total label
 		total.setText("" + subTotal + ".00");
@@ -190,6 +158,8 @@ public class NewOrderController implements Initializable {
 	}
 	
 	public ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
+		
+		// a list that contains all of the tables that have orders
 		ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 		for (Map.Entry<Integer, Tables> table : map.entrySet()) {
 			if (table.getValue().orderID == 0) {

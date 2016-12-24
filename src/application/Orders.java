@@ -35,7 +35,6 @@ public class Orders {
 	
 	
 	//--------------------------------EXPRIMENTAL-------------------------------------
-	//---------------------------------------------------------------------------------
 
 	public void addItemBuffer(ItemBuffer item) {
 		moreOrderContents.add(item);
@@ -47,9 +46,6 @@ public class Orders {
 		for (ItemBuffer item : items ) {
 			addItemBuffer(item);
 		}
-		
-		
-		
 		System.out.println(moreOrderContents);
 	}
 	
@@ -81,11 +77,7 @@ public class Orders {
 		this.itemOrderedString = itemString;	
 	}
 	
-
-
-	//---------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------
-	
+	//---------------------------------------------------------------------------------	
 	
 	public String getItemOrderedString() {
 		return itemOrderedString;
@@ -109,17 +101,9 @@ public class Orders {
 		if (this.orderContents.containsKey(item) == true) {
 			int currentQuantity = this.orderContents.get(item);
 			this.orderContents.put(item, currentQuantity + quantity);
-			
-//			// EXPERIMENT
-//			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
-//			// EXPERIMENT
 		}
 
-		else { this.orderContents.put(item, quantity);
-//			// EXPERIMENT
-//			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
-//			// EXPERIMENT
-		}
+		else { this.orderContents.put(item, quantity); }
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -240,10 +224,7 @@ public class Orders {
 
 	public int getOrderTotal() {
 		int total = 0;
-//		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
-//			total += entry.getValue() * Items.getItemPrice(entry.getKey());
-//		}
-		
+
 		// getting price using ItemBuffer objects in `moreOrderContents` instead of `orderContents`
 		for (ItemBuffer item : moreOrderContents) {
 			total += item.getPrice();
@@ -251,20 +232,6 @@ public class Orders {
 		
 		this.orderTotal = total;
 		return orderTotal;
-	}
-	
-	//-----------------------------------------------------------------------------
-
-	public void writeToFile() {
-		// Function should modify the contents of the json file
-	}
-	
-	//-----------------------------------------------------------------------------
-	
-	public void saveOrder() {
-		// This method should save the current order to the Order file 
-		// if the order already exists then the order is replaced
-		// We could call this method anytime something new is added to the order
 	}
 	
 	//-----------------------------------------------------------------------------

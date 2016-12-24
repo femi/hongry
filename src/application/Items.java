@@ -1,6 +1,6 @@
 package application;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 
 public class Items {
@@ -44,18 +44,5 @@ public class Items {
 	public static int getItemPrice(String name) {
 		return items.get(name);
 	}
-	
-	
-	//-----------------------------------------------------------------------------
-	
-//	private static void addToFile() {
-//		// This method should add new items to the file
-//	}
-	
-	//-----------------------------------------------------------------------------
-	
-//	private static void removeFromFile() {
-//		// This method should remove the items from the file 
-//	}
 	
 }

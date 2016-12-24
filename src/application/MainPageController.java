@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 public class MainPageController implements Initializable {
 
 	@FXML private Label lblPlatformTotal;
+	
+	// Table buttons 
 	@FXML private Button btn1 = new Button("1");
 	@FXML private Button btn2 = new Button("2");
 	@FXML private Button btn3 = new Button("3");
@@ -32,7 +34,7 @@ public class MainPageController implements Initializable {
 	@FXML private Button menuManager = new Button();
 	@FXML private Button staffManager = new Button();
 	
-	// A list of all of the table  buttons
+	// An arraylist containing all of the table buttons
 	public ArrayList<Button> allButtons = new ArrayList<Button>();
 	
 
@@ -41,12 +43,16 @@ public class MainPageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-
+		// Displays the current taking on the platform
 		lblPlatformTotal.setText("£" + Platform.getTotal() + ".00");
+		
+		// Add buttons to arraylist 
 		addButtons();
+		
+		// Change colour of buttons based on table number 
 		setButtonColour(allButtons);
 		
-		// general staff don't get access to the menu and staff management 
+		// "Staff" don't get access to the menu and staff management 
 		if (Platform.getLoggedIn().getEmployeeType().equals("Staff")) {
 			menuManager.setDisable(true);
 			staffManager.setDisable(true);
@@ -63,7 +69,6 @@ public class MainPageController implements Initializable {
 //			});
 //		}
 		
-
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------
@@ -86,9 +91,7 @@ public class MainPageController implements Initializable {
 				button.setStyle("-fx-color: #F06767;}");
 			}
 		}
-		
 	}
-	
 	
 	public void addButtons() {
 		allButtons.removeAll(allButtons);
@@ -108,8 +111,8 @@ public class MainPageController implements Initializable {
 		Tables table;
 		Orders order;
 		
+		// Get the table number from the button object, limited to buttons 1 - 9 
 		String selectedButton = event.getSource().toString().substring(35, 36);
-
 		
 		try {
 			
@@ -126,10 +129,8 @@ public class MainPageController implements Initializable {
 			order.displayOrder();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("This table is currently empty.");
 			goToOrder();
-
 		}
 	}
 	
@@ -139,7 +140,6 @@ public class MainPageController implements Initializable {
 		Stage primaryStage = Main.getStage();
 		FXMLLoader loader =  new FXMLLoader();
 		Parent root = loader.load(getClass().getResource("/application/ModifyOrder.fxml").openStream());
-		ModifyOrderController controller = (ModifyOrderController)loader.getController ();
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
@@ -199,17 +199,6 @@ public class MainPageController implements Initializable {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageEmployees.fxml"));
-		Scene scene = new Scene(root, 900, 500);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
-	}
-
-	public void goToTableManager(ActionEvent event) throws Exception {
-
-		Stage primaryStage = Main.getStage();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageTables2.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);

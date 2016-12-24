@@ -28,7 +28,6 @@ public class ManageEmployeesController implements Initializable {
 	@FXML private TableColumn<Employees, String> employeeType;
 	@FXML private TextArea log;
 	
-	public static boolean answer;
 	public static Stage window = new Stage();
 	
 
@@ -39,6 +38,7 @@ public class ManageEmployeesController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// put the employees in the TableView
 		tvEmployeeTable.setItems(employees);
 		
 		id.setCellValueFactory(new PropertyValueFactory<Employees, Integer>("employeeNumber"));
@@ -93,19 +93,14 @@ public class ManageEmployeesController implements Initializable {
 	}
 	
 	public void showLog(ActionEvent event) {
-		
-		// create a list to hold all of the employees 
-		//ObservableList<Employee2> allEmployees;
-		
-		//create employee object 
+				
+		// create employee object 
 		Employees employeeSelected;
-		
-		// get all of the current employees in the TableView
-		//allEmployees = tvEmployeeTable.getItems();
 		
 		// put the current employee selected into this variable 
 		employeeSelected = tvEmployeeTable.getSelectionModel().getSelectedItem();
 		
+		// show the log in the text area
 		log.setText(employeeSelected.getLog());
 		
 		

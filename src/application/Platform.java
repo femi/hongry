@@ -17,10 +17,8 @@ public class Platform {
 	private static HashMap<Integer, Orders> orders = new HashMap<Integer, Orders>();
 	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
-	private static Employees loggedIn;
-
+	private static Employees loggedIn; // stores  current employee logged into platform
 	private static SceneController scene = new SceneController();
-	
 	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
 	//-------------------------ORDERS-----------------------------
@@ -96,8 +94,6 @@ public class Platform {
 	
 	//--------------------------------------------------------------
 
-
-	
 	public static int getTotal() {
 		int total = 0;
 		for (Orders order : getAllOrders().values()) {
@@ -106,7 +102,6 @@ public class Platform {
 		return total;
 	}
 	
-
 	public static void removeOrder(Integer orderID) {
 		orders.remove(orderID);
 		System.out.println("ORDER " + orderID + " REMOVED FROM STORE");
@@ -115,15 +110,11 @@ public class Platform {
 		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED ORDER: " + orderID);
 	}
 	
-	
 	//-------------------------EXPORT---------------------------------
 	
 	public static void exportToFile(ObservableList<Orders> orders) throws IOException {
-		
-		// get all of the current orders in the platform 
-		//Collection<Orders> orders = Platform.getAllOrders().values();
-		
-		// use this to hold all of the line
+				
+		// use this to hold all of the lines
 		ArrayList<String []> lines = new ArrayList<String []>();
 		
 		for (Orders order : orders) {
@@ -154,7 +145,7 @@ public class Platform {
 		createCSV(lines);
 		
 		// Logging
-		Platform.getLoggedIn().addToLog("EMPLOYEE CREATED EXPORT");
+		Platform.getLoggedIn().addToLog("EMPLOYEE EXPORTED ORDER TO CSV");
 	}
 	
 	
@@ -202,9 +193,12 @@ public class Platform {
 				order.addItemBuffer(new ItemBuffer(items[i], Items.getItemPrice(items[i]), "1"));
 			}
 			
+			
 			Platform.putOrder(order, order.getOrderID());
 
 		}
+		
+		reader.close();
 
 		// Logging
 		Platform.getLoggedIn().addToLog("EMPLOYEE IMPORTED ORDERS");

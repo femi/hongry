@@ -11,8 +11,6 @@ public class Variables {
 	public static TableView<Orders> allOrders;
 	public static Orders orderSelected;
 	public static ObservableList<Orders> masterData;
-
-
 	public static int visibleIndex;
 	public static int sourceIndex;
 	//---------------------------------------
@@ -40,7 +38,6 @@ public class Variables {
 	public static void setSourceIndex(int sourceIndex) {
 		Variables.sourceIndex = sourceIndex;
 	}
-	
 	
 	public static TableView<Orders> getAllOrders() {
 		return allOrders;

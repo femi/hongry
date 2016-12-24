@@ -21,18 +21,21 @@ public class LoginController {
 
 		// Try to get the employee using the username they entered
 		Employees employee = Platform.getEmployee(username);
-
+		
+		// Get the password, username and type from the entered username
 		String user = employee.getUsername();
 		String pass = employee.getPassword();
 		String type = employee.getEmployeeType();
-
+		
+		// Checks to see if username and password pair are correct and if they are of the correct employee type 
 		if (username.equals(user) && password.equals(pass) && (type.equals("Manager") || type.equals("Staff")))  {
 
 			lblStatus.setText("Login Success");
 			
+			// set the logged in user 
 			Platform.setLoggedIn(employee);
 			
-			// go to homepage 
+			// go to homepage on login success 
 			Platform.getScene().home();
 
 		}

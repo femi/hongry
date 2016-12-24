@@ -31,7 +31,6 @@ import javafx.stage.Stage;
 
 public class ManageOrderController implements Initializable  {
 
-	public static boolean answer;
 	private static Stage window;
 	@FXML private TableView<Orders> tvOrderTable;
 	@FXML private TableColumn<Orders, Integer> id;
@@ -49,13 +48,11 @@ public class ManageOrderController implements Initializable  {
 	// List of all of the orders that are in the platform 
 	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
 	public FilteredList<Orders> filteredData = new FilteredList<>(orders, p -> true);
-	
-	// tvOrderTable.getSelectionModel().getSelectedItems().size() != 1
-	
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
+
 		// allows user to select multiple items
 		tvOrderTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
@@ -80,7 +77,6 @@ public class ManageOrderController implements Initializable  {
 		id.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("orderID"));
 		tableNumber.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("tableNumber"));
 		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
-		//orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotal"));
 		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
 		itemsOrdered.setCellValueFactory(new PropertyValueFactory<Orders, String>("itemOrderedString"));
 				 
@@ -97,11 +93,15 @@ public class ManageOrderController implements Initializable  {
 	                String lowerCaseFilter = newValue.toLowerCase();
 
 	                if ((order.getTableNumber() + "").contains(lowerCaseFilter)) {
-	                    return true; // Filter matches first name.
-	                } else if ((order.getTableNumber()+"").toLowerCase().contains(lowerCaseFilter)) {
-	                    return true; // Filter matches last name.
-	                } else if ((order.getItemOrderedString()).toLowerCase().contains(lowerCaseFilter)) {
-	                    return true; // Filter matches last name.
+	                    return true; // Filter matches table number
+	                } 
+	               
+	                else if ((order.getOrderID() + "").toLowerCase().contains(lowerCaseFilter)) {
+	                    return true; // Filter matches order id
+	                } 
+	                
+	                else if ((order.getItemOrderedString()).toLowerCase().contains(lowerCaseFilter)) {
+	                    return true; // Filter matched items in order
 	                }
 	                
 	                return false; // Does not match.
@@ -150,7 +150,6 @@ public class ManageOrderController implements Initializable  {
 		Stage primaryStage = Main.getStage();
 		FXMLLoader loader =  new FXMLLoader();
 		Parent root = loader.load(getClass().getResource("/application/ModifyOrder.fxml").openStream());
-		ModifyOrderController controller = (ModifyOrderController)loader.getController();
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
@@ -183,17 +182,15 @@ public class ManageOrderController implements Initializable  {
 	
 	public void exportSelectedItems(ActionEvent event) throws IOException { 
 		
-		//create order object 
+		// create order object 
 		ObservableList<Orders> ordersSelected;
 		
 		// put the current order selected into this variable 
 		ordersSelected = tvOrderTable.getSelectionModel().getSelectedItems();
 		
-		// export the data to csv
+		// export selected items to csv
 		Platform.exportToFile(ordersSelected);
-		
-		// to improve this, I could add a file chooser so the user can select .csv destination 
-		
+				
 	}
 	
 	//--------------------------------------------------------------------------------------------
@@ -205,8 +202,12 @@ public class ManageOrderController implements Initializable  {
 	}
 	
 	public void importOrders(ActionEvent event) throws IOException {
+		
+	
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Upload CSV");
+		
+		// only allow CSVs to be uploaded
 		fileChooser.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("CSV", "*.csv"));
 
 		File file = fileChooser.showOpenDialog(Main.getStage());
@@ -228,5 +229,4 @@ public class ManageOrderController implements Initializable  {
 		}
 	}
 
-	
 }

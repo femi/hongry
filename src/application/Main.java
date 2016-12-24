@@ -41,14 +41,13 @@ public class Main extends Application {
 
 	public static void main(String[] args) throws IOException {
 		initialise();
-		//ExportTester.readRecords();
 		launch(args);
 	}
 
 	public static void initialise() {
 		
 		// NEW EMPLOYEE
-
+		
 		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
 		Platform.setLoggedIn(test); // log to this employee initially
 		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
@@ -84,11 +83,9 @@ public class Main extends Application {
 		Random rand = new Random();
 		
 		for (int i = 0; i < 5; i++) {
+			
+			// Initialise new order    
 			Orders newOrder = new Orders(i+1);
-//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
 			
 			// Initialise order items  
 			newOrder.addItemBuffer(Items.itemObjects.get(Items.itemObjects.keySet().toArray()[rand.nextInt(8)]));

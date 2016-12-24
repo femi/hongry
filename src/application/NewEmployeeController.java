@@ -16,13 +16,17 @@ public class NewEmployeeController {
 	
 	public void addEmployee(ActionEvent event) throws Exception {
 		
+		// collect the new employee's details
 		String firstname = txtFirstname.getText();
 		String lastname = txtLastname.getText();
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
 		String type = txtType.getText();
 		
+		// create new employee object 
 		Employees employee = new Employees(type, firstname, lastname, username, password);
+		
+		// add employee to platform object
 		Platform.putEmployee(employee, employee.getEmployeeUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);

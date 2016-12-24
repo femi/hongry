@@ -111,7 +111,6 @@ public class ManageTableController implements Initializable {
 		Stage primaryStage = Main.getStage();
 		FXMLLoader loader =  new FXMLLoader();
 		Parent root = loader.load(getClass().getResource("/application/ModifyOrder.fxml").openStream());
-		ModifyOrderController controller = (ModifyOrderController)loader.getController ();
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);

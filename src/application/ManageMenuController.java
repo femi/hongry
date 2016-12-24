@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,44 +23,42 @@ public class ManageMenuController implements Initializable {
 	@FXML private TableColumn<ItemBuffer, Integer> itemPrice;
 	@FXML private Button btnAdd;
 	@FXML private Button btnDelete;
-
+	
+	// list containing all of the current items in the menu
 	public ObservableList<ItemBuffer> items = FXCollections.observableArrayList(Items.getItemObjects().values());
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// disable the delete button / there's a small bug 
 		btnDelete.setDisable(true);
 		
-//		btnAdd.setDisable(true);
-		
+		// add menu items to the tableview
 		tvItems.setItems(items);
+		
+		// assign values to the table columns
 		itemName.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
 		itemPrice.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
-		
-//		if (!txtItem.getText().isEmpty() || !txtPrice.getText().isEmpty() ) {
-//			btnAdd.setDisable(false);
-//		}
-//	
 		
 	}
 
 	public void addNewItem(ActionEvent event) throws Exception {
 		
+		// get the name of the new item 
 		String item = txtItem.getText();
 		int price = Integer.parseInt(txtPrice.getText());
+		
+		// store the item in the Items class
 		Items.addItem(item, price);
 		
 		// add the item to the tableview 
 		tvItems.getItems().add(Items.getItemObjects().get(item));
 		
-		
-	
 	}
 	
 	
 	public void deleteItem(ActionEvent event) {
 		
-
 		// create a list to hold all of the Items 
 		ObservableList<ItemBuffer> allItems;
 				
@@ -85,12 +82,11 @@ public class ManageMenuController implements Initializable {
 	}
 	
 
-	
 	public void home(ActionEvent event) throws IOException {
+		
 		// go back to home screen 
 		Platform.getScene().home();
+		
 	}
-
-
 
 }

@@ -1,14 +1,12 @@
 package application;
 
 public class Tables {
-	
-	//-------------------------------VARIBLES------------------------------------
-	
+		
 	private static int tableCount = 0;
 	public int tableNumber;
 	public int orderID = 0;
 	
-	//--------------------------------METHODS------------------------------------
+	//------------------------------CONSTRUCTOR----------------------------------
 
 	public Tables() {
 		this.tableNumber = ++tableCount;

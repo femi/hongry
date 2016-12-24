@@ -2,31 +2,20 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
 public class ConfirmBoxController implements Initializable {
 	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
 		
 	}
 	
 	public void deleteOrderConformation(ActionEvent event)  {
-		
-		// create a list to hold all of the orders 
-		ObservableList<Orders> allOrders;
-		
+				
 		//create order object 
 		Orders orderSelected;
-		
-		// get all of the current orders in the TableView
-		allOrders = Variables.getAllOrders().getItems();
 		
 		// put the current order selected into this variable 
 		orderSelected = Variables.getOrderSelected();
@@ -58,5 +47,4 @@ public class ConfirmBoxController implements Initializable {
 		ManageOrderController.getWindow().close();
 	}
 	
-
 }
