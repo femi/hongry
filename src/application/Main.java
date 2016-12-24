@@ -85,10 +85,16 @@ public class Main extends Application {
 		
 		for (int i = 0; i < 5; i++) {
 			Orders newOrder = new Orders(i+1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
-			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+//			newOrder.addOrderItem(Items.items.keySet().toArray()[rand.nextInt(8)].toString(), 1);
+			
+			// Initialise order items  
+			newOrder.addItemBuffer(Items.itemObjects.get(Items.itemObjects.keySet().toArray()[rand.nextInt(8)]));
+			newOrder.addItemBuffer(Items.itemObjects.get(Items.itemObjects.keySet().toArray()[rand.nextInt(8)]));
+			newOrder.addItemBuffer(Items.itemObjects.get(Items.itemObjects.keySet().toArray()[rand.nextInt(8)]));
+			newOrder.addItemBuffer(Items.itemObjects.get(Items.itemObjects.keySet().toArray()[rand.nextInt(8)]));
 			Platform.putOrder(newOrder, newOrder.getOrderID());
 			Platform.getTable(newOrder.getOrderID()).orderID = newOrder.getOrderID(); // update table in platform
 		}

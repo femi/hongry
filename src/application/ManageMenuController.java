@@ -53,6 +53,8 @@ public class ManageMenuController implements Initializable {
 		
 		// add the item to the tableview 
 		tvItems.getItems().add(Items.getItemObjects().get(item));
+		
+		
 	
 	}
 	

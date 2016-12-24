@@ -47,6 +47,9 @@ public class Orders {
 		for (ItemBuffer item : items ) {
 			addItemBuffer(item);
 		}
+		
+		
+		
 		System.out.println(moreOrderContents);
 	}
 	
@@ -107,15 +110,15 @@ public class Orders {
 			int currentQuantity = this.orderContents.get(item);
 			this.orderContents.put(item, currentQuantity + quantity);
 			
-			// EXPERIMENT
-			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
-			// EXPERIMENT
+//			// EXPERIMENT
+//			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
+//			// EXPERIMENT
 		}
 
 		else { this.orderContents.put(item, quantity);
-			// EXPERIMENT
-			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
-			// EXPERIMENT
+//			// EXPERIMENT
+//			addItemBuffer(new ItemBuffer(item, Items.getItemPrice(item), "1"));
+//			// EXPERIMENT
 		}
 	}
 	
@@ -192,6 +195,7 @@ public class Orders {
 		}
 		System.out.println("---------------------------");
 		System.out.println("ORDER TIME: " + this.timeOfOrder);
+		System.out.println("TABLE: " + this.tableNumber);
 		System.out.println("COMMENTS: " + this.comments);
 		System.out.println("---------------------------");
 		System.out.println("ORDER TOTAL: £" + this.getOrderTotal());
@@ -236,9 +240,15 @@ public class Orders {
 
 	public int getOrderTotal() {
 		int total = 0;
-		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
-			total += entry.getValue() * Items.getItemPrice(entry.getKey());
+//		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
+//			total += entry.getValue() * Items.getItemPrice(entry.getKey());
+//		}
+		
+		// getting price using ItemBuffer objects in `moreOrderContents` instead of `orderContents`
+		for (ItemBuffer item : moreOrderContents) {
+			total += item.getPrice();
 		}
+		
 		this.orderTotal = total;
 		return orderTotal;
 	}

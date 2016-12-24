@@ -39,18 +39,15 @@ public class NewOrderController implements Initializable {
 	public int table;
 	public int subTotal = 0;
 	
-	
-	
 	//----------------------------------EXPERIMENTAL-----------------------------------
 	//---------------------------------------------------------------------------------
-
+	
+	// List to store all of the items the user would like to order
 	public ArrayList<ItemBuffer> exprimentOrderList = new ArrayList<ItemBuffer>();
 	
 	//---------------------------------------------------------------------------------	
 	//---------------------------------------------------------------------------------
 
-	
-	
 
 	// Contains a list of current items and quantity to be added to a users order [[Salmon, 2], [Steak, 1]]
 	public ArrayList<ArrayList<String>> orderList = new ArrayList<ArrayList<String>>();
@@ -60,17 +57,6 @@ public class NewOrderController implements Initializable {
 	
 	//ObservableList<String> tablesOlist = FXCollections.observableArrayList();
 	
-	public ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
-		ObservableList<String> tablesOlist = FXCollections.observableArrayList();
-		for (Map.Entry<Integer, Tables> table : map.entrySet()) {
-			if (table.getValue().orderID == 0) {
-				tablesOlist.add(table.getKey().toString());
-			}
-		}
-		return tablesOlist;
-	}
-	
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -79,7 +65,7 @@ public class NewOrderController implements Initializable {
 		txtQuantity.setDisable(true);
 		
 		// create a TableView of the items that are currently in a persons order 
-		orderTable.setItems(itemList);
+		//orderTable.setItems(itemList);
 		
 		// assign the variables to the columns in the TableView
 		quantityColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
@@ -110,7 +96,7 @@ public class NewOrderController implements Initializable {
 		Orders order = new Orders(table); 
 		
 		//order.addMultipleOrderItems(orderList); // add all items to order
-		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version
+		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version // removed this, duplicated items
 		
 		// add text from text area to the order
 		order.comments(txtComments.getText());
@@ -176,7 +162,6 @@ public class NewOrderController implements Initializable {
 		//-------------
 		
 		// Allow user to see what has been added to their order
-		//ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), orderList2.get(text).toString());
 		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity);
 		
 		
@@ -202,5 +187,15 @@ public class NewOrderController implements Initializable {
 		if (!orderTable.getItems().isEmpty()) {
 			cbTables.setDisable(false);
 		}	
-	}	
+	}
+	
+	public ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
+		ObservableList<String> tablesOlist = FXCollections.observableArrayList();
+		for (Map.Entry<Integer, Tables> table : map.entrySet()) {
+			if (table.getValue().orderID == 0) {
+				tablesOlist.add(table.getKey().toString());
+			}
+		}
+		return tablesOlist;
+	}
 }
