@@ -70,7 +70,7 @@ public class ManageEmployeesController implements Initializable {
 		
 		// Cleanup
 		// remove the employee from the platform 
-		Platform.removeEmployee(employeeSelected.getEmployeeUsername());
+		Platform.removeEmployee(employeeSelected.getUsername());
 		
 	}
 	

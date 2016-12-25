@@ -5,11 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Platform {
@@ -18,8 +15,7 @@ public class Platform {
 	private static HashMap<String, Employees> employees = new HashMap<String, Employees>();
 	private static HashMap<Integer, Tables> tables = new HashMap<Integer, Tables>();
 	private static Employees loggedIn; // stores  current employee logged into platform
-	private static SceneController scene = new SceneController();
-	public static ObservableList<String> tablesOlist = FXCollections.observableArrayList();
+	private static SceneController scene = new SceneController(); 
 	
 	//-------------------------ORDERS-----------------------------
 	
@@ -27,18 +23,35 @@ public class Platform {
 	public static void putOrder(Orders order, int order_id) {
 		orders.put(order_id, order);
 		
-		// Logging
+		// Add to the log of the employee currently logged in
 		Platform.getLoggedIn().addToLog("EMPLOYEE CREATED ORDER: " + order_id);
 	}
 	
 	// get specific order 
-	public static Orders getOrder(int order_id) {
-		return orders.get(order_id);
+	public static Orders getOrder(int orderID) {
+		return orders.get(orderID);
 	}
 	
 	// get all orders
 	public static HashMap<Integer, Orders> getAllOrders() {
 		return orders;
+	}
+	
+	// get the total of all orders on the platform 
+	public static int getTotal() {
+		int total = 0;
+		for (Orders order : getAllOrders().values()) {
+			total += order.getOrderTotal();
+		}
+		return total;
+	}
+	
+	public static void removeOrder(Integer orderID) {
+		orders.remove(orderID);
+		System.out.println("ORDER " + orderID + " REMOVED FROM STORE");
+		
+		// Logging
+		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED ORDER: " + orderID);
 	}
 	
 	//-------------------------EMPLOYEES-----------------------------	
@@ -53,17 +66,16 @@ public class Platform {
 		return employees;
 	}
 	
-	
 	// add employee object to store
 	public static void putEmployee(Employees employee, String username) {
-		employees.put(employee.getEmployeeUsername(), employee);
+		employees.put(employee.getUsername(), employee);
 	}
 	
 	public static void removeEmployee(String username) {
 		employees.remove(username);
 		System.out.println("EMPLOYEE " + username + " REMOVED FROM PLATFORM");
 		
-		// Logging
+		// Add to the log of the employee currently logged in
 		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED EMPLOYEE: " + username);
 	}
 	
@@ -92,36 +104,26 @@ public class Platform {
 		return tables;
 	}
 	
-	//--------------------------------------------------------------
+	//----------------------MANAGING SCENES-----------------------
+	
+	public static SceneController getScene() {
+		return scene;
+	}
 
-	public static int getTotal() {
-		int total = 0;
-		for (Orders order : getAllOrders().values()) {
-			total += order.getOrderTotal();
-		}
-		return total;
+	public static void setScene(SceneController scene) {
+		Platform.scene = scene;
 	}
+
+	//----------------------EXPORT + IMPORT-----------------------
 	
-	public static void removeOrder(Integer orderID) {
-		orders.remove(orderID);
-		System.out.println("ORDER " + orderID + " REMOVED FROM STORE");
-		
-		// Logging
-		Platform.getLoggedIn().addToLog("EMPLOYEE REMOVED ORDER: " + orderID);
-	}
-	
-	//-------------------------EXPORT---------------------------------
-	
-	public static void exportToFile(ObservableList<Orders> orders) throws IOException {
+	public static void exportToFile(ObservableList<Orders> orders, String path) throws IOException {
 				
 		// use this to hold all of the lines
 		ArrayList<String []> lines = new ArrayList<String []>();
 		
 		for (Orders order : orders) {
 			
-			String orderID;
-			String tableID;
-			String date;
+			String orderID, tableID, date;
 			String items = "";
 			String line = "";
 			String [] record;
@@ -142,34 +144,27 @@ public class Platform {
 		
 		System.out.println(lines.toString());
 		
-		createCSV(lines);
+		createCSV(lines, path);
 		
 		// Logging
-		Platform.getLoggedIn().addToLog("EMPLOYEE EXPORTED ORDER TO CSV");
+		Platform.getLoggedIn().addToLog("EMPLOYEE EXPORTED ORDERS TO CSV");
 	}
 	
-	
-	private static void createCSV(ArrayList<String[]> records) throws IOException {
+	private static void createCSV(ArrayList<String[]> records, String path) throws IOException {
 		
-	    String csv = "./data/orders.csv";
-	    CSVWriter writer = new CSVWriter(new FileWriter(csv, true));
+		// this is where we save exported orders  
+//	    String csv = "./data/orders.csv";
+	    
+	    // add orders to existing file
+	    CSVWriter writer = new CSVWriter(new FileWriter(path));
 	    
 	    for (String [] record : records) {
 	    	writer.writeNext(record);
 	    }
 	    
 	    writer.close();
-
 	}
 
-	public static SceneController getScene() {
-		return scene;
-	}
-
-	public static void setScene(SceneController scene) {
-		Platform.scene = scene;
-	}
-	
 	public static void readRecords(String path) throws IOException {
 		
 		CSVReader reader = new CSVReader(new FileReader(path));
@@ -178,24 +173,26 @@ public class Platform {
 		
 		while ((record = reader.readNext()) != null) {
 			
-			// create new order and set table number to 0
+			// create new order object and set table number to 0
+			// orders with tables set to 0 are closed
 			Orders order = new Orders(0);
 			
 			// set the order id
 			order.setOrderID(Integer.parseInt(record[0]));
+			
 			// set the time of the order
 			order.setTimeOfOrder(record[2]);
 
 			// split the list of items into individual ones
 			String[] items = record[3].split("-");
 			
+			// create a new object for each item in the order 
 			for (int i = 0; i < items.length; i++) {
 				order.addItemBuffer(new ItemBuffer(items[i], Items.getItemPrice(items[i]), "1"));
 			}
 			
-			
+			// add the imported order to the platform 
 			Platform.putOrder(order, order.getOrderID());
-
 		}
 		
 		reader.close();
@@ -203,5 +200,4 @@ public class Platform {
 		// Logging
 		Platform.getLoggedIn().addToLog("EMPLOYEE IMPORTED ORDERS");
 	}
-	
 }

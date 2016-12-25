@@ -38,16 +38,10 @@ public class NewOrderController implements Initializable {
 	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
 	public int table;
 	public int subTotal = 0;
-	
-	//----------------------------------EXPERIMENTAL-----------------------------------
-	//---------------------------------------------------------------------------------
-	
+
 	// List to store all of the items the user would like to order
 	public ArrayList<ItemBuffer> exprimentOrderList = new ArrayList<ItemBuffer>();
-	
-	//---------------------------------------------------------------------------------	
-	//---------------------------------------------------------------------------------
-	
+
 	// Contains a list of items that are available for the user to select from 
 	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
 	
@@ -80,6 +74,7 @@ public class NewOrderController implements Initializable {
 		Platform.getScene().home();
 	}
 	
+
 	public void makeOrder(ActionEvent event) throws IOException {
 		
 		// get the selected table number
@@ -90,11 +85,11 @@ public class NewOrderController implements Initializable {
 		Orders order = new Orders(table); 
 		
 		// add all items to the order 
-		order.addMultipleOrderItems2(orderList2); // add all items to order // hashmap version // removed this, duplicated items
+		order.addMultipleOrderItems(orderList2); // add all items to order // hashmap version // removed this, duplicated items
 		order.addMultipleItemBuffer(exprimentOrderList);
 		
 		// add text from text area to the order
-		order.comments(txtComments.getText());
+		order.addComments(txtComments.getText());
 		
 		// display order receipt in console 
 		order.displayOrder(); 

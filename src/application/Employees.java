@@ -49,7 +49,7 @@ public class Employees {
 	//-----------------------------------------------------------------------------
 
 	// gets the employee's full name 
-	public String getEmployeeName() {
+	public String getEmployeeFullName() {
 		System.out.println(this.firstName + " " + this.lastName);
 		return this.firstName + " " + this.lastName;
 	}
@@ -72,10 +72,6 @@ public class Employees {
 	// return the employee type 
 	public String getEmployeeType() {
 		return this.employeeType;
-	}
-
-	public String getEmployeeUsername() {
-		return this.username;
 	}
 
 	//-----------------------------------------------------------------------------

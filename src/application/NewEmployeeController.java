@@ -27,7 +27,7 @@ public class NewEmployeeController {
 		Employees employee = new Employees(type, firstname, lastname, username, password);
 		
 		// add employee to platform object
-		Platform.putEmployee(employee, employee.getEmployeeUsername());
+		Platform.putEmployee(employee, employee.getUsername());
 		lblNewEmployeeStatus.setText("Employee " + firstname + " " + lastname + " has been created.");
 		lblNewEmployeeStatus.setVisible(true);
 		

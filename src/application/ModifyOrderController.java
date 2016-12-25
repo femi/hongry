@@ -20,7 +20,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
 public class ModifyOrderController implements Initializable {
 	
 	private static Stage window;
@@ -40,7 +39,6 @@ public class ModifyOrderController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		System.out.println(orderID);
 		// display order id on the modify page 
 		lblOrderNumber.setText("Order " + orderID);
 		lblOrderNumber.setVisible(true);
@@ -97,7 +95,7 @@ public class ModifyOrderController implements Initializable {
 	public void Home(ActionEvent event) throws IOException {
 		
 		// Apply changes to comments and special messages
-		Platform.getOrder(orderID).comments(txtComments.getText());
+		Platform.getOrder(orderID).addComments(txtComments.getText());
 		
 		// go to homepage 
 		Platform.getScene().home();
@@ -119,6 +117,7 @@ public class ModifyOrderController implements Initializable {
 	
 	public static Stage getWindow() {
 		return window;
+		
 	}
 	
 }

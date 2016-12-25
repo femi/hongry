@@ -19,7 +19,7 @@
             <Font name="Inconsolata" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btnManage" layoutX="49.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="All">
+      <Button fx:id="btnManage" layoutX="49.0" layoutY="265.0" mnemonicParsing="false" onAction="#goToOrderManager" prefHeight="32.0" prefWidth="142.0" text="History">
          <font>
             <Font name="Inconsolata" size="16.0" />
          </font>

@@ -55,11 +55,11 @@ public class Main extends Application {
 		Employees jake = new Employees("Staff", "Jake", "Bowers", "Jake", "password");
 		Employees albert = new Employees("Staff", "Albert", "Devon", "Albert", "password");
 
-		Platform.putEmployee(manager, manager.getEmployeeUsername());
-		Platform.putEmployee(staff, staff.getEmployeeUsername());
-		Platform.putEmployee(test, test.getEmployeeUsername());
-		Platform.putEmployee(jake, jake.getEmployeeUsername());
-		Platform.putEmployee(albert, albert.getEmployeeUsername());
+		Platform.putEmployee(manager, manager.getUsername());
+		Platform.putEmployee(staff, staff.getUsername());
+		Platform.putEmployee(test, test.getUsername());
+		Platform.putEmployee(jake, jake.getUsername());
+		Platform.putEmployee(albert, albert.getUsername());
 		
 
 		// NEW ITEMS 

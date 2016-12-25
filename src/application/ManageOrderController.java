@@ -25,6 +25,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -182,15 +183,32 @@ public class ManageOrderController implements Initializable  {
 	
 	public void exportSelectedItems(ActionEvent event) throws IOException { 
 		
-		// create order object 
-		ObservableList<Orders> ordersSelected;
+		String path;
 		
-		// put the current order selected into this variable 
-		ordersSelected = tvOrderTable.getSelectionModel().getSelectedItems();
+		final DirectoryChooser directoryChooser = new DirectoryChooser();
 		
-		// export selected items to csv
-		Platform.exportToFile(ordersSelected);
-				
+		final File chosenDirectory = directoryChooser.showDialog(Main.getStage());
+		
+		if (chosenDirectory != null) {
+			
+			path = chosenDirectory.getAbsolutePath() + "/order_data.csv/";
+			System.out.println(path);
+			
+			// create order object 
+			ObservableList<Orders> ordersSelected;
+			
+			// put the current order selected into this variable 
+			ordersSelected = tvOrderTable.getSelectionModel().getSelectedItems();
+			
+			// export selected items to csv
+			Platform.exportToFile(ordersSelected, path);
+		}
+		
+		else {
+			System.out.println("NO DIRECTORY SELECTED");
+		}
+		
+			
 	}
 	
 	//--------------------------------------------------------------------------------------------

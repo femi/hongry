@@ -15,11 +15,11 @@
    <children>
       <TableView fx:id="tvOrderTable" layoutX="317.0" layoutY="44.0" prefHeight="378.0" prefWidth="546.0">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="Order" />
-          <TableColumn fx:id="tableNumber" prefWidth="87.0" text="Table" />
-            <TableColumn fx:id="date" prefWidth="101.0" text="Time" />
-            <TableColumn fx:id="orderTotal" prefWidth="75.0" text="Total" />
-            <TableColumn fx:id="itemsOrdered" prefWidth="234.0" text="Items" />
+          <TableColumn fx:id="id" text="Order" />
+          <TableColumn fx:id="tableNumber" prefWidth="69.0" text="Table" />
+            <TableColumn fx:id="date" prefWidth="109.0" text="Time" />
+            <TableColumn fx:id="orderTotal" prefWidth="69.0" text="Total" />
+            <TableColumn fx:id="itemsOrdered" prefWidth="216.0" text="Items" />
         </columns>
       </TableView>
       <Text layoutX="29.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Orders">
