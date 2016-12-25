@@ -8,16 +8,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 public class ModifyOrderController implements Initializable {
 	
+	private static Stage window;
 	private int orderID = Variables.getOrder();
 	private Orders ordermate = Platform.getOrder(orderID);
 
@@ -34,6 +40,7 @@ public class ModifyOrderController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		System.out.println(orderID);
 		// display order id on the modify page 
 		lblOrderNumber.setText("Order " + orderID);
 		lblOrderNumber.setVisible(true);
@@ -97,5 +104,21 @@ public class ModifyOrderController implements Initializable {
 	
 	}
 	
+	public void deleteConformation(ActionEvent event) throws IOException {
+		
+		Variables.setOrderSelected(ordermate);
+
+		window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ModifyConfirmBox.fxml"));
+		Scene scene = new Scene(root, 300, 200);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		window.setScene(scene);
+		window.show();
+	}
+	
+	public static Stage getWindow() {
+		return window;
+	}
 	
 }

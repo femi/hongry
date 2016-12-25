@@ -24,14 +24,19 @@
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="392.0" layoutY="438.0" mnemonicParsing="false" onAction="#goToNewEmployeePage" text="Add Employee " />
+      <Button layoutX="478.0" layoutY="438.0" mnemonicParsing="false" onAction="#goToNewEmployeePage" text="Add Employee " />
       <Button layoutX="38.0" layoutY="438.0" mnemonicParsing="false" onAction="#Home" text="Home " />
-      <Button layoutX="513.0" layoutY="438.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete Employee" />
-      <Button layoutX="642.0" layoutY="438.0" mnemonicParsing="false" onAction="#showLog" text="View Log" />
-      <TextArea fx:id="log" editable="false" layoutX="38.0" layoutY="140.0" prefHeight="284.0" prefWidth="310.0" />
-      <Text layoutX="41.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Log" wrappingWidth="110.00000014901161">
+      <Button layoutX="599.0" layoutY="438.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete Employee" />
+      <Button layoutX="393.0" layoutY="438.0" mnemonicParsing="false" onAction="#showLog" text="View Log" />
+      <TextArea fx:id="log" editable="false" layoutX="38.0" layoutY="267.0" prefHeight="157.0" prefWidth="310.0" />
+      <Text layoutX="41.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Log" wrappingWidth="110.00000014901161">
          <font>
-            <Font name="Inconsolata" size="14.0" />
+            <Font name="Inconsolata" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can use this area to view the logs of employees, add and delete them." wrappingWidth="205.21875">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
          </font>
       </Text>
    </children>

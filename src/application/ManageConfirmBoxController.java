@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 
-public class ConfirmBoxController implements Initializable {
+public class ManageConfirmBoxController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

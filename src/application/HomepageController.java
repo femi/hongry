@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class MainPageController implements Initializable {
+public class HomepageController implements Initializable {
 
 	@FXML private Label lblPlatformTotal;
 	
@@ -87,7 +87,7 @@ public class MainPageController implements Initializable {
 		
 		// If the button does not have an order set the colour of the button red
 		for (Button button : allButtons ) {
-			if ( availableTables.contains(Integer.parseInt(button.getText()))) {
+			if ( !availableTables.contains(Integer.parseInt(button.getText()))) {
 				button.setStyle("-fx-color: #F06767;}");
 			}
 		}
@@ -199,6 +199,17 @@ public class MainPageController implements Initializable {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageEmployees.fxml"));
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+
+	}
+	
+	public void logout(ActionEvent event) throws Exception {
+
+		Stage primaryStage = Main.getStage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
 		Scene scene = new Scene(root, 900, 500);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);

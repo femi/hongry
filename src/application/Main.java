@@ -52,10 +52,14 @@ public class Main extends Application {
 		Platform.setLoggedIn(test); // log to this employee initially
 		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
 		Employees staff = new Employees("Staff", "Barry", "Flynn", "Barry", "password");
+		Employees jake = new Employees("Staff", "Jake", "Bowers", "Jake", "password");
+		Employees albert = new Employees("Staff", "Albert", "Devon", "Albert", "password");
 
 		Platform.putEmployee(manager, manager.getEmployeeUsername());
 		Platform.putEmployee(staff, staff.getEmployeeUsername());
 		Platform.putEmployee(test, test.getEmployeeUsername());
+		Platform.putEmployee(jake, jake.getEmployeeUsername());
+		Platform.putEmployee(albert, albert.getEmployeeUsername());
 		
 
 		// NEW ITEMS 

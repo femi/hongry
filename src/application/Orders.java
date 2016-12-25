@@ -154,7 +154,7 @@ public class Orders {
 
 	// add comments to the order 
 	public void comments(String comment) {
-		this.comments += comment + " || ";
+		this.comments = comment;
 	}
 	
 	//-----------------------------------------------------------------------------

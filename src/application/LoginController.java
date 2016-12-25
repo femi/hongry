@@ -18,14 +18,25 @@ public class LoginController {
 		// get the user's username and password from the TextField
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
+		String user = "";
+		String pass = "";
+		String type = "";
+		Employees employee = null;
 
+		try {
+		
 		// Try to get the employee using the username they entered
-		Employees employee = Platform.getEmployee(username);
+		employee = Platform.getEmployee(username);
 		
 		// Get the password, username and type from the entered username
-		String user = employee.getUsername();
-		String pass = employee.getPassword();
-		String type = employee.getEmployeeType();
+		user = employee.getUsername();
+		pass = employee.getPassword();
+		type = employee.getEmployeeType();
+		
+		} catch (NullPointerException e) {
+			lblStatus.setText("Login Failed");
+			System.out.println("Login Failed");
+		}
 		
 		// Checks to see if username and password pair are correct and if they are of the correct employee type 
 		if (username.equals(user) && password.equals(pass) && (type.equals("Manager") || type.equals("Staff")))  {

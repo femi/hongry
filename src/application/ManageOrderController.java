@@ -128,7 +128,7 @@ public class ManageOrderController implements Initializable  {
 		
 		window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
-		Parent root = FXMLLoader.load(getClass().getResource("/application/ConfirmBox.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageConfirmBox.fxml"));
 		Scene scene = new Scene(root, 300, 200);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		window.setScene(scene);

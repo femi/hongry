@@ -12,9 +12,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Label fx:id="lblStatus" layoutX="112.0" layoutY="339.0" prefHeight="27.0" prefWidth="232.0" text="Status" textFill="#cd1e1e" visible="false">
+      <Label fx:id="lblStatus" layoutX="200.0" layoutY="281.0" prefHeight="27.0" prefWidth="232.0" text="Status" textFill="#ff4e4e" visible="false">
          <font>
-            <Font name="System Font" size="18.0" />
+            <Font name="Inconsolata" size="18.0" />
          </font>
       </Label>
       <TextField fx:id="txtUsername" alignment="TOP_LEFT" layoutX="112.0" layoutY="196.0" prefHeight="31.0" prefWidth="232.0" promptText="Username">
