@@ -52,6 +52,7 @@ public class NewOrderController implements Initializable {
 		txtQuantity.setText("1");
 		txtQuantity.setDisable(true);
 		
+		
 		// create a TableView of the items that are currently in a persons order 
 		//orderTable.setItems(itemList);
 		
@@ -65,6 +66,9 @@ public class NewOrderController implements Initializable {
 		
 		// Show all of the tables that are currently available
 		cbTables.setItems(hasOrders(Platform.getAllTables()));
+		
+		// select first item by default
+		cbItems.getSelectionModel().selectFirst();
 			
 	}
 	
@@ -152,7 +156,7 @@ public class NewOrderController implements Initializable {
 		}	
 	}
 	
-	public ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
+	public static ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
 		
 		// a list that contains all of the tables that have orders
 		ObservableList<String> tablesOlist = FXCollections.observableArrayList();

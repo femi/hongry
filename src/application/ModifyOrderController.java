@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -12,10 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,10 +36,22 @@ public class ModifyOrderController implements Initializable {
 	@FXML private TableColumn<ItemBuffer, Integer> price;
 	@FXML private TableColumn<ItemBuffer, String> quantity;
 	@FXML private TextArea txtComments;
+	@FXML private ComboBox<String> cbItems;
+	@FXML private TextField txtQuantity;
+	
+	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
 	
 	// List of all of items in the order
 	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).getMoreOrderContents());
-
+	
+	// List to store all of the items in the order 
+	public ArrayList<ItemBuffer> exprimentOrderList = ordermate.getMoreOrderContents();
+	
+	// Contains a list of items that are available for the user to select from 
+	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
+	
+	//-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -45,7 +61,6 @@ public class ModifyOrderController implements Initializable {
 		
 		//lblTotal.setVisible(true);
 		lblTotal.setText("£" + ordermate.getExperimentalOrderTotal() + ".00" );
-		
 		
 		// populate the table with all of the items 
 		tvItemTable.setItems(itemList);
@@ -57,6 +72,13 @@ public class ModifyOrderController implements Initializable {
 		
 		// Display comments and special messages
 		txtComments.setText(Platform.getOrder(orderID).getComments());
+		
+		// add all items (foods) to the combo list
+		cbItems.setItems(dropdownList);
+		txtQuantity.setText("1");
+		txtQuantity.setDisable(true);
+		cbItems.getSelectionModel().selectFirst();
+		
 
 	}
 	
@@ -81,7 +103,6 @@ public class ModifyOrderController implements Initializable {
 		allItems.remove(itemSelected);
 		
 		
-				
 		//---------------------------------------------------------
 		
 		// remove item from order object
@@ -119,5 +140,36 @@ public class ModifyOrderController implements Initializable {
 		return window;
 		
 	}
+	
+	
+	public void addItem(ActionEvent event) {
+		
+		// get the selected item from the drop down menu 
+		String text = cbItems.getSelectionModel().getSelectedItem();
+		int quantity2 = Integer.parseInt(txtQuantity.getText()); //hashmap version
+				
+		
+		if (orderList2.containsKey(text)) {
+			orderList2.put(text, orderList2.get(text) + quantity2);
+		}
+		
+		else {
+			orderList2.put(text, quantity2);
+		}
+		
+		// Allow user to see what has been added to their order
+		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity2+"");
+
+		// add the item to the order
+		exprimentOrderList.add(item);
+
+		// update the total label
+		lblTotal.setText("£" + ordermate.getExperimentalOrderTotal() + ".00");
+	
+		// add the selected item to the TableView
+		tvItemTable.getItems().add(item);
+		
+	}
+	
 	
 }
