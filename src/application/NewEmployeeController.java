@@ -5,6 +5,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * 
+ * This class controls the new employees page.
+ * @author femi
+ *
+ */
 public class NewEmployeeController {
 	
 	@FXML private Label lblNewEmployeeStatus;

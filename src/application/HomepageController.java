@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 
 /**
  * 
- * This controller class allows 
+ * This controller class controls the homepage of the application. 
  * 
  * @author femi
  *

@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 
 /**
  * 
+ * This class controls the modify order page.
  * @author femi
  *
  */

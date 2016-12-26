@@ -23,6 +23,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 
 /**
+ * 
+ * This class controls the new order page.
  * @author femi
  *
  */

@@ -11,10 +11,7 @@ import javafx.scene.control.TableView;
  * @author femi
  *
  */
-/**
- * @author femi
- *
- */
+
 public class Variables {
 	
 	public static Integer order;

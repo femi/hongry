@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 /**
  * 
  * 
+ * This class controls the manage menu page.
  * 
  * @author femi
  *

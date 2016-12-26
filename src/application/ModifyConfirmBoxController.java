@@ -14,9 +14,7 @@ import javafx.event.ActionEvent;
 public class ModifyConfirmBoxController  {
 	
 	/**
-	 * 
 	 * Gets the selected order and deletes it from the platform.
-	 * 
 	 * @param event
 	 */
 	public void deleteOrderConformation(ActionEvent event) throws IOException  {

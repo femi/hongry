@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 /**
  * 
  * 
+ * This class controls the manage employees page.
+ * 
  * @author femi
  *
  */

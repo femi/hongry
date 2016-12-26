@@ -30,6 +30,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * This class controls the manage order page.
+ * 
+ * @author femi
+ *
+ */
 public class ManageOrderController implements Initializable  {
 
 	private static Stage window;
