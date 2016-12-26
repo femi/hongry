@@ -47,10 +47,10 @@ public class ModifyOrderController implements Initializable {
 	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
 	
 	// List of all of items in the order
-	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).getMoreOrderContents());
+	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).orderItemObjects());
 	
 	// List to store all of the items in the order 
-	public ArrayList<ItemBuffer> exprimentOrderList = ordermate.getMoreOrderContents();
+	public ArrayList<ItemBuffer> exprimentOrderList = ordermate.orderItemObjects();
 	
 	// Contains a list of items that are available for the user to select from 
 	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
@@ -68,7 +68,7 @@ public class ModifyOrderController implements Initializable {
 		lblOrderNumber.setVisible(true);
 		
 		//lblTotal.setVisible(true);
-		lblTotal.setText("£" + ordermate.getExperimentalOrderTotal() + ".00" );
+		lblTotal.setText("£" + ordermate.getOrderTotalObjects() + ".00" );
 		
 		// populate the table with all of the items 
 		tvItemTable.setItems(itemList);
@@ -125,7 +125,7 @@ public class ModifyOrderController implements Initializable {
 		order.removeItemBuffer(itemSelected);
 		
 		// set the total again
-		lblTotal.setText("£" + order.getExperimentalOrderTotal() + ".00" );
+		lblTotal.setText("£" + order.getOrderTotalObjects() + ".00" );
 	}
 	
 	
@@ -205,7 +205,7 @@ public class ModifyOrderController implements Initializable {
 		exprimentOrderList.add(item);
 
 		// update the total label
-		lblTotal.setText("£" + ordermate.getExperimentalOrderTotal() + ".00");
+		lblTotal.setText("£" + ordermate.getOrderTotalObjects() + ".00");
 	
 		// add the selected item to the TableView
 		tvItemTable.getItems().add(item);

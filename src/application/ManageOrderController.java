@@ -83,7 +83,7 @@ public class ManageOrderController implements Initializable  {
 		id.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("orderID"));
 		tableNumber.setCellValueFactory(new PropertyValueFactory<Orders, Integer>("tableNumber"));
 		date.setCellValueFactory(new PropertyValueFactory<Orders, String>("timeOfOrder"));
-		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("experimentalOrderTotal"));
+		orderTotal.setCellValueFactory(new PropertyValueFactory<Orders, String>("orderTotalObjects"));
 		itemsOrdered.setCellValueFactory(new PropertyValueFactory<Orders, String>("itemOrderedString"));
 				 
 	
@@ -162,9 +162,7 @@ public class ManageOrderController implements Initializable  {
 				
 		// put the current order selected into this variable 
 		orderSelected = tvOrderTable.getSelectionModel().getSelectedItem();
-		
-		//System.out.println(Platform.getOrder(orderSelected.getOrderID()).getMoreOrderContents());
-		
+				
 		Variables.setOrder(orderSelected.getOrderID());
 		
 		Stage primaryStage = Main.getStage();

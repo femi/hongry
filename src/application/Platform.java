@@ -243,7 +243,7 @@ public class Platform {
 			tableID = order.getTableNumber() + "";
 			date = order.getTimeOfOrder();
 			
-			for (ItemBuffer item : order.getMoreOrderContents()) {
+			for (ItemBuffer item : order.orderItemObjects()) {
 				items += item.getName() + "-";
 			}
 			
@@ -262,10 +262,16 @@ public class Platform {
 	}
 	
 
+	/**
+	 * 
+	 * Create as CSV file of selected orders and allow them to be 
+	 * written to a custom path.
+	 * 
+	 * @param records that will be created
+	 * @param path that the file will be saved to 
+	 * @throws IOException if no file is found 
+	 */
 	private static void createCSV(ArrayList<String[]> records, String path) throws IOException {
-		
-		// this is where we save exported orders  
-//	    String csv = "./data/orders.csv";
 	    
 	    // add orders to existing file
 	    CSVWriter writer = new CSVWriter(new FileWriter(path));
