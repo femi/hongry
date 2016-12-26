@@ -50,6 +50,11 @@ public class ManageOrderController implements Initializable  {
 	public ObservableList<Orders> orders = FXCollections.observableArrayList(Platform.getAllOrders().values());
 	public FilteredList<Orders> filteredData = new FilteredList<>(orders, p -> true);
 		
+	
+	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -115,6 +120,13 @@ public class ManageOrderController implements Initializable  {
 
 	}
 	
+	/**
+	 * 
+	 * Takes the user to the delete confirmation window.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded 
+	 */
 	public void deleteConformation(ActionEvent event ) throws IOException {
 		
 		visibleIndex = tvOrderTable.getSelectionModel().getSelectedIndex();
@@ -136,6 +148,13 @@ public class ManageOrderController implements Initializable  {
 		window.show();
 	}
 
+	/**
+	 * 
+	 * Takes the user to the modify order page.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded 
+	 */
 	public void modifyOrder(ActionEvent event) throws IOException {
 		
 		//create order object 
@@ -157,6 +176,13 @@ public class ManageOrderController implements Initializable  {
 		
 	}
 	
+	/**
+	 * 
+	 * Closes the selected order in the TableView, the order is closed
+	 * by setting the order's table to 0
+	 * 
+	 * @param event
+	 */
 	public void closeOrder(ActionEvent event) {
 		
 		//create order object 
@@ -177,10 +203,24 @@ public class ManageOrderController implements Initializable  {
 		
 	}
 
+	/**
+	 * Gets the window of the delete confirmation box.
+	 * @return the window of the delete confirmation box
+	 */
 	public static Stage getWindow() {
 		return window;
 	}
 	
+	
+	/**
+	 * 
+	 * Allows a user to export multiple orders that have been selected from 
+	 * a TableView to a CSV file. The user can select the directory of the 
+	 * CSV file that they want to export
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void exportSelectedItems(ActionEvent event) throws IOException { 
 		
 		String path;
@@ -211,35 +251,52 @@ public class ManageOrderController implements Initializable  {
 			
 	}
 	
-	//--------------------------------------------------------------------------------------------
-	
+	/**
+	 * 
+	 * Returns the user to the homepage.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded
+	 */
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage 
 		Platform.getScene().home();
 	}
 	
+	/**
+	 * 
+	 * Allows the user to import a CSV of orders into the platform which 
+	 * are the populated into the TableView.
+	 * 
+	 * @param event
+	 * @throws IOException if a file cannot be found
+	 */
 	public void importOrders(ActionEvent event) throws IOException {
 		
-	
+		// create new file 
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Upload CSV");
 		
 		// only allow CSVs to be uploaded
 		fileChooser.getExtensionFilters().addAll( new FileChooser.ExtensionFilter("CSV", "*.csv"));
-
+		
+		// show the file chooser in the main stage 
 		File file = fileChooser.showOpenDialog(Main.getStage());
 		String path = "";
 		
 		try {
-		
 			if (file != null) {
 				path = file.getPath();
 				System.out.println(path);
 			}
-		
-			Platform.readRecords(path);
+			
+			// parse the records from the selected CSV
+			Platform.parseCSV(path);
+			
+			// reload the current page
 			Platform.getScene().manageOrder();
+			
 			}
 		
 		catch (FileNotFoundException e) {

@@ -7,8 +7,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * This class allows the user to call a method in this class create 
+ * and go to a specific scene.
+ * 
+ * @author femi
+ *
+ */
 public class SceneController {
 	
+		/**
+		 * 
+		 * Goes to homepage. 
+		 * 
+		 * @throws IOException if FXML file cannot be loaded
+		 */
 		public void home() throws IOException {
 			
 			Stage primaryStage = Main.getStage();
@@ -20,6 +34,12 @@ public class SceneController {
 		
 		}
 		
+		/**
+		 * 
+		 * Goes to manage order page.
+		 * 
+		 * @throws IOException if FXML file cannot be loaded 
+		 */
 		public void manageOrder() throws IOException {
 			
 			Stage primaryStage = Main.getStage();
@@ -31,7 +51,13 @@ public class SceneController {
 		
 		}
 		
-		public void manageEmployees() throws Exception {
+		/**
+		 * 
+		 * Goes to manage employees page,
+		 * 
+		 * @throws IOException if FXML file cannot be loaded 
+		 */
+		public void manageEmployees() throws IOException {
 			
 			Stage primaryStage = Main.getStage();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/ManageEmployees.fxml"));

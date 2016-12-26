@@ -3,9 +3,22 @@ package application;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 
+
+/**
+ * 
+ * This class controls the delete confirmation box page for the modify page
+ * 
+ * @author femi
+ *
+ */
 public class ModifyConfirmBoxController  {
 	
-	
+	/**
+	 * 
+	 * Gets the selected order and deletes it from the platform.
+	 * 
+	 * @param event
+	 */
 	public void deleteOrderConformation(ActionEvent event) throws IOException  {
 				
 		Orders orderSelected = Variables.getOrderSelected();
@@ -30,6 +43,12 @@ public class ModifyConfirmBoxController  {
 	
 	}
 	
+	/**
+	 * 
+	 * Closes the deletion confirmation box window
+	 * 
+	 * @param event
+	 */
 	public void cancel(ActionEvent event) {
 		ModifyOrderController.getWindow().close();
 	}

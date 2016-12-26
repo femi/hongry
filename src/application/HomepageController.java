@@ -16,6 +16,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
+/**
+ * 
+ * This controller class allows 
+ * 
+ * @author femi
+ *
+ */
 public class HomepageController implements Initializable {
 
 	@FXML private Label lblPlatformTotal;
@@ -37,9 +45,10 @@ public class HomepageController implements Initializable {
 	// An arraylist containing all of the table buttons
 	public ArrayList<Button> allButtons = new ArrayList<Button>();
 	
-
-	// ----------------------------------------------------------------------------------------------------------
-
+	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -73,6 +82,12 @@ public class HomepageController implements Initializable {
 	
 	// ----------------------------------------------------------------------------------------------------------
 
+	/**
+	 * 
+	 * Sets the colour of the buttons to reflect the status of the order.
+	 * 
+	 * @param allButtons contains buttons used in restaurant map
+	 */
 	public void setButtonColour(ArrayList<Button> allButtons) {
 		
 		Collection<Tables> allTables = Platform.getAllTables().values();
@@ -93,6 +108,9 @@ public class HomepageController implements Initializable {
 		}
 	}
 	
+	/**
+	 * Adds the restaurant map buttons to a list
+	 */
 	public void addButtons() {
 		allButtons.removeAll(allButtons);
 		allButtons.add(btn1);
@@ -106,6 +124,11 @@ public class HomepageController implements Initializable {
 		allButtons.add(btn9);	
 	}
 	
+	/**
+	 * 
+	 * @param event occurs when button clicked 
+	 * @throws Exception
+	 */
 	public void modifyOrder(ActionEvent event) throws Exception {
 		
 		Tables table;
@@ -135,6 +158,13 @@ public class HomepageController implements Initializable {
 	}
 	
 	
+	/**
+	 * 
+	 * Creates a new scene that points to the modify order page 
+	 * when a button is clicked.
+	 * 
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
 	public void goToModifyPage() throws IOException {
 	
 		Stage primaryStage = Main.getStage();
@@ -146,7 +176,14 @@ public class HomepageController implements Initializable {
 		
 	}
 	
-	public void goToOrder() throws Exception {
+	/**
+	 * 
+	 * Creates a new scene that points to the new order page 
+	 * when a button is clicked.
+	 * 
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void goToOrder() throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewOrder.fxml"));
@@ -157,12 +194,18 @@ public class HomepageController implements Initializable {
 
 	}
 	
-	
-	
 	// ----------------------------------------------------------------------------------------------------------
 
 	
-	public void newOrder(ActionEvent event) throws Exception {
+	/**
+	 * 
+	 * Creates a new scene that points to the menu page 
+	 * when a button is clicked.
+	 * 
+	 * @param event
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void newOrder(ActionEvent event) throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewMenuItem.fxml"));
@@ -172,8 +215,15 @@ public class HomepageController implements Initializable {
 		primaryStage.show();
 
 	}
-
-	public void goToOrder(ActionEvent event) throws Exception {
+	
+	/**
+	 * 
+	 * Creates a new scene that points to the new order page 
+	 * when a button is clicked.
+	 * 
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void goToOrder(ActionEvent event) throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewOrder.fxml"));
@@ -184,7 +234,15 @@ public class HomepageController implements Initializable {
 
 	}
 
-	public void goToOrderManager(ActionEvent event) throws Exception {
+	/**
+	 * 
+	 * Creates a new scene that points to the manage orders page  
+	 * when a button is clicked.
+	 * 
+	 * @param event
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void goToOrderManager(ActionEvent event) throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageOrder.fxml"));
@@ -195,7 +253,16 @@ public class HomepageController implements Initializable {
 
 	}
 
-	public void goToEmployeeManager(ActionEvent event) throws Exception {
+	
+	/**
+	 * 
+	 * Creates a new scene that points to the manage employees page  
+	 * when a button is clicked.
+	 * 
+	 * @param event
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void goToEmployeeManager(ActionEvent event) throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/ManageEmployees.fxml"));
@@ -206,7 +273,16 @@ public class HomepageController implements Initializable {
 
 	}
 	
-	public void logout(ActionEvent event) throws Exception {
+	
+	/**
+	 * 
+	 * Creates a new scene that points to the main login page
+	 * when a button is clicked.
+	 * 
+	 * @param event
+	 * @throws IOException if the required FXML page cannot be loaded 
+	 */
+	public void logout(ActionEvent event) throws IOException {
 
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));

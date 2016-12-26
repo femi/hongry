@@ -22,6 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
+/**
+ * @author femi
+ *
+ */
 public class NewOrderController implements Initializable {
 	
 	@FXML private Label total;
@@ -46,6 +50,9 @@ public class NewOrderController implements Initializable {
 	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
 	
 
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -72,6 +79,13 @@ public class NewOrderController implements Initializable {
 			
 	}
 	
+	/**
+	 * 
+	 * Takes the user to the homepage.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded 
+	 */
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage
@@ -79,6 +93,15 @@ public class NewOrderController implements Initializable {
 	}
 	
 
+	/**
+	 * 
+	 * Creates a new order which contains the items that user added to
+	 * item list. The new order is added to the platform and then the
+	 * table is made unavailable to any other orders.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded 
+	 */
 	public void makeOrder(ActionEvent event) throws IOException {
 		
 		// get the selected table number
@@ -116,10 +139,23 @@ public class NewOrderController implements Initializable {
 		Platform.getScene().home();
 	}
 	
+	/**
+	 * 
+	 * Toggles the visibility of the order button.
+	 * 
+	 * @param event
+	 */
 	public void changeCombo(ActionEvent event) {
 		btnOrder.setDisable(false);
 	}
 	
+	/**
+	 * 
+	 * Adds an item selected from a combox box to a list to be added to an order.
+	 * The items are also added to a TableView.
+	 * 
+	 * @param event
+	 */
 	public void addItem(ActionEvent event) {
 		
 		// get the selected item from the drop down menu 
@@ -156,6 +192,13 @@ public class NewOrderController implements Initializable {
 		}	
 	}
 	
+	/**
+	 * 
+	 * Returns a ObserveableList of all of the Tables that have orders on the platform.
+	 * 
+	 * @param map
+	 * @return a list of all of the Tables that have orders 
+	 */
 	public static ObservableList<String> hasOrders(HashMap<Integer, Tables> map) {
 		
 		// a list that contains all of the tables that have orders

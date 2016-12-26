@@ -6,13 +6,26 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 
+/**
+ * This class controls the login page of the application.
+ * The methods are used to verify user credentials.
+ * 
+ * @author femi
+ *
+ */
 public class LoginController {
 
 	@FXML private Label lblStatus;
 	@FXML private TextField txtUsername, txtPassword;
 	@FXML private TextField txtFirstname, txtLastname, txtNewPassword, txtNewUsername, txtType;
 
-
+	/**
+	 * 
+	 * Checks to see employee's credentials are correct and alerts the user if they are not.
+	 * 
+	 * @param event
+	 * @throws Exception if user is not found
+	 */
 	public void Login(ActionEvent event) throws Exception {
 
 		// get the user's username and password from the TextField

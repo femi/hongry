@@ -1,17 +1,23 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 
-public class ManageConfirmBoxController implements Initializable {
+/**
+ * 
+ * This class controls the deletion confirmation box page.
+ * 
+ * @author femi
+ *
+ */
+public class ManageConfirmBoxController {
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
 	
+	/**
+	 * 
+	 * Gets the selected order and deletes it from the platform.
+	 * 
+	 * @param event
+	 */
 	public void deleteOrderConformation(ActionEvent event)  {
 				
 		//create order object 
@@ -43,6 +49,12 @@ public class ManageConfirmBoxController implements Initializable {
 	
 	}
 	
+	/**
+	 * 
+	 * Closes the deletion confirmation box window
+	 * 
+	 * @param event
+	 */
 	public void cancel(ActionEvent event) {
 		ManageOrderController.getWindow().close();
 	}

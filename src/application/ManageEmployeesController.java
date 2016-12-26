@@ -18,6 +18,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * 
+ * @author femi
+ *
+ */
 public class ManageEmployeesController implements Initializable {
 	
 	@FXML private TableView<Employees> tvEmployeeTable;
@@ -30,11 +36,13 @@ public class ManageEmployeesController implements Initializable {
 	
 	public static Stage window = new Stage();
 	
-
-	
 	// List of all of the employees that are in the platform 
 	public ObservableList<Employees> employees = FXCollections.observableArrayList(Platform.getAllEmployee().values());
 
+	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -49,6 +57,13 @@ public class ManageEmployeesController implements Initializable {
 
 	}
 	
+	/**
+	 * 
+	 * Deletes an employee from the platform and removes it from 
+	 * the TableView that it was contained in.
+	 * 
+	 * @param event
+	 */
 	public void deleteEmployee(ActionEvent event) {
 		
 		// create a list to hold all of the employees 
@@ -74,6 +89,13 @@ public class ManageEmployeesController implements Initializable {
 		
 	}
 	
+	/**
+	 * 
+	 * Returns the user to the homepage.
+	 * 
+	 * @param event
+	 * @throws IOException when the FXML page cannot be loaded 
+	 */
 	public void Home(ActionEvent event) throws IOException {
 		
 		// go to homepage 
@@ -81,7 +103,14 @@ public class ManageEmployeesController implements Initializable {
 		
 	}
 	
-	public void goToNewEmployeePage(ActionEvent event) throws Exception {
+	/**
+	 * 
+	 * Takes the user to the new employee page.
+	 * 
+	 * @param event
+	 * @throws IOException when the FXML page cannot be loaded 
+	 */
+	public void goToNewEmployeePage(ActionEvent event) throws IOException {
 		
 		Stage primaryStage = Main.getStage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewEmployee.fxml"));
@@ -92,6 +121,12 @@ public class ManageEmployeesController implements Initializable {
 		
 	}
 	
+	/**
+	 * 
+	 * Displays a log of the employee selected in the TextArea.
+	 * 
+	 * @param event
+	 */
 	public void showLog(ActionEvent event) {
 				
 		// create employee object 
@@ -102,7 +137,6 @@ public class ManageEmployeesController implements Initializable {
 		
 		// show the log in the text area
 		log.setText(employeeSelected.getLog());
-		
 		
 	}
 	

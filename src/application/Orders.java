@@ -189,7 +189,7 @@ public class Orders {
 	private void itemsOrderedString() {
 		String itemString = "";
 		for (ItemBuffer item : moreOrderContents) {
-			itemString +=  item.getItem() + " ";
+			itemString +=  item.getName() + " ";
 		}
 		this.itemOrderedString = itemString;	
 	}

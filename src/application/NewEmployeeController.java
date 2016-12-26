@@ -14,6 +14,15 @@ public class NewEmployeeController {
 	@FXML private TextField txtType;
 	@FXML private TextField txtPassword;
 	
+	/**
+	 * 
+	 * Create new employee to add to the platform, this method 
+	 * takes input from the user and passes and creates an new employee
+	 * object which is added to the platform.
+	 * 
+	 * @param event
+	 * @throws Exception if the FXML page cannot be loaded
+	 */
 	public void addEmployee(ActionEvent event) throws Exception {
 		
 		// collect the new employee's details

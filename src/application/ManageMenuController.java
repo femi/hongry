@@ -15,6 +15,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+/**
+ * 
+ * 
+ * 
+ * @author femi
+ *
+ */
 public class ManageMenuController implements Initializable {
 	
 	@FXML private TextField txtItem, txtPrice;
@@ -27,6 +34,10 @@ public class ManageMenuController implements Initializable {
 	// list containing all of the current items in the menu
 	public ObservableList<ItemBuffer> items = FXCollections.observableArrayList(Items.getItemObjects().values());
 	
+	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -37,11 +48,18 @@ public class ManageMenuController implements Initializable {
 		tvItems.setItems(items);
 		
 		// assign values to the table columns
-		itemName.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
+		itemName.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
 		itemPrice.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
 		
 	}
 
+	/**
+	 * 
+	 * Allows user to add a new item to the restaurant menu
+	 * 
+	 * @param event
+	 * @throws Exception
+	 */
 	public void addNewItem(ActionEvent event) throws Exception {
 		
 		// get the name of the new item 
@@ -57,6 +75,12 @@ public class ManageMenuController implements Initializable {
 	}
 	
 	
+	/**
+	 * 
+	 * Allows user to delete item from restaurant menu
+	 * 
+	 * @param event
+	 */
 	public void deleteItem(ActionEvent event) {
 		
 		// create a list to hold all of the Items 
@@ -77,11 +101,17 @@ public class ManageMenuController implements Initializable {
 		//---------------------------------------------------------
 		
 		// remove item object
-		Items.removeItem(itemSelected.getItem());
+		Items.removeItem(itemSelected.getName());
 		
 	}
 	
-
+	/**
+	 * 
+	 * Returns the user to the homepage.
+	 * 
+	 * @param event
+	 * @throws IOException when the FXML page cannot be loaded 
+	 */
 	public void home(ActionEvent event) throws IOException {
 		
 		// go back to home screen 

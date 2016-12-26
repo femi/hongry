@@ -9,18 +9,29 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * 
+ * This class contains the main driver class for the application.
+ * The methods in this class open the login page of the application, 
+ * and initialise the application with dummy data.
+ * 
+ * @author femi
+ *
+ */
 public class Main extends Application {
 	
 	// This is a static main screen 
 	private static Stage stage;
 
+	/* (non-Javadoc)
+	 * @see javafx.application.Application#start(javafx.stage.Stage)
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		
 		Main.stage = primaryStage;
 		
 		try {
-			// BorderPane root = new BorderPane();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
 			Scene scene = new Scene(root, 900, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -39,11 +50,24 @@ public class Main extends Application {
 	}
 	
 
+	/**
+	 * 
+	 * Seeds the application with dummy data and then launches it.
+	 * 
+	 * @param args
+	 * @throws IOException if FXML file cannot be fount 
+	 */
 	public static void main(String[] args) throws IOException {
 		initialise();
 		launch(args);
 	}
 
+	/**
+	 * 
+	 * Creates dummy data for the application, allowing the user to use 
+	 * the application with pre-generated data.
+	 * 
+	 */
 	public static void initialise() {
 		
 		// NEW EMPLOYEE

@@ -24,6 +24,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author femi
+ *
+ */
 public class ModifyOrderController implements Initializable {
 	
 	private static Stage window;
@@ -52,6 +57,9 @@ public class ModifyOrderController implements Initializable {
 	
 	//-
 	
+	/* (non-Javadoc)
+	 * @see javafx.fxml.Initializable#initialize(java.net.URL, java.util.ResourceBundle)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -66,7 +74,7 @@ public class ModifyOrderController implements Initializable {
 		tvItemTable.setItems(itemList);
 		
 		// assign the columns
-		item.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
+		item.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
 		price.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
 		quantity.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
 		
@@ -82,6 +90,14 @@ public class ModifyOrderController implements Initializable {
 
 	}
 	
+	/**
+	 * 
+	 * Allows the user to delete an item from their order, the method 
+	 * deletes the selected item object from the order and removes it 
+	 * from the order's TableView.
+	 * 
+	 * @param event
+	 */
 	public void deleteItem(ActionEvent event) {
 		
 
@@ -113,6 +129,13 @@ public class ModifyOrderController implements Initializable {
 	}
 	
 	
+	/**
+	 * 
+	 * Returns the user to the homepage.
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded
+	 */
 	public void Home(ActionEvent event) throws IOException {
 		
 		// Apply changes to comments and special messages
@@ -123,6 +146,13 @@ public class ModifyOrderController implements Initializable {
 	
 	}
 	
+	/**
+	 * 
+	 * Takes the user to the delete confirmation modal window
+	 * 
+	 * @param event
+	 * @throws IOException if the FXML page cannot be loaded 
+	 */
 	public void deleteConformation(ActionEvent event) throws IOException {
 		
 		Variables.setOrderSelected(ordermate);
@@ -136,12 +166,23 @@ public class ModifyOrderController implements Initializable {
 		window.show();
 	}
 	
+	/**
+	 * 
+	 * Gets the window for the delete confirmation box.
+	 * 
+	 * @return the delete confirmation window 
+	 */
 	public static Stage getWindow() {
-		return window;
-		
+		return window;	
 	}
 	
 	
+	/**
+	 * 
+	 * Allows user to add an item to their existing order.
+	 * 
+	 * @param event
+	 */
 	public void addItem(ActionEvent event) {
 		
 		// get the selected item from the drop down menu 
