@@ -72,9 +72,6 @@ public class Main extends Application {
 	 */
 	public static void initialise() {
 		
-
-
-		
 		// NEW EMPLOYEE
 		
 		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
