@@ -12,23 +12,23 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManageMenuController">
    <children>
-      <TextField fx:id="txtItem" layoutX="56.0" layoutY="104.0" prefHeight="35.0" prefWidth="184.0" promptText="e.g. wild seabass ">
+      <TextField fx:id="txtItem" layoutX="41.0" layoutY="198.0" prefHeight="27.0" prefWidth="168.0" promptText="e.g. wild seabass ">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font></TextField>
-      <TextField fx:id="txtPrice" layoutX="250.0" layoutY="104.0" prefHeight="35.0" prefWidth="89.0" promptText="10">
+      <TextField fx:id="txtPrice" layoutX="217.0" layoutY="198.0" prefHeight="27.0" prefWidth="55.0" promptText="10">
          <font>
             <Font name="Inconsolata" size="13.0" />
          </font></TextField>
-      <Text layoutX="56.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+      <Text layoutX="41.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Menu">
          <font>
             <Font name="Inconsolata" size="36.0" />
          </font>
       </Text>
-      <Button fx:id="btnAdd" layoutX="57.0" layoutY="151.0" mnemonicParsing="false" onAction="#addNewItem" prefHeight="27.0" prefWidth="66.0" text="add" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="90.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btnAdd" layoutX="280.0" layoutY="198.0" mnemonicParsing="false" onAction="#addNewItem" prefHeight="27.0" prefWidth="55.0" text="add" />
+      <ImageView fitHeight="136.0" fitWidth="181.0" layoutX="71.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/egg-40292_960_720.png" />
+            <Image url="@resources/eggs.png" />
          </image>
       </ImageView>
       <TableView fx:id="tvItems" layoutX="435.0" layoutY="44.0" prefHeight="386.0" prefWidth="421.0">
@@ -38,6 +38,11 @@
         </columns>
       </TableView>
       <Button fx:id="btnDelete" layoutX="435.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteItem" text="Delete Item" />
-      <Button layoutX="63.0" layoutY="441.0" mnemonicParsing="false" onAction="#home" text="Home" />
+      <Button layoutX="43.0" layoutY="441.0" mnemonicParsing="false" onAction="#home" text="Home" />
+      <Text layoutX="40.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can use this area to modify your restaurant menu." wrappingWidth="216.21875">
+         <font>
+            <Font name="Inconsolata" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

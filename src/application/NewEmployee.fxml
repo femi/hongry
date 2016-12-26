@@ -13,22 +13,22 @@
    <children>
       <TextField fx:id="txtFirstname" layoutX="149.0" layoutY="160.0" prefHeight="31.0" prefWidth="202.0" promptText="First Name  ">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </TextField>
       <TextField fx:id="txtLastname" layoutX="149.0" layoutY="199.0" prefHeight="31.0" prefWidth="202.0" promptText="Last Name ">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </TextField>
       <TextField fx:id="txtUsername" layoutX="149.0" layoutY="238.0" prefHeight="31.0" prefWidth="202.0" promptText="Username ">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </TextField>
       <TextField fx:id="txtPassword" layoutX="149.0" layoutY="276.0" prefHeight="31.0" prefWidth="202.0" promptText="Password">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </TextField>
       <Text layoutX="149.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Employee">
@@ -38,17 +38,17 @@
       </Text>
       <TextField fx:id="txtType" layoutX="149.0" layoutY="315.0" prefHeight="31.0" prefWidth="202.0" promptText="Employee Type">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </TextField>
       <Button layoutX="149.0" layoutY="356.0" mnemonicParsing="false" onAction="#addEmployee" text="Submit">
          <font>
-            <Font name="Inconsolata" size="18.0" />
+            <Font name="Inconsolata" size="13.0" />
          </font>
       </Button>
       <ImageView fitHeight="237.0" fitWidth="216.0" layoutX="530.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/c81c9629017003.55dde74c0982a.png" />
+            <Image url="@resources/waiter.png" />
          </image>
       </ImageView>
       <Label fx:id="lblNewEmployeeStatus" layoutX="149.0" layoutY="407.0" prefHeight="19.0" prefWidth="445.0" text="Label" textFill="#b2aaaa" visible="false">
@@ -56,5 +56,10 @@
             <Font name="Inconsolata" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="213.0" layoutY="356.0" mnemonicParsing="false" text="Cancel">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -1,9 +1,12 @@
+/* @font-face {
+	src: url("resources/Inconsolata.otf");
+}
+*/
 .root {
     -fx-base: white;
     -fx-background: white;
-    -fx-font-family: 'Inconsolata';
+    -fx-font-family: "Inconsolata";
 }
-
 
 .button {
 	-fx-color: #21CE99;

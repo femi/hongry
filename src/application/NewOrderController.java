@@ -68,7 +68,7 @@ public class NewOrderController implements Initializable {
 		// assign the variables to the columns in the TableView
 		quantityColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
 		priceColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
-		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("item"));
+		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
 		
 		// add all items (foods) to the combo list
 		cbItems.setItems(dropdownList);

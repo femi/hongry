@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 
 /**
  * 
@@ -27,11 +28,11 @@ public class Main extends Application {
 	 * @see javafx.application.Application#start(javafx.stage.Stage)
 	 */
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 		
 		Main.stage = primaryStage;
 		
-		try {
+
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
 			Scene scene = new Scene(root, 900, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -39,9 +40,8 @@ public class Main extends Application {
 			primaryStage.setResizable(false);
 			primaryStage.show();
 
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+
+
 	}
 
 	// getter for the stage object 
@@ -58,6 +58,8 @@ public class Main extends Application {
 	 * @throws IOException if FXML file cannot be fount 
 	 */
 	public static void main(String[] args) throws IOException {
+		// Load the Inconsolata font
+		Font.loadFont(Main.class.getResource("resources/Inconsolata.otf").toExternalForm(), 10);
 		initialise();
 		launch(args);
 	}
@@ -69,6 +71,9 @@ public class Main extends Application {
 	 * 
 	 */
 	public static void initialise() {
+		
+
+
 		
 		// NEW EMPLOYEE
 		

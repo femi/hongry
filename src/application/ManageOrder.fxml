@@ -42,7 +42,7 @@
       </Text>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../data/images/sausage.png" />
+            <Image url="@resources/sausage.png" />
          </image>
       </ImageView>
    </children>
