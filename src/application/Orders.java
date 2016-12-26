@@ -171,6 +171,28 @@ public class Orders {
 		System.out.println("---------------------------");
 	}
 	
+	/**
+	 * 
+	 * Returns the details of an order to be used in an SMS message.
+	 * 
+	 * @return
+	 */
+	public String orderDetails() {
+		
+		String details = "RESTAURANT MANAGER \n";
+		
+		for (Map.Entry<String, Integer> entry : this.orderContents.entrySet()) {
+			details += entry.getKey() + " | " + "x " +  entry.getValue() + " | £" + Items.getItemPrice(entry.getKey()) + "\n";
+		}
+		
+		details += "ORDER TIME: " + this.timeOfOrder + "\n";
+		details += "TABLE: " + this.tableNumber + "\n";
+		details += "COMMENTS: " + this.comments + "\n";
+		details += "ORDER TOTAL: £" + this.getOrderTotal();
+		
+		return details;
+	}
+	
 	//-----------------------------------------------------------------------------
 
 //	// removes multiple items from an order 

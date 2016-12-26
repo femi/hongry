@@ -32,15 +32,12 @@ public class Main extends Application {
 		
 		Main.stage = primaryStage;
 		
-
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
-			Scene scene = new Scene(root, 900, 500);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.show();
-
-
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Login.fxml"));
+		Scene scene = new Scene(root, 900, 500);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
+		primaryStage.show();
 
 	}
 
@@ -72,11 +69,17 @@ public class Main extends Application {
 	 */
 	public static void initialise() {
 		
+		// SET TWILIO CREDENTIALS 
+		
+		Messages.setACCOUNT_SID("YOUR_ACCOUNT_SID");
+		Messages.setAUTH_TOKEN("YOUR_AUTH_TOKEN");
+		Messages.setFROM_NUMBER("YOUR_TWILIO_NUMBER");
+		
 		// NEW EMPLOYEE
 		
-		Employees test = new Employees("Manager", "Derek", "Jones", "", "");
+		Employees test = new Employees("Manager", "Derek", "Jones", "derek", "password");
 		Platform.setLoggedIn(test); // log to this employee initially
-		Employees manager = new Employees("Staff", "Derek", "Jones", "Derek", "password");
+		Employees manager = new Employees("Staff", "Derek", "Jones", "barry", "password");
 		Employees staff = new Employees("Staff", "Barry", "Flynn", "Barry", "password");
 		Employees jake = new Employees("Staff", "Jake", "Bowers", "Jake", "password");
 		Employees albert = new Employees("Staff", "Albert", "Devon", "Albert", "password");

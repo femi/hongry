@@ -139,6 +139,17 @@ public class NewOrderController implements Initializable {
 		
 		// go to homepage
 		Platform.getScene().home();
+		
+		try {
+		// send a message of the order to the user if they have added a number
+		if (Messages.getNumber() !=  null) {
+			Messages.sendOrder(Messages.getNumber(), order.orderDetails());
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Probably something to do with setup of the Twilio API, please check.");
+		}
+		
 	}
 	
 	/**
