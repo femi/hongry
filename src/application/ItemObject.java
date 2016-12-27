@@ -8,7 +8,7 @@ package application;
  * @author femi
  *
  */
-public class ItemBuffer {
+public class ItemObject {
 	
 	private String quantity;
 	private int price;
@@ -23,7 +23,7 @@ public class ItemBuffer {
 	 * @param price of the 
 	 * @param quantity of the item
 	 */
-	public ItemBuffer(String name, int price, String quantity) {
+	public ItemObject(String name, int price, String quantity) {
 		this.quantity = quantity;
 		this.price = price;
 		this.name = name;

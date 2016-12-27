@@ -16,7 +16,7 @@ public class Items {
 	//-------------------------------VARIBLES-------------------------------------
 	
 	public static HashMap<String, Integer> items = new HashMap<String, Integer>();
-	public static HashMap<String, ItemBuffer> itemObjects = new HashMap<String, ItemBuffer>();
+	public static HashMap<String, ItemObject> itemObjects = new HashMap<String, ItemObject>();
 	
 	
 	//--------------------------------METHODS-------------------------------------
@@ -34,7 +34,7 @@ public class Items {
 		System.out.println("ITEM ADDED: " + name + " £" + price);
 
 		// add object too
-		itemObjects.put(name, new ItemBuffer(name, price, "1"));
+		itemObjects.put(name, new ItemObject(name, price, "1"));
 	}
 		
 	/**
@@ -60,7 +60,7 @@ public class Items {
 	 * Gets the list of the item objects created 
 	 * @return itemObjects the list of item objects stored 
 	 */
-	public static HashMap<String, ItemBuffer> getItemObjects() {
+	public static HashMap<String, ItemObject> getItemObjects() {
 		return itemObjects;
 	}
 

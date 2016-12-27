@@ -30,7 +30,7 @@ public class Orders {
 	private HashMap<String, Integer> orderContents = new HashMap<String, Integer>();
 	
 	// item objects in the order [obj1, obj2, obj3]
-	private ArrayList<ItemBuffer> orderItemObjects = new ArrayList<ItemBuffer>();
+	private ArrayList<ItemObject> orderItemObjects = new ArrayList<ItemObject>();
 	
 	//------------------------------CONSTRUCTOR----------------------------------
 
@@ -58,7 +58,7 @@ public class Orders {
 	 * 
 	 * @param item
 	 */
-	public void addItemBuffer(ItemBuffer item) {
+	public void addItemBuffer(ItemObject item) {
 		orderItemObjects.add(item);
 		// update the order string when item added 
 		itemsOrderedString();
@@ -70,8 +70,8 @@ public class Orders {
 	 * 
 	 * @param items
 	 */
-	public void addMultipleItemBuffer(ArrayList<ItemBuffer> items) {
-		for (ItemBuffer item : items ) {
+	public void addMultipleItemBuffer(ArrayList<ItemObject> items) {
+		for (ItemObject item : items ) {
 			addItemBuffer(item);
 		}
 	}
@@ -80,7 +80,7 @@ public class Orders {
 	 * Removes an item object from the order and updates the order string.
 	 * @param item
 	 */
-	public void removeItemBuffer(ItemBuffer item) {
+	public void removeItemBuffer(ItemObject item) {
 		orderItemObjects.remove(item);
 		// update the order string when item removed
 		itemsOrderedString();
@@ -90,7 +90,7 @@ public class Orders {
 	 * Returns a list of the order's item objects.
 	 * @return
 	 */
-	public ArrayList<ItemBuffer> orderItemObjects() {
+	public ArrayList<ItemObject> orderItemObjects() {
 		return this.orderItemObjects;
 	}
 	
@@ -100,7 +100,7 @@ public class Orders {
 	 */
 	public int getOrderTotalObjects() {
 		int total = 0;
-		for (ItemBuffer item : orderItemObjects) {
+		for (ItemObject item : orderItemObjects) {
 			total += item.getPrice();
 		}
 		
@@ -251,7 +251,7 @@ public class Orders {
 		int total = 0;
 
 		// getting price using ItemBuffer objects in `oderContentsObjects` instead of `orderContents`
-		for (ItemBuffer item : orderItemObjects) {
+		for (ItemObject item : orderItemObjects) {
 			total += item.getPrice();
 		}
 		
@@ -313,7 +313,7 @@ public class Orders {
 	 */
 	private void itemsOrderedString() {
 		String itemString = "";
-		for (ItemBuffer item : orderItemObjects) {
+		for (ItemObject item : orderItemObjects) {
 			itemString +=  item.getName() + " ";
 		}
 		this.itemOrderedString = itemString;	

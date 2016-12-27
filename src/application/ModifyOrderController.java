@@ -37,10 +37,10 @@ public class ModifyOrderController implements Initializable {
 	private Orders ordermate = Platform.getOrder(orderID);
 
 	@FXML private Label lblOrderNumber, lblTotal;
-	@FXML private TableView<ItemBuffer> tvItemTable;
-	@FXML private TableColumn<ItemBuffer, String> item;
-	@FXML private TableColumn<ItemBuffer, Integer> price;
-	@FXML private TableColumn<ItemBuffer, String> quantity;
+	@FXML private TableView<ItemObject> tvItemTable;
+	@FXML private TableColumn<ItemObject, String> item;
+	@FXML private TableColumn<ItemObject, Integer> price;
+	@FXML private TableColumn<ItemObject, String> quantity;
 	@FXML private TextArea txtComments;
 	@FXML private ComboBox<String> cbItems;
 	@FXML private TextField txtQuantity;
@@ -48,10 +48,10 @@ public class ModifyOrderController implements Initializable {
 	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
 	
 	// List of all of items in the order
-	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).orderItemObjects());
+	public ObservableList<ItemObject> itemList = FXCollections.observableArrayList(Platform.getOrder(orderID).orderItemObjects());
 	
 	// List to store all of the items in the order 
-	public ArrayList<ItemBuffer> exprimentOrderList = ordermate.orderItemObjects();
+	public ArrayList<ItemObject> exprimentOrderList = ordermate.orderItemObjects();
 	
 	// Contains a list of items that are available for the user to select from 
 	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
@@ -75,9 +75,9 @@ public class ModifyOrderController implements Initializable {
 		tvItemTable.setItems(itemList);
 		
 		// assign the columns
-		item.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
-		price.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
-		quantity.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
+		item.setCellValueFactory(new PropertyValueFactory<ItemObject, String>("name"));
+		price.setCellValueFactory(new PropertyValueFactory<ItemObject, Integer>("price"));
+		quantity.setCellValueFactory(new PropertyValueFactory<ItemObject, String>("quantity"));
 		
 		// Display comments and special messages
 		txtComments.setText(Platform.getOrder(orderID).getComments());
@@ -105,10 +105,10 @@ public class ModifyOrderController implements Initializable {
 		Orders order = Platform.getOrder(orderID);
 		
 		// create a list to hold all of the Items 
-		ObservableList<ItemBuffer> allItems;
+		ObservableList<ItemObject> allItems;
 				
 		//create order object 
-		ItemBuffer itemSelected;
+		ItemObject itemSelected;
 				
 		// get all of the current orders in the TableView
 		allItems = tvItemTable.getItems();
@@ -200,7 +200,7 @@ public class ModifyOrderController implements Initializable {
 		}
 		
 		// Allow user to see what has been added to their order
-		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity2+"");
+		ItemObject item = new ItemObject(text, Items.getItemPrice(text), quantity2+"");
 
 		// add the item to the order
 		exprimentOrderList.add(item);

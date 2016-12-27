@@ -243,7 +243,7 @@ public class Platform {
 			tableID = order.getTableNumber() + "";
 			date = order.getTimeOfOrder();
 			
-			for (ItemBuffer item : order.orderItemObjects()) {
+			for (ItemObject item : order.orderItemObjects()) {
 				items += item.getName() + "-";
 			}
 			
@@ -316,7 +316,7 @@ public class Platform {
 			
 			// create a new object for each item in the order 
 			for (int i = 0; i < items.length; i++) {
-				order.addItemBuffer(new ItemBuffer(items[i], Items.getItemPrice(items[i]), "1"));
+				order.addItemBuffer(new ItemObject(items[i], Items.getItemPrice(items[i]), "1"));
 			}
 			
 			// add the imported order to the platform 

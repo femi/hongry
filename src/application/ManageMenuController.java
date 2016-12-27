@@ -26,14 +26,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ManageMenuController implements Initializable {
 	
 	@FXML private TextField txtItem, txtPrice;
-	@FXML private TableView<ItemBuffer> tvItems;
-	@FXML private TableColumn<ItemBuffer, String> itemName;
-	@FXML private TableColumn<ItemBuffer, Integer> itemPrice;
+	@FXML private TableView<ItemObject> tvItems;
+	@FXML private TableColumn<ItemObject, String> itemName;
+	@FXML private TableColumn<ItemObject, Integer> itemPrice;
 	@FXML private Button btnAdd;
 	@FXML private Button btnDelete;
 	
 	// list containing all of the current items in the menu
-	public ObservableList<ItemBuffer> items = FXCollections.observableArrayList(Items.getItemObjects().values());
+	public ObservableList<ItemObject> items = FXCollections.observableArrayList(Items.getItemObjects().values());
 	
 	
 	/* (non-Javadoc)
@@ -49,8 +49,8 @@ public class ManageMenuController implements Initializable {
 		tvItems.setItems(items);
 		
 		// assign values to the table columns
-		itemName.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
-		itemPrice.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
+		itemName.setCellValueFactory(new PropertyValueFactory<ItemObject, String>("name"));
+		itemPrice.setCellValueFactory(new PropertyValueFactory<ItemObject, Integer>("price"));
 		
 	}
 
@@ -85,10 +85,10 @@ public class ManageMenuController implements Initializable {
 	public void deleteItem(ActionEvent event) {
 		
 		// create a list to hold all of the Items 
-		ObservableList<ItemBuffer> allItems;
+		ObservableList<ItemObject> allItems;
 				
 		//create item object 
-		ItemBuffer itemSelected;
+		ItemObject itemSelected;
 				
 		// get all of the current items in the TableView
 		allItems = tvItems.getItems();
