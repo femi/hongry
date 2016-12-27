@@ -10,4 +10,4 @@ I built this restaurant billing management system as part of my Java coursework 
 
 #### Instructions for use 
 
-I recommend exporting the project to a runnable jar or running the `Main.java` file in an IDE of your choice.
+Export the project to a runnable jar or run the `Main.java` file in an IDE of your choice.
