@@ -34,19 +34,19 @@ public class NewOrderController implements Initializable {
 	@FXML private ComboBox<String> cbItems, cbTables;
 	@FXML private TextField txtQuantity;
 	@FXML private Button btnOrder;
-	@FXML private TableView<ItemBuffer> orderTable;
-	@FXML private TableColumn<ItemBuffer, String> quantityColumn;
-	@FXML private TableColumn<ItemBuffer, String> itemColumn;
-	@FXML private TableColumn<ItemBuffer, Integer> priceColumn;
+	@FXML private TableView<ItemObject> orderTable;
+	@FXML private TableColumn<ItemObject, String> quantityColumn;
+	@FXML private TableColumn<ItemObject, String> itemColumn;
+	@FXML private TableColumn<ItemObject, Integer> priceColumn;
 	@FXML private TextArea txtComments;
 	
-	public ObservableList<ItemBuffer> itemList = FXCollections.observableArrayList();
+	public ObservableList<ItemObject> itemList = FXCollections.observableArrayList();
 	public HashMap<String, Integer> orderList2 = new HashMap<String, Integer>();
 	public int table;
 	public int subTotal = 0;
 
 	// List to store all of the items the user would like to order
-	public ArrayList<ItemBuffer> exprimentOrderList = new ArrayList<ItemBuffer>();
+	public ArrayList<ItemObject> exprimentOrderList = new ArrayList<ItemObject>();
 
 	// Contains a list of items that are available for the user to select from 
 	ObservableList<String> dropdownList = FXCollections.observableArrayList(Items.items.keySet());
@@ -66,9 +66,9 @@ public class NewOrderController implements Initializable {
 		//orderTable.setItems(itemList);
 		
 		// assign the variables to the columns in the TableView
-		quantityColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("quantity"));
-		priceColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, Integer>("price"));
-		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemBuffer, String>("name"));
+		quantityColumn.setCellValueFactory(new PropertyValueFactory<ItemObject, String>("quantity"));
+		priceColumn.setCellValueFactory(new PropertyValueFactory<ItemObject, Integer>("price"));
+		itemColumn.setCellValueFactory(new PropertyValueFactory<ItemObject, String>("name"));
 		
 		// add all items (foods) to the combo list
 		cbItems.setItems(dropdownList);
@@ -144,10 +144,13 @@ public class NewOrderController implements Initializable {
 		// send a message of the order to the user if they have added a number
 		if (Messages.getNumber() !=  null) {
 			Messages.sendOrder(Messages.getNumber(), order.orderDetails());
+			System.out.println("ORDER SMS SENT.");
 		}
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Probably something to do with setup of the Twilio API, please check.");
+			//e.printStackTrace();
+			System.out.println("ORDER SMS MESSAGE NOT SENT.");
+			System.out.println("Probably something to do with setup of the Twilio API");
+			System.out.println("Please check that you have provided the correct credentials in Main.java.");
 		}
 		
 	}
@@ -185,7 +188,7 @@ public class NewOrderController implements Initializable {
 		}
 		
 		// Allow user to see what has been added to their order
-		ItemBuffer item = new ItemBuffer(text, Items.getItemPrice(text), quantity2+"");
+		ItemObject item = new ItemObject(text, Items.getItemPrice(text), quantity2+"");
 
 		// add the item to the order
 		exprimentOrderList.add(item);
