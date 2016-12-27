@@ -308,5 +308,23 @@ public class ManageOrderController implements Initializable  {
 			System.out.println("NO FILE SELECTED");
 		}
 	}
+	
+	
+	/**
+	 * Takes the user to the updates modal.
+	 * 
+	 * @param event
+	 * @throws IOException if FMXL file cannot be loaded.
+	 */
+	public void updates(ActionEvent event ) throws IOException {
+		
+		window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Updates.fxml"));
+		Scene scene = new Scene(root, 300, 200);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		window.setScene(scene);
+		window.show();
+	}
 
 }

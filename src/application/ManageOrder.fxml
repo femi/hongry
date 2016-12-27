@@ -28,12 +28,30 @@
          </font>
       </Text>
       <ButtonBar layoutX="191.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button fx:id="delete" disable="true" layoutX="594.0" layoutY="435.0" mnemonicParsing="false" onAction="#deleteConformation" text="Delete" />
-      <Button layoutX="665.0" layoutY="435.0" mnemonicParsing="false" onAction="#closeOrder" text="Close" />
-      <Button layoutX="803.0" layoutY="435.0" mnemonicParsing="false" onAction="#exportSelectedItems" text="Export" />
-      <Button layoutX="732.0" layoutY="435.0" mnemonicParsing="false" onAction="#importOrders" text="Import" />
-      <Button fx:id="btnHome" layoutX="43.0" layoutY="435.0" mnemonicParsing="false" onAction="#Home" text="Home" />
-      <Button fx:id="modify" disable="true" layoutX="522.0" layoutY="435.0" mnemonicParsing="false" onAction="#modifyOrder" text="Modify" />
+      <Button fx:id="delete" disable="true" layoutX="594.0" layoutY="435.0" mnemonicParsing="false" onAction="#deleteConformation" text="Delete">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Button layoutX="665.0" layoutY="435.0" mnemonicParsing="false" onAction="#closeOrder" text="Close">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Button layoutX="803.0" layoutY="435.0" mnemonicParsing="false" onAction="#exportSelectedItems" text="Export">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Button layoutX="732.0" layoutY="435.0" mnemonicParsing="false" onAction="#importOrders" text="Import">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Button fx:id="btnHome" layoutX="46.0" layoutY="437.0" mnemonicParsing="false" onAction="#Home" prefHeight="24.0" prefWidth="57.0" text="Home">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
+      <Button fx:id="modify" disable="true" layoutX="522.0" layoutY="435.0" mnemonicParsing="false" onAction="#modifyOrder" text="Modify">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
       <TextField fx:id="filterField" layoutX="317.0" layoutY="435.0" prefHeight="27.0" prefWidth="193.0" promptText="Search e.g. Salmon" />
       <Text layoutX="30.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can use this area to search, modify, delete, close, import and export orders." wrappingWidth="216.21875">
          <font>
@@ -45,5 +63,9 @@
             <Image url="@resources/sausage.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnHome1" layoutX="112.0" layoutY="437.0" mnemonicParsing="false" onAction="#updates" prefHeight="24.0" prefWidth="74.0" text="Updates " textAlignment="CENTER">
+         <font>
+            <Font name="Inconsolata" size="13.0" />
+         </font></Button>
    </children>
 </AnchorPane>

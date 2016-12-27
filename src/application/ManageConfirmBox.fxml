@@ -24,7 +24,7 @@
       </Text>
       <ImageView fitHeight="54.0" fitWidth="72.0" layoutX="123.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/eyes.png" />
+            <Image url="@resources/eyes.png" />
          </image>
       </ImageView>
    </children>
