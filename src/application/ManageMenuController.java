@@ -63,15 +63,31 @@ public class ManageMenuController implements Initializable {
 	 */
 	public void addNewItem(ActionEvent event) throws Exception {
 		
+		try {
+		
 		// get the name of the new item 
 		String item = txtItem.getText();
+		
+		// data validation for text field
+		if (item.isEmpty() ) {
+			throw new Exception();
+		}
+
 		int price = Integer.parseInt(txtPrice.getText());
+		
 		
 		// store the item in the Items class
 		Items.addItem(item, price);
 		
 		// add the item to the tableview 
 		tvItems.getItems().add(Items.getItemObjects().get(item));
+		
+		} catch (NumberFormatException e) {
+			System.out.println("Please enter valid integer");
+		} catch (Exception e) {
+			System.out.println("Make sure Item TextField is not blank.");
+		}
+		
 		
 	}
 	

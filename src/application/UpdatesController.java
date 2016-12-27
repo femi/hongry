@@ -1,7 +1,6 @@
 package application;
 
 
-import io.jsonwebtoken.lang.Assert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,12 +24,10 @@ public class UpdatesController {
 		
 		try {
 			
-			// test to see it is the right length
-			Assert.isTrue(enteredNumber.length() == 13);
-			
-			// test to see it is formatted correctly
-			Assert.isTrue(enteredNumber.substring(0, 1).equals("+"));
-			
+			if (enteredNumber.length() != 13 || !enteredNumber.substring(0, 1).equals("+")) {
+				throw new Exception();
+			}
+	
 			// test to see if it is a number 
 			Double.parseDouble(enteredNumber.substring(1));
 
@@ -41,17 +38,11 @@ public class UpdatesController {
 			ManageOrderController.getWindow().close();
 			
 		} catch (Exception e) {
-			
 			// show user the error message 
 			message.setVisible(true);
-			message.setText("Use this format +447867662716");
-			
-		} catch (AssertionError e) {
-			
-			// show user the error message 
-			message.setVisible(true);
-			message.setText("Invaild Number");
-		}	
+			message.setText("Invalid. e.g +447867662716");
+		}
+
 	}
 	
 	/**
