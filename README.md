@@ -1,6 +1,6 @@
 # Hongry
 
-Simple restaurant management billing system.
+Simple restaurant billing management system.
 
 ![image](https://cloud.githubusercontent.com/assets/7552626/21520467/629ed8d4-ccec-11e6-8b2f-eb6453dc8c55.gif)
 
