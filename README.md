@@ -1,13 +1,17 @@
-### Restaurant Billing Management System 
+# Hongry
 
-Coursework for a programming university module I have taken.
+Simple restaurant management billing system.
 
-#### About
+![image](https://cloud.githubusercontent.com/assets/7552626/21520467/629ed8d4-ccec-11e6-8b2f-eb6453dc8c55.gif)
 
-I built this restaurant billing management system as part of my Java coursework for my programming class. The application is built using JavaFX for the UI, OpenCSV to handle importing and exporting order data and Twilio to send order updates to users.
+## About
 
-<img width="1012" alt="restaurant" src="https://cloud.githubusercontent.com/assets/7552626/21496052/90cca6ca-cc13-11e6-856f-ada06be74890.png">
+I built this restaurant billing management system as part of my Java coursework for my programming class. The application is built using JavaFX for the UI, OpenCSV to handle importing and exporting order data and Twilio to send order updates to users. This by no means a finished or elegant piece of work, a lot of things were rushed so it could function and be submitted on time 😅
 
-#### Instructions for use 
+## Usage 
 
-Export the project to a runnable jar or run the `Main.java` file in an IDE of your choice.
+Export the project to a runnable jar or run the `Main.java` file in an IDE of your choice (tested on Eclipse).
+
+Login Credentials:
+- Manager - username: derek, password: password
+- Staff - username: barry, password: password
